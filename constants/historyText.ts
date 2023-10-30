@@ -1,0 +1,15 @@
+export const historyTexts = [
+  'Diriliş Yayınları, Sezai Karakoç tarafından 1974 yılında kuruldu.',
+  'Kitaplarını yayınlayacak yayıncı bulma güçlüğü, bir yayınevi kurmaya zorlamıştır O’nu.',
+  'Amacı yayıncılık yapmak değil, kendi eserlerini basabilmektir.',
+  'İlk eseri olan Körfez adlı şiir kitabı 1959 yılında Kül Yayınlarından çıktı. Şahdamar 1962 yılında Kül Yayınları, Sesler 1968 yılında Yağmur Yayınları tarafından yayınlandı. Bu üç eser 1974 yılından itibaren Şahdamar -Körfez – Sesler olarak Diriliş Yayınları tarafından basıldı.',
+  'Ayrı ayrı olarak yayınlanan ve ilk olarak 1968 yılında çıkan Taha’nın Kitabı ve 1968 yılında yayınlanan Gül Muştusu, 1974 yılından sonra tek kitap halinde Taha’nın Kitabı-Gül Muştusu olarak Diriliş Yayınları içinde yerini aldı.',
+  '1976 yılından itibaren Diriliş Yayınları arasında yayınlanan İslâmın Şiir Anıtlarından isimli çeviri eseri, ilk olarak 1967 yılında Fatih Yayınevi tarafından Üç Kaside ismi ile çıktı.',
+  'Yunus Emre adlı inceleme eseri 1964 yılında Bedir Yayınevi, Mehmed Âkif ise 1968 yılında Yağmur Yayınevi tarafından basıldı. Her iki eser de 1974 yılından sonra Diriliş Yayınları arasında çıktı.',
+  '1975 yılından itibaren Diriliş Yayınları tarafından basılan İslâm, Farklar ve Dirilişin Çevresinde isimli eserleri, tek kitap halinde Yazılar adı ile 1967 yılında Fatih Yayınevi tarafından basıldı.',
+  'Düşünce kategorisindeki eserlerinden İslâm Toplumunun Ekonomik Strüktürü ve İslâmın Dirilişi’nin ilk baskıları 1967 yılında Ötüken Yayınları tarafından yapıldı.',
+  'İlk olarak 1969 yılında iki cilt olarak Fatih Yayınevi tarafından yayınlanan Sütun, 1975 yılından itibaren Diriliş Yayınları tarafından basıldı. Daha sonra, 1980 yılından itibaren tek cilt olarak yayınlandı.',
+  'Diriliş Yayınları arasında ilk olarak 2022 yılında yer alan Genç Müslümana Öğütler adlı çeviri eserinin ilk baskısı 1965 yılında Bedir Yayınevi tarafından yapılmıştır.',
+  '1974 yılından itibaren tüm eserleri Diriliş Yayınları tarafından basılmaktadır.',
+  'Diriliş Yayınlarının faaliyetleri, Sezai Karakoç’un 16 Kasım 2021 Tarihinde vefatından sonra ailesi tarafından aynı çizgide sürdürülmektedir.',
+]

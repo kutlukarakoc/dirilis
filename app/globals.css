@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		@apply min-h-screen m-0 p-0 antialiased flex flex-col
+	}
+
+	section {
+		@apply mt-32 md:mt-40 first-of-type:mt-0
+	}
+
+	/* article {
+		@apply mt-14 md:mt-36 first-of-type:mt-0	
+	} */
+
+	q {
+		@apply text-primary-600
+	}
+}
+
+@layer utilities {
+	.shadow {
+		@apply shadow-sm border-t border-primary-50 rounded-md
+	}
+}
+
+.nav-link {
+	@apply text-paragraph 2xl:text-header-6 text-primary-100 hover:text-white-50 whitespace-nowrap
+}
+
+.page-title {
+	@apply text-header-4 md:text-header-2 2xl:text-header-1 font-medium mb-9 md:mb-16 2xl:mb-28 text-primary-400
+}
+
+.section-title {
+	@apply text-header-5 md:text-header-3 2xl:text-header-2 font-medium mb-4 md:mb-7 2xl:mb-10 text-primary-600
+}
+
+.section-subtitle {
+	@apply text-header-6 md:text-header-4 2xl:text-header-3 font-medium mb-6 text-primary-400
+}
+
+.swiper-pagination {
+	@apply bg-white-50 bottom-0 !important
+}
+
+.swiper-pagination-bullet-active {
+	@apply bg-primary-700 !important
+}
+
+.swiper-button-prev, .swiper-button-next {
+	@apply text-black-100 hidden sm:flex after:text-[30px] lg:after:text-[44px] !important
+}
+
+.swiper-button-prev::after {
+	@apply content-['prev'] !important
+}
+.swiper-button-next::after {
+	@apply content-['next'] !important
+}
+
+.hero-swiper .swiper-button-next, 
+.hero-swiper.swiper-button-prev {
+	@apply transition-opacity
+}
+
+.hero-swiper:not(:hover) .swiper-button-next,
+.hero-swiper:not(:hover) .swiper-button-prev {
+  @apply opacity-0 !important
+}
+
+.bio-swiper .swiper-slide {
+	@apply flex w-full h-full justify-center items-center
+}
+
+.quotes-swiper .swiper-button-next {
+	@apply right-0 !important
+}
+
+.quotes-swiper .swiper-button-prev {
+	@apply left-0 !important
+}
+
+@media (max-width: 640px) {
+	.bio-overlay {
+		@apply bg-none !important
+	}
+}
+
+.hero-quotes-swiper {
+	@apply h-[545px] md:h-[500px] !important
+}
+
+.secondary-quotes-swiper {
+	@apply !h-[500px]
+}
+
+.videos-swiper {
+	@apply h-[550px] sm:h-[600px] !important
+}
