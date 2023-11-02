@@ -1,6 +1,5 @@
 const Pagination = () => {
 
-
   return (
     <nav aria-label="listing-pagination" className="flex justify-center items-center mt-20">
       <ul className="inline-flex -space-x-px text-paragraph">

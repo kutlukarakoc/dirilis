@@ -7,7 +7,6 @@ const Books = dynamic(() => import('./books'), {
   loading: () => <BooksLoading />,
 })
 
-
 const ListingContainer = ({ books }: { books: SimplifiedBooks[] }) => {
   return (
     <>

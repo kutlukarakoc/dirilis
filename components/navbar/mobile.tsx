@@ -75,7 +75,7 @@ const Mobile = () => {
                   className="pl-4"
                 >
                   <Link
-                    href="/biyografi?lang=tr"
+                    href="/biyografi"
                     className="text-paragraph text-primary-700"
                   >
                     Biyografi

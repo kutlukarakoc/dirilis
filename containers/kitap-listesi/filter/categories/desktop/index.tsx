@@ -1,14 +1,13 @@
 import CategoryButton from '../desktop/category'
-import { Category } from '@/types/books'
-import { filterCategories } from '@/constants/categories'
+import { CategoryWithKey } from '@/types/categories'
+import { categories } from '@/constants/categories'
 
-const MobileCategories = () => {
+const Categories = () => {
   return (
     <div
-      className="mt-12 hidden md:grid gap-7"
-      style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }}
+      className="mt-10 hidden xl:flex xl:justify-between"
     >
-      {filterCategories.map((category: Category) => (
+      {categories.map((category: CategoryWithKey) => (
         <CategoryButton
           key={category.id}
           category={category}
@@ -18,4 +17,4 @@ const MobileCategories = () => {
   )
 }
 
-export default MobileCategories
+export default Categories

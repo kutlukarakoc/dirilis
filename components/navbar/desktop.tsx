@@ -53,7 +53,7 @@ const Desktop = () => {
           <MenubarSeparator />
           <MenubarItem onClick={() => setValue('')}>
             <Link
-              href="/biyografi?lang=tr"
+              href="/biyografi"
               className="h-full w-full px-2 py-1.5"
             >
               Biyografi

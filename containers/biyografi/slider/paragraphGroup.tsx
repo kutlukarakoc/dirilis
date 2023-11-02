@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useWindowWidth } from '@/hooks/useWindowWidth'
-import { useCurrentLanguage } from '@/hooks/useCurrentLanguage'
+import { useLanguageDirection } from '@/hooks/useLanguageDirection'
 import { Button } from '@/components/ui/button'
 import Paragraph from './paragraph'
 import { showMoreTexts } from '@/constants/biography/showMore'
@@ -12,7 +12,7 @@ type ParagraphGroup = {
 }
 
 const ParagraphGroup: React.FC<ParagraphGroup> = ({ paragraphs }) => {
-  const [language, direction] = useCurrentLanguage()
+  const [language, direction] = useLanguageDirection()
 
   const [showMore, setShowMore] = useState(false)
   const windowWidth = useWindowWidth() || 1000

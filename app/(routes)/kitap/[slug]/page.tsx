@@ -16,7 +16,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }): Promise<Metadata> {
-  const bookId = slug.split('_')[1]
+  const bookId = slug.split('-').at(-1) as string
 
   const book = await getBookById(bookId)
   const bookTitle = book.title
@@ -32,8 +32,7 @@ export default async function Book({
 }: {
   params: { slug: string }
 }) {
-	const bookId = slug.split('_')[1]
+	const bookId = slug.split('-').at(-1) as string
 	const book = await getBookById(bookId)
-	console.log('boofaak', book)
 	return <DetailContainer book={book} />
 }

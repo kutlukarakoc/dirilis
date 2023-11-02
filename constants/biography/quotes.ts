@@ -1,4 +1,21 @@
 export const quotes = {
+	verseText: {
+		'tr': `“Doğduğum güne, öldüğüm güne, yeniden dirileceğim güne selâm, esenlik
+		olsun!”`,
+		'en': `“Peace be upon me the day I was born, the day I die, and the day I will raised back to life (resurrected)”`,
+		'de': `“Und der Friede sei auf mir am Tag, da ich geboren wurde, und am Tag, da ich sterbe, und am Tag da ich wieder zum Leben auferweckt werde (der Tag meiner Auferstehung)”`,
+		'ru': `Мир тому дню, когда я родился, дню, когда я умру, и дню, когда я воскресну`,
+		'far': `سلام بر روزی که به دنیا آمدم، سلام بر روزی که می میرم، سلام بر روزی که زنده خواهم شد`,
+		'ar': `حَيًّا اُبْعَثُ وَيَوْمَ اَمُوتُ وَيَوْمَ وُلِدْتُ يَوْمَ عَلَيَّ وَالسَّلَامُ`,
+	},
+	verse: {
+		'tr': `Meryem Sûresi 33. Âyet-i Kerîme`,
+		'en': `Surah Maryam, verse 33`,
+		'de': `Vers 33 aus Sure Maryam`,
+		'ru': `Meryem Sûresi 33. Âyet-i Kerîme`,
+		'far': `سوره ی مریم آیه 33`,
+		'ar': `سورة مريم الآية 33`,
+	},
   title: {
     'tr': 'DOĞUMA, ÖLÜME VE DİRİLİŞE SELAM',
     'en': 'PEACE BE UPON BIRTH, DEATH, AND RESURRECTION',

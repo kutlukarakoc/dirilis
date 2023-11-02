@@ -1,10 +1,10 @@
 'use client'
 
 import { title } from '@/constants/biography/title'
-import { useCurrentLanguage } from '@/hooks/useCurrentLanguage'
+import { useLanguageDirection } from '@/hooks/useLanguageDirection'
 
 const Title = () => {
-  const [language, direction] = useCurrentLanguage()
+  const [language, direction] = useLanguageDirection()
   return (
     <h1
       className="page-title"

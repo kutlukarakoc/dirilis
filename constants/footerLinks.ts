@@ -19,7 +19,7 @@ export const footerLinks = [
 			},
 			{
 				title: 'Biyografi',
-				url: '/biyografi?lang=tr'
+				url: '/biyografi'
 			}
     ],
   },

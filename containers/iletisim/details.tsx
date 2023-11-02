@@ -11,11 +11,11 @@ const Details = () => {
         <h6 className="mb-4 text-center text-paragraph-tablet text-black-500 last-of-type:mb-0 2xl:text-paragraph">
           0 (212) 519 04 57
         </h6>
-        <h6 className="mb-4 text-center text-paragraph-tablet text-black-500 last-of-type:mb-0 2xl:text-paragraph">
-          0 (532) 353 73 10
+				<h6 className="mb-4 text-center text-paragraph-tablet text-black-500 last-of-type:mb-0 2xl:text-paragraph">
+          0 (532) 422 25 50
         </h6>
         <h6 className="mb-4 text-center text-paragraph-tablet text-black-500 last-of-type:mb-0 2xl:text-paragraph">
-          0 (532) 422 25 50
+          0 (532) 353 73 10
         </h6>
       </div>
 

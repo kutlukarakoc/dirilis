@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
+import { Language } from '@/types/languages'
 
 const customTwMerge = extendTailwindMerge({
   classGroups: {
@@ -40,8 +41,8 @@ export const formatPrice = (price: number): string => {
 }
 
 export const formatHref = (path: string, title: string, id: string): string => {
-  const formattedTitle = title.replaceAll('/', ' ').split(' ').join('-')
-  const finalUrl = `/${path}/${formattedTitle}_${id}`
+  const formattedTitle = title.toLowerCase().replaceAll('/', ' ').split(' ').join('-')
+  const finalUrl = `/${path}/${formattedTitle}-${id}`
   return finalUrl
 }
 
@@ -66,3 +67,14 @@ export const toBase64 = (str: string) =>
   typeof window === 'undefined'
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
+
+export const getPrefferedLanguage = (): Language => {
+	const languages: Language[] = ['tr', 'en', 'de', 'ru', 'far', 'ar']
+
+	const language = navigator.language
+	const languagePrimaryStandard = language.substring(0, 2)
+
+	const prefferedLanguage = languages.find((lang) => lang === languagePrimaryStandard) || 'tr'
+
+	return prefferedLanguage
+}

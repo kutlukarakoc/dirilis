@@ -1,10 +1,10 @@
 'use client'
 
 import { quotes } from '@/constants/biography/quotes'
-import { useCurrentLanguage } from '@/hooks/useCurrentLanguage'
+import { useLanguageDirection } from '@/hooks/useLanguageDirection'
 
 const Quote = () => {
-  const [language, direction] = useCurrentLanguage()
+  const [language, direction] = useLanguageDirection()
 
   return (
     <div
@@ -12,11 +12,13 @@ const Quote = () => {
       id="bio-quote"
     >
       <div className="mx-auto sm:max-w-2xl sm:px-4">
-        <p className="rounded-t-md border-x border-t border-primary-400 px-1 py-4 text-paragraph-mobile lg:text-paragraph-tablet">
-          “Doğduğum güne, öldüğüm güne, yeniden dirileceğim güne selâm, esenlik
-          olsun!” <br />
-          <span className="font-medium text-primary-700">
-            Meryem Sûresi 33. Âyet-i Kerîme
+        <p 
+					className="rounded-t-md border-x border-t border-primary-400 px-1 py-4 text-paragraph-mobile lg:text-paragraph-tablet"
+					style={{ direction: direction }}
+				>
+          {quotes.verseText[language]} <br />
+          <span className="font-medium text-primary-700" style={{ direction: direction }}>
+						{quotes.verse[language]}
           </span>
         </p>
 

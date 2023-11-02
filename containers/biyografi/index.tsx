@@ -1,5 +1,5 @@
 import Title from './title'
-import Language from './language'
+import SelectLanguage from './language'
 import BiographySlider from './slider'
 import Quote from './quote'
 
@@ -8,7 +8,7 @@ const BiographyContainer = () => {
     <section>
       <div className="flex items-start justify-between">
         <Title />
-        <Language />
+        <SelectLanguage />
       </div>
       <BiographySlider />
       <Quote />

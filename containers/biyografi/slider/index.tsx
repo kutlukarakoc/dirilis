@@ -2,7 +2,7 @@
 
 import SlideImage from './image'
 import ParagraphGroup from './paragraphGroup'
-import { useCurrentLanguage } from '@/hooks/useCurrentLanguage'
+import { useLanguageDirection } from '@/hooks/useLanguageDirection'
 import { bioSlides } from '@/constants/biography/slides'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper/modules'
@@ -11,7 +11,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 const BiographySlider = () => {
-  const [language] = useCurrentLanguage()
+  const [language] = useLanguageDirection()
   return (
     <Swiper
       autoHeight={true}

@@ -76,7 +76,7 @@ export const bioSlides = [
   },
   {
     alt: 'diriliş dergisi',
-		source: 'https://i.ibb.co/K0tBntr/bio3.png',
+		source: 'https://i.ibb.co/mB93cKZ/download.jpg',
     ratio: '1',
     paragraphs: {
 			tr: [

@@ -7,18 +7,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { filterCategories } from '@/constants/categories'
+import { categories } from '@/constants/categories'
 
-const Categories = () => {
+const MobileCategories = () => {
   return (
-    <div className="mt-8 md:hidden">
-      <Select defaultValue="0">
+    <div className="mt-8 xl:hidden">
+      <Select defaultValue="">
         <SelectTrigger>
           <SelectValue placeholder="Kategoriler" />
         </SelectTrigger>
         <SelectContent className="bg-white-50">
           <SelectGroup>
-            {filterCategories.map((category: Category) => (
+            {categories.map((category: Category) => (
               <SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
             ))}
           </SelectGroup>
@@ -28,4 +28,4 @@ const Categories = () => {
   )
 }
 
-export default Categories
+export default MobileCategories

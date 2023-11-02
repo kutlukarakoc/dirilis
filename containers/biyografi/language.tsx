@@ -1,7 +1,8 @@
 'use client'
 
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import { getPrefferedLanguage } from '@/lib/utils'
 import {
   Select,
   SelectContent,
@@ -15,7 +16,13 @@ const Language = () => {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const language = searchParams.get('lang') || 'tr'
+  const language = searchParams.get('lang')
+
+  let prefferedLanguage = 'tr'
+  if (typeof window !== 'undefined') {
+    prefferedLanguage = getPrefferedLanguage();
+  }
+
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -31,10 +38,16 @@ const Language = () => {
     router.push(pathname + '?' + createQueryString('lang', value))
   }
 
+	useEffect(() => {
+		if(language === null || language.length < 1) {
+			router.push(pathname + '?' + createQueryString('lang', prefferedLanguage))
+		}
+	}, [])
+
   return (
     <div className="mt-0 2xl:mt-2">
       <Select
-        defaultValue={language}
+        defaultValue={language || 'tr'}
         onValueChange={handleChange}
       >
         <SelectTrigger className="w-28">
