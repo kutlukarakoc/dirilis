@@ -1,4 +1,5 @@
-import { Category } from '@/types/books'
+'use client'
+
 import {
   Select,
   SelectContent,
@@ -8,18 +9,24 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { categories } from '@/constants/categories'
+import { CategoryWithKey } from '@/types/categories'
+import { useSelectCategory } from '@/hooks/useSelectCategory'
 
 const MobileCategories = () => {
+	const [selectedCategory, selectCategory] = useSelectCategory()
+
+	const handleChange = (value: string) => selectCategory(value)
+	
   return (
     <div className="mt-8 xl:hidden">
-      <Select defaultValue="">
+      <Select defaultValue={selectedCategory} onValueChange={handleChange}>
         <SelectTrigger>
           <SelectValue placeholder="Kategoriler" />
         </SelectTrigger>
         <SelectContent className="bg-white-50">
           <SelectGroup>
-            {categories.map((category: Category) => (
-              <SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
+            {categories.map((category: CategoryWithKey) => (
+              <SelectItem key={category.id} value={category.key + '-' + category.id}>{category.name}</SelectItem>
             ))}
           </SelectGroup>
         </SelectContent>
