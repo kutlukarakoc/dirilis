@@ -14,12 +14,10 @@ import { useSelectCategory } from '@/hooks/useSelectCategory'
 
 const MobileCategories = () => {
 	const [selectedCategory, selectCategory] = useSelectCategory()
-
-	const handleChange = (value: string) => selectCategory(value)
 	
   return (
     <div className="mt-8 xl:hidden">
-      <Select defaultValue={selectedCategory} onValueChange={handleChange}>
+      <Select value={selectedCategory} onValueChange={(value) => selectCategory(value)}>
         <SelectTrigger>
           <SelectValue placeholder="Kategoriler" />
         </SelectTrigger>
