@@ -18,8 +18,8 @@ const ParagraphGroup: React.FC<ParagraphGroup> = ({ paragraphs }) => {
   const windowWidth = useWindowWidth() || 1000
 
   const isDesktop = windowWidth > 1536
-  const hiddenIndex = windowWidth < 640 ? 0 : windowWidth < 1024 ? 1 : 3
-  const hiddenLength = windowWidth < 640 ? 1 : windowWidth < 1024 ? 2 : 4
+  const hiddenIndex = windowWidth < 640 ? 0 : windowWidth < 1024 ? 1 : 2
+  const hiddenLength = windowWidth < 640 ? 1 : windowWidth < 1024 ? 2 : 3
 
   const handleReadMoreClick = () => {
     setShowMore(!showMore)
