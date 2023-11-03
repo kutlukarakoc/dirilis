@@ -1,13 +1,13 @@
 import SearchBooks from './search'
 import Clear from './clear'
 import Categories from './categories/desktop'
-import MobileCategories from './categories/mobile/mobile'
+import MobileCategories from './categories/mobile'
 
 const Filter = () => {
   return (
     <section>
       <div className="flex w-full items-center space-x-2">
-        <SearchBooks />
+				<SearchBooks />
         <Clear />
       </div>
 			<Categories />
