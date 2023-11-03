@@ -5,12 +5,10 @@ import { X } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
 
 const Clear = () => {
-	const router = useRouter()
+	const { replace } = useRouter()
 	const pathname = usePathname()
 
-	const handleClearFilters = () => {
-		router.push(pathname + '?page=1')
-	}
+	const handleClearFilters = () => replace(pathname + '?page=1')
 
   return (
     <>
