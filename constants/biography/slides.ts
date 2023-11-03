@@ -164,24 +164,24 @@ export const bioSlides = [
 				'Her iki dönemde de, bildiriler yayımladı, konferanslar verdi, meydan konuşmaları ve İstanbul İl Teşkilatında haftalık sohbetler yaptı.',
 				'Yaşamı ve eserleri ile yaptığı katkıları nedeniyle, kendisine, değişik kurumlar tarafından birçok ödül ve fahri doktora verildi.',
 				'Sadece İslam Milletinin değil, tüm İnsanlığın Dirilişi için yaşamı boyunca mücadele vermiş, özgünlüğünü ve bağımsızlığını korumuş, şiir, deneme, hikâye, piyes, fıkra, inceleme ve düşünce yazıları, çeviri metinleriyle pek çok türde eser kaleme almış, günümüz insanına ve gelecek nesillere büyük bir manevi miras bırakmıştır.',
-				'16 Kasım 2021 Tarihinde İstanbul Fatih’teki evinde Hakk’ın rahmetine kavuşan Sezai Karakoç, 17 Kasım 2021 Çarşamba Günü İkindi Namazını müteakip İstanbul Fatih’te bulunan Şehzadebaşı Camii’nin haziresine defnedildi.',
+				'16 Kasım 2021 Tarihinde İstanbul Fatih’teki evinde Hakk’ın rahmetine kavuşan Sezai Karakoç, 17 Kasım 2021 Çarşamba Günü İkindi Namazını müteakip İstanbul Fatih’te bulunan Şehzade Camii’nin haziresine defnedildi.',
 			],
 			en: [
 				'He published political statements, gave lectures and public speeches, and held weekly discussions at the Istanbul Provincial Organization of the Party in both terms.',
 				'Thanks to his life and contributions he made through his works, he received numerous awards and honorary doctorates from various institutions.',
 				'He dedicated his life to the resurrection of the Ummah and the whole humanity. He preserved his originality and independence and wrote numerous works in different genres such as poetry, essays, stories, plays, columns, review and reflection articles, and translation pieces, leaving a great spiritual legacy to today’s human beings and future generations.',
-				'On November 16, 2021, Sezai Karakoç passed away at his home in Fatih, Istanbul and was put to rest in the cemetery of Şehzadebaşı Mosque in Fatih, following the afternoon prayer on Wednesday, November 17, 2021.',
+				'On November 16, 2021, Sezai Karakoç passed away at his home in Fatih, Istanbul and was put to rest in the cemetery of Şehzade Mosque in Fatih, following the afternoon prayer on Wednesday, November 17, 2021.',
 			],
 			de: [
 				'In beiden Zeiträumen veröffentlichte er politische Erklärungen, hielt Konferenzen, hielt öffentliche Reden und wöchentliche Gespräche in der Provinzorganisation der Partei in Istanbul.',
 				'Dank seines Lebens und seiner Verdienste durch seine Werke erhielt er zahlreiche Auszeichnungen und Ehrendoktorwürden von verschiedenen Institutionen.',
 				'Er bewahrte seine Originalität und Unabhängigkeit, schrieb zahlreiche Werke in verschiedenen Genres wie Gedichten, Essays, Geschichten, Theaterstücken, Kolumnen, Rezensionen und Meinungsbeiträgen, übersetzte Texte und hinterließ den heutigen Menschen und zukünftigen Generationen ein großes spirituelles Erbe.',
-				'Am 16. November 2021 verstarb Sezai Karakoç in seinem Haus in Fatih, Istanbul, und er wurde zur Ruhe gebracht auf dem Friedhof der Şehzadebaşı-Moschee in Fatih, im Anschluss an das Nachmittagsgebet am Mittwoch, 17. November 2021.'
+				'Am 16. November 2021 verstarb Sezai Karakoç in seinem Haus in Fatih, Istanbul, und er wurde zur Ruhe gebracht auf dem Friedhof der Şehzade Moschee in Fatih, im Anschluss an das Nachmittagsgebet am Mittwoch, 17. November 2021.'
 			],
 			ru: [
 				'В оба периода он издавал листовки, читал лекции, выступал с речами и Он еженедельно проводил беседы в Стамбульской провинциальной организации. Он получил множество наград от различных учреждений за свой вклад в свою жизнь и работу. и был удостоен звания почетного доктора.',
 				'Всю свою жизнь он боролся за Воскресение не только Нации Ислама, но и всего человечества, Поэзия, эссе, рассказ, пьеса, анекдот, анализ и мысль сохранили свою оригинальность и самостоятельность. Он написал множество работ со своими сочинениями и переводами текстов и является подарком сегодняшним людям и будущим поколениям. Он оставил большое духовное наследие.',
-				'Сезай Каракоч, получивший Божью милость в своем доме в Фатихе, Стамбул, 16 ноября 2021 г. Шехзадебаши, который находится в Фатихе, Стамбул, после послеполуденной молитвы в среду, ноябрь 2021 г. Похоронен на кладбище мечети.'
+				'Сезай Каракоч, получивший Божью милость в своем доме в Фатихе, Стамбул, 16 ноября 2021 г. Шехзаде, который находится в Фатихе, Стамбул, после послеполуденной молитвы в среду, ноябрь 2021 г. Похоронен на кладбище мечети.'
 			],
 			far: [
 				'او در هر دو دورۀ حزب، اعلامیه ها داد و کنفرانس ها و میتینگ ها برگزار کرد و در شعبه استانبول حزب سخنرانی های هفتگی ترتیب داد.',
