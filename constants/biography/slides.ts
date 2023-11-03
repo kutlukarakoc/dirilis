@@ -126,20 +126,23 @@ export const bioSlides = [
   },
   {
     alt: 'diriliş partisi programı',
-		source: 'https://i.ibb.co/cgfv1HL/bio4.png',
-    ratio: '1',
+		source: 'https://i.ibb.co/fMVwQ9B/bio5.png',
+    ratio: '3/2',
     paragraphs: {
 			tr: [
 				"26 Mart 1990’da, amblemi ‘’güller açmış gül ağacı’’, amacı ‘’hakikat, adalet, fazilet’’ olan Diriliş Partisi'ni kurdu. Temmuz 1997’de, iki seçim üst üste seçime katılmadığı gerekçesiyle, Anayasa Mahkemesi tarafından beşe karşı altı oyla kapatılmasına karar verildi.",
 				'16 Nisan 2007’den itibaren, ismini Yüce Diriliş Partisi koyduğu, amblemini “dolunay, güller açmış gül ağacı ve yol” olarak belirlediği ve yine genel başkanlığını yürüttüğü parti ile siyasi faaliyetlerini de ömrünün sonuna kadar sürdürdü.',
+				'Her iki dönemde de, bildiriler yayımladı, konferanslar verdi, meydan konuşmaları ve İstanbul İl Teşkilatında haftalık sohbetler yaptı.',
 			],
 			en: [
 				'On March 26, 1990, he founded the Resurrection Party (Diriliş Partisi), whose emblem was "the blooming rose tree" and whose mission was defined through the concepts of "truth, justice, virtue." In July 1997, the Constitutional Court decided to close the party by a vote of six to five on the grounds that the party did not participate in two successive elections.',
 				'Starting from April 16, 2007, until his passing, he continued his political activities as the leader of the Great Resurrection Party (Yüce Diriliş Partisi) whose emblem featured “a full moon, blooming rose tree and path”.',
+				'He published political statements, gave lectures and public speeches, and held weekly discussions at the Istanbul Provincial Organization of the Party in both terms.',
 			],
 			de: [
 				'Am 26. März 1990 gründete er die Partei der Auferstehung (Diriliş Partisi), deren Emblem ein "blühender Rosenbaum" war und deren Mission "Wahrheit, Gerechtigkeit und Tugend" war. Im Juli 1997 entschied das Verfassungsgericht mit fünf zu sechs Stimmen, die Partei zu auflösen, mit der Begründung, dass die Partei an zwei aufeinanderfolgenden Wahlen nicht teilgenommen habe.',
 				'Seit dem 16. April 2007 bis zu seinem Lebensende setzte er seine politischen Aktivitäten als Vorsitzender der Partei der Erhabenen Auferstehung (Yüce Diriliş Partisi) fort, deren Emblem „einen Vollmond, einen blühenden Rosenbaum und einen Weg“ darstellte.',
+				'In beiden Zeiträumen veröffentlichte er politische Erklärungen, hielt Konferenzen, hielt öffentliche Reden und wöchentliche Gespräche in der Provinzorganisation der Partei in Istanbul.',
 			],
 			ru: [
 				'26 марта 1990 г. Воскресение, чьей эмблемой является «розовое дерево с розами», а цель - «истина, справедливость, добродетель». Он основал свою партию. В июле 1997 года на том основании, что он не участвовал в двух последовательных выборах, Конституция Это решение было принято судом шестью голосами против пяти.',
@@ -148,32 +151,31 @@ export const bioSlides = [
 			far: [
 				'قاراقوچ در 26 مارس 1990، «حزب رستاخیز» (Diriliş Partisi) را تأسیس کرد که نشان آن «درختی با شکوفه های گل رز» و هدف آن «حقیقت، عدالت و فضیلت» بود. در ژوئیه 1997، دادگاه قانون اساسی، حزب را به دلیل عدم شرکت در دو انتخابات پیاپی با شش رای موافق در برابر پنج رای مخالف ملغی اعلام کرد.',
 				'او از 16 آوریل 2007 و با حزبی که آن را «حزب رستاخیز متعالی» (Yüce Diriliş Partisi) نامیده و نشانش «ماه کامل، درختی با شکوفه های گل رز و راه» بود، دوباره فعالیت سیاسی اش را به عنوان رئیس حزب آغاز کرد و تا پایان عمر ادامه داد.',
+				'او در هر دو دورۀ حزب، اعلامیه ها داد و کنفرانس ها و میتینگ ها برگزار کرد و در شعبه استانبول حزب سخنرانی های هفتگی ترتیب داد.',
 			],
 			ar: [
 				'في 26 مارس 1990، أسس حزب البعث، الذي كان شعاره "شجرة الورد المتفتحة" وهدفه "الحقيقة، العدالة، الفضيلة". وفي يوليو/تموز 1997، قررت المحكمة الدستورية إغلاق الحزب بأغلبية ستة أصوات مقابل خمسة، على أساس عدم مشاركته في الانتخابات لدورتين انتخابيتين متتاليتين.',
-				'ومنذ 16 إبريل 2007 واصل نشاطه السياسي مع الحزب الذي أسماه حزب البعث الأعلى وحدد شعاره "البدر وشجرة الورد المتفتحة والطريق" والذي كان رئيسا له حتى نهاية حياته.'
+				'ومنذ 16 إبريل 2007 واصل نشاطه السياسي مع الحزب الذي أسماه حزب البعث الأعلى وحدد شعاره "البدر وشجرة الورد المتفتحة والطريق" والذي كان رئيسا له حتى نهاية حياته.',
+				'وفي كلتا الفترتين، نشر تصريحات، وألقى مؤتمرات، وألقى خطابات عامة ومحادثات أسبوعية في منظمة الحزب في مقاطعة إسطنبول.',
 			]
 		}
   },
   {
     alt: 'sezai karakoç vefatı',
-		source: 'https://i.ibb.co/fMVwQ9B/bio5.png',
-    ratio: '3/2',
+		source: 'https://i.ibb.co/8bw5Y32/sk-bio5.jpg',
+    ratio: '1',
     paragraphs: {
 			tr: [
-				'Her iki dönemde de, bildiriler yayımladı, konferanslar verdi, meydan konuşmaları ve İstanbul İl Teşkilatında haftalık sohbetler yaptı.',
 				'Yaşamı ve eserleri ile yaptığı katkıları nedeniyle, kendisine, değişik kurumlar tarafından birçok ödül ve fahri doktora verildi.',
 				'Sadece İslam Milletinin değil, tüm İnsanlığın Dirilişi için yaşamı boyunca mücadele vermiş, özgünlüğünü ve bağımsızlığını korumuş, şiir, deneme, hikâye, piyes, fıkra, inceleme ve düşünce yazıları, çeviri metinleriyle pek çok türde eser kaleme almış, günümüz insanına ve gelecek nesillere büyük bir manevi miras bırakmıştır.',
 				'16 Kasım 2021 Tarihinde İstanbul Fatih’teki evinde Hakk’ın rahmetine kavuşan Sezai Karakoç, 17 Kasım 2021 Çarşamba Günü İkindi Namazını müteakip İstanbul Fatih’te bulunan Şehzade Camii’nin haziresine defnedildi.',
 			],
 			en: [
-				'He published political statements, gave lectures and public speeches, and held weekly discussions at the Istanbul Provincial Organization of the Party in both terms.',
 				'Thanks to his life and contributions he made through his works, he received numerous awards and honorary doctorates from various institutions.',
 				'He dedicated his life to the resurrection of the Ummah and the whole humanity. He preserved his originality and independence and wrote numerous works in different genres such as poetry, essays, stories, plays, columns, review and reflection articles, and translation pieces, leaving a great spiritual legacy to today’s human beings and future generations.',
 				'On November 16, 2021, Sezai Karakoç passed away at his home in Fatih, Istanbul and was put to rest in the cemetery of Şehzade Mosque in Fatih, following the afternoon prayer on Wednesday, November 17, 2021.',
 			],
 			de: [
-				'In beiden Zeiträumen veröffentlichte er politische Erklärungen, hielt Konferenzen, hielt öffentliche Reden und wöchentliche Gespräche in der Provinzorganisation der Partei in Istanbul.',
 				'Dank seines Lebens und seiner Verdienste durch seine Werke erhielt er zahlreiche Auszeichnungen und Ehrendoktorwürden von verschiedenen Institutionen.',
 				'Er bewahrte seine Originalität und Unabhängigkeit, schrieb zahlreiche Werke in verschiedenen Genres wie Gedichten, Essays, Geschichten, Theaterstücken, Kolumnen, Rezensionen und Meinungsbeiträgen, übersetzte Texte und hinterließ den heutigen Menschen und zukünftigen Generationen ein großes spirituelles Erbe.',
 				'Am 16. November 2021 verstarb Sezai Karakoç in seinem Haus in Fatih, Istanbul, und er wurde zur Ruhe gebracht auf dem Friedhof der Şehzade Moschee in Fatih, im Anschluss an das Nachmittagsgebet am Mittwoch, 17. November 2021.'
@@ -184,13 +186,11 @@ export const bioSlides = [
 				'Сезай Каракоч, получивший Божью милость в своем доме в Фатихе, Стамбул, 16 ноября 2021 г. Шехзаде, который находится в Фатихе, Стамбул, после послеполуденной молитвы в среду, ноябрь 2021 г. Похоронен на кладбище мечети.'
 			],
 			far: [
-				'او در هر دو دورۀ حزب، اعلامیه ها داد و کنفرانس ها و میتینگ ها برگزار کرد و در شعبه استانبول حزب سخنرانی های هفتگی ترتیب داد.',
 				'سزایی قاراقوچ، به دلیل زندگانی و آثار و خدماتش جوایز و دکترای افتخاری بسیاری از موسسات مختلف را دریافت کرد.',
 				'او در طول عمر خود نه تنها برای رستاخیز امت اسلام، بلکه تمام بشریت مبارزه کرد و اصالت و استقلال خود را حفظ نمود. او با آثار مختلفش از جمله شعر، نوشته، داستان، نمایشنامه، مقاله، نقد و تألیفات فکری و متون ترجمه، میراث معنوی بزرگی برای انسان امروزی و نسل های آینده بر جای گذاشت.',
 				'سزایی قاراقوچ، 16 نوامبر 2021 در خانه اش در محله فاتح استانبول درگذشت و روز چهارشنبه 17 نوامبر و پس از اقامه نماز عصر در محوطه مسجد شهزاده باشی در محله فاتح استانبول به خاک سپرده شد.',
 			],
 			ar: [
-				'وفي كلتا الفترتين، نشر تصريحات، وألقى مؤتمرات، وألقى خطابات عامة ومحادثات أسبوعية في منظمة الحزب في مقاطعة إسطنبول.',
 				'ونظرًا لإسهاماته في حياته وأعماله، حصل على العديد من الجوائز ودرجات الدكتوراه الفخرية من مؤسسات مختلفة.',
 				'ناضل طوال حياته ليس فقط من أجل قيامة أمة الإسلام بل الإنسانية جمعاء، وحافظ على أصالته واستقلاله، وكتب أنواعًا عديدة من الأعمال بما في ذلك القصائد والمقالات والقصص والمسرحيات والمراجعات ومقالات الرأي والنصوص المترجمة، وقدم مساهمة كبيرة لشعوب اليوم والأجيال القادمة، وترك إرثا روحيا.',
 				'سزائ قره قوچ، الذي وافته المنية في منزله في الفاتح بإسطنبول، يوم 16 نوفمبر 2021، ودُفن في مقبرة مسجد شاه زاده في الفاتح بإسطنبول، عقب صلاة العصر يوم الأربعاء 17 نوفمبر 2021.',
