@@ -9,12 +9,12 @@ const BookTabs = ({ book }: { book: Book }) => {
     {
       value: 'summary',
       title: 'Künye',
-      disabled: book.summary ? false : true,
+      disabled: book.summary && book.summary.length > 0 ? false : true,
     },
     {
       value: 'contents',
       title: 'İçindekiler',
-      disabled: book.contents ? false : true,
+      disabled: book.contents && book.contents.length > 0 ? false : true,
     },
     {
       value: 'properties',
