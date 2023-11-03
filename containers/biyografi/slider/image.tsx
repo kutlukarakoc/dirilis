@@ -10,7 +10,7 @@ interface Props {
 const SlideImage: React.FC<Props> = ({ source, alt, ratio }) => {
   return (
     <figure
-      className="relative max-h-[225px] w-9/12 max-w-[225px] rounded-2xl object-contain sm:max-h-[300px] sm:w-5/12 sm:max-w-[320px]"
+      className="relative h-auto w-9/12 max-w-[225px] rounded-2xl object-contain sm:w-5/12 sm:max-w-[275px] 2xl:max-w-xs"
       style={{ aspectRatio: ratio }}
     >
       <Image
