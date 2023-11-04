@@ -2,11 +2,8 @@ import { SimplifiedBooks } from '@/types/simplifiedBooks'
 import Filter from './filter'
 import Pagination from './pagination'
 import BooksLoading from './loading'
-import dynamic from 'next/dynamic'
 import { Suspense } from 'react';
-const Books = dynamic(() => import('./books'), {
-  loading: () => <BooksLoading />, suspense: true, ssr: false,
-})
+import Books from './books'
 
 const ListingContainer = ({ books, count }: { books: SimplifiedBooks[], count: number }) => {
   return (
