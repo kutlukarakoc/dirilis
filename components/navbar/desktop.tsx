@@ -26,6 +26,7 @@ const Desktop = () => {
       onValueChange={setValue}
     >
       <Link
+				role='menubar-link'
         href="/"
         className={`nav-link ${pathname === '/' ? 'text-white-50' : ''}`}
       >
@@ -44,6 +45,7 @@ const Desktop = () => {
         <MenubarContent align="center">
           <MenubarItem onClick={() => setValue('')}>
             <Link
+							role='menubar-link'
               href="/tarihce"
               className="h-full w-full px-2 py-1.5"
             >
@@ -53,6 +55,7 @@ const Desktop = () => {
           <MenubarSeparator />
           <MenubarItem onClick={() => setValue('')}>
             <Link
+							role='menubar-link'
               href="/biyografi"
               className="h-full w-full px-2 py-1.5"
             >
@@ -62,6 +65,7 @@ const Desktop = () => {
         </MenubarContent>
       </MenubarMenu>
       <Link
+				role='menubar-link'
         href="/kitap-listesi?page=1"
         className={`nav-link ${
           pathname.includes('/kitap-listesi') ? 'text-white-50' : ''
@@ -78,6 +82,7 @@ const Desktop = () => {
             <Fragment key={item.title}>
               <MenubarItem>
                 <a
+									role='menubar-link'
                   href={item.url}
                   target="_blank"
                   className="h-full w-full px-2 py-1.5"
@@ -91,6 +96,7 @@ const Desktop = () => {
         </MenubarContent>
       </MenubarMenu>
       <Link
+				role='menubar-link'
         href="/iletisim"
         className={`nav-link ${
           pathname === '/iletisim' ? 'text-white-50' : ''

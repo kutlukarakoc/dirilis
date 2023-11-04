@@ -11,6 +11,7 @@ const FooterLink = ({ url, title }: LinkProps) => (
   <Link
     href={url}
     className="text-label text-primary-300 md:text-paragraph-mobile"
+		role='footer-link'
   >
     {title}
   </Link>
