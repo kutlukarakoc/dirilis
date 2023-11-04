@@ -25,6 +25,7 @@ const Videos = () => {
               src="/son_konusma.mp4"
               type="video/mp4"
             />
+						<track kind="captions" label="turkish_captions" />
             Tarayıcınız video elementini desteklememektedir.
           </video>
         </SwiperSlide>
@@ -38,6 +39,7 @@ const Videos = () => {
               src="/yuce_dirilis.mp4"
               type="video/mp4"
             />
+						<track kind="captions" label="turkish_captions" />
             Tarayıcınız video elementini desteklememektedir.
           </video>
         </SwiperSlide>
