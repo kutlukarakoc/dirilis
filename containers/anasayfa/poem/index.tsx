@@ -12,12 +12,12 @@ const Poem = () => {
           {homePoem.map((poem, index) => (
             <div key={index}>
               {poem.verse.map((verse, verseIndex) => (
-                <h5
+                <h6
                   key={verseIndex}
                   className="text-paragraph text-black-500 md:text-header-6"
                 >
                   {verse}
-                </h5>
+                </h6>
               ))}
             </div>
           ))}
