@@ -5,8 +5,6 @@ import usePagination from "@/hooks/usePagination"
 const Pagination = ({ count }: {count: number}) => {
 	const [page, totalPages, prevPage, nextPage, clickedPage ] = usePagination(count);
 
-	console.log('totalPages', totalPages)
-
   return (
     <nav aria-label="listing-pagination" className="flex justify-center items-center mt-20">
       <ul className="inline-flex -space-x-px text-paragraph border border-primary-300 rounded-l-lg rounded-r-lg">

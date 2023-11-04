@@ -26,7 +26,6 @@ async function getBooks({ searchParams }: { searchParams: { [key: string]: strin
 
 	if(search !== null && search !== undefined) {
 		const upperCasedSearchTerm = search.toLocaleUpperCase('TR')
-		console.log('upperCasedSearchTerm', upperCasedSearchTerm)
 		const books = await Book.find({"title": new RegExp(upperCasedSearchTerm) }, necessaryProperties).limit(12).skip((+page - 1) * LIMIT).maxTimeMS(5000)
 		const count = await Book.find({"title": new RegExp(upperCasedSearchTerm) }, necessaryProperties).count()
 		return {books, count}
@@ -39,7 +38,6 @@ async function getBooks({ searchParams }: { searchParams: { [key: string]: strin
 }
 
 export default async function Books({ searchParams }: { searchParams: { [key: string]: string } }) {
-	console.log('searchParams', searchParams)
 	const {books, count} = await getBooks({ searchParams })
 	
 	return <ListingContainer books={books.length > 0 ? books : []} count={count}/>

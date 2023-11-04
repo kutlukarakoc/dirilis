@@ -9,7 +9,6 @@ const Books = dynamic(() => import('./books'), {
 })
 
 const ListingContainer = ({ books, count }: { books: SimplifiedBooks[], count: number }) => {
-	console.log('count', count)
   return (
     <>
       <Filter />
