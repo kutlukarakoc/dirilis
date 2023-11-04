@@ -18,12 +18,12 @@ const ShowMore = ({
 }) => {
   return (
     <Dialog>
-      <DialogTrigger>
-        <div className={windowWidth > 500 ? 'pl-8' : ''}>
+      <DialogTrigger className='w-max mt-2'>
+        <div className={windowWidth > 500 ? 'pl-8 flex' : ''}>
           <div
             className="transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-primary-700 hover:text-primary-900 underline-offset-4 underline text-paragraph-mobile md:text-paragraph-tablet xl:text-paragraph"
           >
-            Hepsini Gör
+            Tümünü Gör
           </div>
         </div>
       </DialogTrigger>

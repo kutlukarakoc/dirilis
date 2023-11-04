@@ -11,7 +11,7 @@ export default function Loading() {
         {Array.from({ length: 10 }).map((_, index) => (
           <Skeleton
             key={index}
-            className="h-12 w-full max-w-[100px]"
+            className="h-10 w-full max-w-[105px]"
           />
         ))}
       </div>

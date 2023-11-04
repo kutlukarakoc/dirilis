@@ -7,6 +7,7 @@ import PoemLoading from '@/containers/anasayfa/poem/loading'
 import { heroQuotes } from '@/constants/home/heroQuotes'
 import { secondaryQuotes } from '@/constants/home/secondaryQuotes'
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 const Videos = dynamic(() => import('../containers/anasayfa/videos'), {
   loading: () => <VideosLoading />,
 })
@@ -32,15 +33,21 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <Quotes
-        quotesData={heroQuotes}
-        wrapperClass="hero-quotes-swiper"
-      />
-      <Videos />
-      <SecondaryQuotes
-        quotesData={secondaryQuotes}
-        wrapperClass="secondary-quotes-swiper"
-      />
+			<Suspense fallback={<SliderLoading />}>
+				<Quotes 
+					quotesData={heroQuotes}
+					wrapperClass="hero-quotes-swiper"
+				/>
+      </Suspense>
+			<Suspense fallback={<VideosLoading />}>
+				<Videos />
+      </Suspense>
+			<Suspense fallback={<SliderLoading />}>
+				<SecondaryQuotes
+					quotesData={secondaryQuotes}
+					wrapperClass="secondary-quotes-swiper"
+				/>
+      </Suspense>
       <Poem />
     </>
   )

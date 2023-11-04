@@ -9,12 +9,12 @@ export const metadata = {
 const necessaryProperties = {
 	title: 1, price: 1, category: 1, imageUrl: 1, _id: 1
 }
+const LIMIT = 12
 
 async function getBooks({ searchParams }: { searchParams: { [key: string]: string } }) {
 	await connectToDB()
 
 	const { category, search, page }= searchParams
-	const LIMIT = 12
 	
 	if(category !== null && category !== undefined) {
 		const categoryId = category.split('-').at(-1)
