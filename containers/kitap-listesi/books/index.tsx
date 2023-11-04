@@ -1,7 +1,7 @@
 import BookCard from './card'
 import { SimplifiedBooks } from '@/types/simplifiedBooks'
 
-const Books = ({ books }: { books: SimplifiedBooks[] }) => {
+const BookList = ({ books }: { books: SimplifiedBooks[] }) => {
   return (
     <section>
       <div
@@ -23,4 +23,4 @@ const Books = ({ books }: { books: SimplifiedBooks[] }) => {
   )
 }
 
-export default Books
+export default BookList

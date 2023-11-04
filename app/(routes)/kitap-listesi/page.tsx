@@ -1,6 +1,10 @@
-import ListingContainer from '@/containers/kitap-listesi'
+import Filter from '@/containers/kitap-listesi/filter'
+import BookList from '@/containers/kitap-listesi/books'
+import BooksLoading from '@/containers/kitap-listesi/books/loading'
+import Pagination from '@/containers/kitap-listesi/pagination'
 import Book from '@/lib/models/books.model'
 import { connectToDB } from '@/lib/mongoose'
+import { Suspense } from 'react'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Kitap Listesi',
@@ -14,7 +18,7 @@ const LIMIT = 12
 async function getBooks({ searchParams }: { searchParams: { [key: string]: string } }) {
 	await connectToDB()
 
-	const { category, search, page }= searchParams
+	const { category, search, page } = searchParams
 	
 	if(category !== null && category !== undefined) {
 		const categoryId = category.split('-').at(-1)
@@ -39,6 +43,17 @@ async function getBooks({ searchParams }: { searchParams: { [key: string]: strin
 
 export default async function Books({ searchParams }: { searchParams: { [key: string]: string } }) {
 	const {books, count} = await getBooks({ searchParams })
+
+	const { category, search, page } = searchParams
+	const suspenseKey = category ? category + page : search ? search + page : 'page' + page
 	
-	return <ListingContainer books={books.length > 0 ? books : []} count={count}/>
+	return (
+		<>
+			<Filter />
+			<Suspense key={suspenseKey} fallback={<BooksLoading />}>
+				<BookList books={books} />
+			</Suspense>
+			{count > 12 && <Pagination count={count} />}
+		</>
+	)
 }

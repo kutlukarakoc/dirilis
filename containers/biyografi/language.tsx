@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-const Language = () => {
+const SelectLanguage = () => {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -68,4 +68,4 @@ const Language = () => {
   )
 }
 
-export default Language
+export default SelectLanguage

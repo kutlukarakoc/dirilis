@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <section>
       <div className="flex flex-col items-center justify-between md:flex-row md:items-start">
-        <Skeleton className="mb-14 h-96 max-w-[362px] md:mb-0 xl:h-[539px] md:w-4/12" />
+        <Skeleton className="mb-14 h-96 max-w-[362px] md:mb-0 lg:h-[539px] md:w-4/12" />
         <div className="w-full md:w-7/12">
           <Skeleton className="mx-auto mb-10 h-8 w-64 md:mx-0 lg:mb-16 xl:h-12 xl:w-96"></Skeleton>
           <Skeleton className="mb-14 h-7 w-32 md:w-28 lg:mb-20 xl:h-9 xl:w-32"></Skeleton>

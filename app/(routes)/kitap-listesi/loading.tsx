@@ -28,7 +28,7 @@ export default function Loading() {
             key={index}
             className="flex flex-col items-center justify-center rounded-xl bg-primary-50 pb-3 pt-5 md:py-8"
           >
-            <Skeleton className="h-36 w-24 md:h-64 md:w-44" />
+            <Skeleton className="h-36 w-24 md:h-[264px] md:w-44" />
             <Skeleton className="mb-1.5 mt-4 h-5 w-36 md:h-6 md:w-56" />
             <Skeleton className="h-5 w-14" />
           </div>
