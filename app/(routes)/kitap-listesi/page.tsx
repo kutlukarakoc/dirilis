@@ -6,15 +6,41 @@ export const metadata = {
   title: 'Diriliş Yayınları | Kitap Listesi',
 }
 
-async function getBooks() {
-	await connectToDB()	
-	const books = await Book.find({}, {title: 1, price: 1, category: 1, imageUrl: 1, _id: 1}).maxTimeMS(5000)
-	return books
+const necessaryProperties = {
+	title: 1, price: 1, category: 1, imageUrl: 1, _id: 1
 }
 
-export default async function Books({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }) {
-	console.log('searchParams', searchParams)
-	const books = await getBooks()
+async function getBooks({ searchParams }: { searchParams: { [key: string]: string } }) {
+	await connectToDB()
+
+	const { category, search, page }= searchParams
+	const LIMIT = 12
 	
-  return <ListingContainer books={books} />
+	if(category !== null && category !== undefined) {
+		const categoryId = category.split('-').at(-1)
+		const books = await Book.find({'category.id': categoryId}, necessaryProperties).limit(12).skip((+page - 1) * LIMIT).maxTimeMS(5000)
+		const count = await Book.find({'category.id': categoryId}, necessaryProperties).count()
+		
+		return {books, count}
+	}
+
+	if(search !== null && search !== undefined) {
+		const upperCasedSearchTerm = search.toLocaleUpperCase('TR')
+		console.log('upperCasedSearchTerm', upperCasedSearchTerm)
+		const books = await Book.find({"title": new RegExp(upperCasedSearchTerm) }, necessaryProperties).limit(12).skip((+page - 1) * LIMIT).maxTimeMS(5000)
+		const count = await Book.find({"title": new RegExp(upperCasedSearchTerm) }, necessaryProperties).count()
+		return {books, count}
+	}
+
+	const books = await Book.find({}, {title: 1, price: 1, category: 1, imageUrl: 1, _id: 1}).limit(12).skip((+page - 1) * LIMIT).maxTimeMS(5000)
+	const count = await Book.find({}, {title: 1, price: 1, category: 1, imageUrl: 1, _id: 1}).count()
+	
+	return {books, count}
+}
+
+export default async function Books({ searchParams }: { searchParams: { [key: string]: string } }) {
+	console.log('searchParams', searchParams)
+	const {books, count} = await getBooks({ searchParams })
+	
+	return <ListingContainer books={books.length > 0 ? books : []} count={count}/>
 }

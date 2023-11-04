@@ -3,16 +3,20 @@ import Filter from './filter'
 import Pagination from './pagination'
 import BooksLoading from './loading'
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react';
 const Books = dynamic(() => import('./books'), {
-  loading: () => <BooksLoading />,
+  loading: () => <BooksLoading />, suspense: true, ssr: false,
 })
 
-const ListingContainer = ({ books }: { books: SimplifiedBooks[] }) => {
+const ListingContainer = ({ books, count }: { books: SimplifiedBooks[], count: number }) => {
+	console.log('count', count)
   return (
     <>
       <Filter />
-      <Books books={books} />
-			<Pagination />
+			<Suspense fallback={<BooksLoading />}>
+				<Books books={books} />
+      </Suspense>
+			{count > 12 && <Pagination count={count} />}
     </>
   )
 }

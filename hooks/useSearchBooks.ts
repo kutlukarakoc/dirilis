@@ -14,7 +14,7 @@ const useSearchBooks = (): SearchBooksHook => {
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams)
     params.delete('category')
-    params.delete('page')
+		params.set('page', '1')
     term ? params.set('search', term) : params.delete('search')
     replace(`${pathname}?${params}`)
   }, 300)

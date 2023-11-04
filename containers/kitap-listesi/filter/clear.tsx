@@ -2,13 +2,21 @@
 
 import { Button } from '@/components/ui/button'
 import { X } from 'lucide-react'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
 const Clear = () => {
 	const { replace } = useRouter()
 	const pathname = usePathname()
+	const searchParams = useSearchParams()
 
 	const handleClearFilters = () => replace(pathname + '?page=1')
+
+	useEffect(() => {
+    if (searchParams.get('page') === null || searchParams.get('page') === undefined) {
+      replace(pathname + '?page=1')
+    }
+  }, [searchParams])
 
   return (
     <>

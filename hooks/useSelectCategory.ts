@@ -12,12 +12,7 @@ export const useSelectCategory = (): [string, SelectCategory] => {
 
 	const selectCategory = (value: string) => {
 		setSelectedCategory(value)
-
-		const params = new URLSearchParams(searchParams)
-		params.delete('search')
-		params.delete('page')
-		params.set('category', value)
-		replace(`${pathname}?${params}`)
+		replace(`${pathname}?page=1&category=${value}`)
 	}
 
 	useEffect(() => {

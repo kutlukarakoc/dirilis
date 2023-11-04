@@ -1,7 +1,7 @@
 import SearchBooks from './search'
 import Clear from './clear'
 import Categories from './categories/desktop'
-import MobileCategories from './categories/mobile'
+import MobileCategories from './categories/mobile/'
 
 const Filter = () => {
   return (
