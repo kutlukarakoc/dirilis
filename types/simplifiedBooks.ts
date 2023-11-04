@@ -1,9 +1,3 @@
-import { Category } from './books'
+import { Book } from './books'
 
-export interface SimplifiedBooks {
-	title: string
-  id: string
-  price: number
-	category: Category
-	imageUrl: string
-}
+export type SimplifiedBooks = Pick<Book, 'title' | 'id' | 'price' | 'category' | 'imageUrl'>
