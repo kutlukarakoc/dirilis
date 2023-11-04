@@ -10,7 +10,13 @@ const ListingContainer = ({ books, count }: { books: SimplifiedBooks[], count: n
     <>
       <Filter />
 			<Suspense fallback={<BooksLoading />}>
-				<Books books={books} />
+				{books.length > 0 ? (
+					<Books books={books} />
+				) : (
+					<h2 className='text-center mt-28 text-header-6 md:text-header-5 xl:text-header-3'>
+						Filtrelere uygun bir kitap bulunamadı.
+					</h2>
+				)}
       </Suspense>
 			{count > 12 && <Pagination count={count} />}
     </>
