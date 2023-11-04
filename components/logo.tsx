@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 import { alata } from '@/app/layout'
 
-const logoVariants = cva(`text-red-700 whitespace-nowrap ${alata.className}`, {
+const logoVariants = cva(`text-red-200 whitespace-nowrap ${alata.className}`, {
   variants: {
     size: {
       lg: 'text-[22px] md:text-[32px] 2xl:text-[40px]',
