@@ -55,7 +55,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <div className="mb-3 text-center text-smaller text-primary-600 lg:text-label">
+      <div className="mb-3 text-center text-smaller text-primary-200 lg:text-label">
         © 2023 Diriliş Yayınları, Tüm Hakları Saklıdır
       </div>
     </footer>
