@@ -1,5 +1,5 @@
-import SliderLoading from "@/containers/anasayfa/slider/loading"
-import VideosLoading from "@/containers/anasayfa/videos/loading"
+import SliderLoading from "@/containers/anasayfa/book-slider/loading"
+import VideosLoading from "@/containers/anasayfa/video-slider/loading"
 import PoemLoading from "@/containers/anasayfa/poem/loading"
 
 export default function Loading() {

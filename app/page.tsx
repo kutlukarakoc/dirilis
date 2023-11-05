@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
 import Favicon from '@/public/favicon.png'
-import VideosLoading from '@/containers/anasayfa/videos/loading'
-import Quotes from '@/containers/anasayfa/slider'
-import SliderLoading from '@/containers/anasayfa/slider/loading'
+import VideosLoading from '@/containers/anasayfa/video-slider/loading'
+import Quotes from '@/containers/anasayfa/book-slider'
+import SliderLoading from '@/containers/anasayfa/book-slider/loading'
 import PoemLoading from '@/containers/anasayfa/poem/loading'
 import { heroQuotes } from '@/constants/home/heroQuotes'
 import { secondaryQuotes } from '@/constants/home/secondaryQuotes'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
-const Videos = dynamic(() => import('../containers/anasayfa/videos'), {
+const Videos = dynamic(() => import('../containers/anasayfa/video-slider'), {
   loading: () => <VideosLoading />,
 })
-const SecondaryQuotes = dynamic(() => import('../containers/anasayfa/slider'), {
+const SecondaryQuotes = dynamic(() => import('../containers/anasayfa/book-slider'), {
   loading: () => <SliderLoading />,
 })
 const Poem = dynamic(() => import('../containers/anasayfa/poem'), {
