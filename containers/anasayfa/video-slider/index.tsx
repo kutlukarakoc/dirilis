@@ -36,7 +36,7 @@ const Videos = () => {
 						<video
 							className={`h-[96%] w-full ${isActive ? "active-video" : "not-active"}`}
 							controls
-							poster="https://i.ibb.co/3sh7xxn/son-konusma-thumbnail.png"
+							poster="https://i.ibb.co/60R7RBG/son-konusma-thumbnail.webp"
 						>
 							<source
 								src="/son_konusma.mp4"
@@ -52,7 +52,7 @@ const Videos = () => {
 						<video
 							className={`h-[96%] w-full ${isActive ? "active-video" : "not-active"}`}
 							controls
-							poster="https://i.ibb.co/xsxX4W8/yuce-dirilis-thumbnail.png"
+							poster="https://i.ibb.co/cgNRW6P/yuce-dirilis-thumbnail.webp"
 						>
 							<source
 								src="/yuce_dirilis.mp4"

@@ -1,6 +1,6 @@
 export const heroQuotes = [
   {
-    image: 'https://i.ibb.co/0YvKFKh/cag-ve-ilham-1.png',
+    image: 'https://i.ibb.co/ZJPBrfb/cag-ve-ilham-1.webp',
     quote: {
       text: [
         '‘’ İslâm medeniyeti, belli bir duygunun öbür duyguları körleştirmesine engel olmak için, insanın doğuştan taşıdığı, bütün duygularını, insanı Tanrı önünde ulaşılabilecek en üstün seviyeye vardıracak şekilde birbiriyle bağdaştırarak geliştirmenin tarz ve usullerini yapısında taşıyan bir medeniyettir.',
@@ -10,7 +10,7 @@ export const heroQuotes = [
     },
   },
   {
-    image: 'https://i.ibb.co/fQ6S07P/cikis-yolu-2.png',
+    image: 'https://i.ibb.co/DM0HHvg/cikis-yolu-2.webp',
     quote: {
       text: [
         '‘’ Diriliş kavramı, çok geniş bir kavramdır.',
@@ -20,7 +20,7 @@ export const heroQuotes = [
     },
   },
   {
-    image: 'https://i.ibb.co/cgdsvMN/dusunceler-1.png',
+    image: 'https://i.ibb.co/c1tXcXS/dusunceler-1.webp',
     quote: {
       text: [
         '‘’ Diriliş tezi, bir çok açılardan ele alınan islâmı, tarih ve medeniyet perspektifinden açıklıkla ortaya koyma çalışmasıdır.',
@@ -32,7 +32,7 @@ export const heroQuotes = [
     },
   },
   {
-    image: 'https://i.ibb.co/HDKQMY5/edebiyat-yazilari-2.png',
+    image: 'https://i.ibb.co/hDmVWfQ/edebiyat-yazilari-2.webp',
     quote: {
       text: [
         '‘’ Sanat eserinde, ‘’saf yaratış’’ karşısında duyulan heyecanı verici bir çarpıcılık gizlidir.',
@@ -43,7 +43,7 @@ export const heroQuotes = [
     },
   },
   {
-    image: 'https://i.ibb.co/Qp52K7g/fizik-otesi-acisindan-1.png',
+    image: 'https://i.ibb.co/98c345q/fizik-otesi-acisindan-1.webp',
     quote: {
       text: [
         '‘’ Çağımızın en tehlikeli tarihî-sosyolojik hastalıklarından biri de, şu veya bu şekilde toplumun karşısına çıkmış kişilerle toplumun ve fertlerin gerekli ilişkiyi düzenleyememesinden doğan bozukluklar olarak gözüküyor.',
@@ -53,7 +53,7 @@ export const heroQuotes = [
     },
   },
   {
-    image: 'https://i.ibb.co/6FxZBF5/sur.png',
+    image: 'https://i.ibb.co/q0CnyhP/sur.webp',
     quote: {
       text: [
         '‘’ Ülkemizde ve bütün İslâm âleminde otokritiğin ve samimi tenkidin çığırını açmak zorundayız.',
@@ -64,7 +64,7 @@ export const heroQuotes = [
     },
   },
   {
-    image: 'https://i.ibb.co/F5LRBQd/yapi-taslari-1.png',
+    image: 'https://i.ibb.co/jJLh1nh/yapi-taslari-1.webp',
     quote: {
       text: [
         '‘’ Şimdiki İslâm ülkeleri yönetimleri, son derece dar görüşlü, Batıca şartlandırılmış kadroların tekelinde.',

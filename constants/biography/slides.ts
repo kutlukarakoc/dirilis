@@ -1,7 +1,7 @@
 export const bioSlides = [
   {
     alt: 'sezai karakoç çocukluk',
-		source: 'https://i.ibb.co/vY8cBZ1/bio1.png',
+		source: 'https://i.ibb.co/nsg2PtB/bio1.webp',
     ratio: '3/2',
     paragraphs: {
 			tr: [
@@ -36,7 +36,7 @@ export const bioSlides = [
   },
   {
     alt: 'sezai karakoç gençlik',
-		source: 'https://i.ibb.co/QP8QdZT/bio2.png',
+		source: 'https://i.ibb.co/qg4shnQ/bio2.webp',
     ratio: '1',
     paragraphs: {
 			tr: [
@@ -76,7 +76,7 @@ export const bioSlides = [
   },
   {
     alt: 'diriliş dergisi',
-		source: 'https://i.ibb.co/mB93cKZ/download.jpg',
+		source: 'https://i.ibb.co/QDfQzHj/bio3.webp',
     ratio: '1',
     paragraphs: {
 			tr: [
@@ -126,7 +126,7 @@ export const bioSlides = [
   },
   {
     alt: 'diriliş partisi programı',
-		source: 'https://i.ibb.co/fMVwQ9B/bio5.png',
+		source: 'https://i.ibb.co/tPr4JvK/bio4.webp',
     ratio: '3/2',
     paragraphs: {
 			tr: [
@@ -162,7 +162,7 @@ export const bioSlides = [
   },
   {
     alt: 'sezai karakoç vefatı',
-		source: 'https://i.ibb.co/8bw5Y32/sk-bio5.jpg',
+		source: 'https://i.ibb.co/h7cQX8Z/bio5.webp',
     ratio: '1',
     paragraphs: {
 			tr: [
