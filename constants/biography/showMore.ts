@@ -6,6 +6,8 @@ export const showMoreTexts = {
 		ru: 'Показать больше',
 		far: 'نمایش بیشتر',
 		ar: 'أظهر المزيد',
+		ku: 'Metenın berdewam bıke',
+		zaza: 'Berdewam bikin',
 	},
 	
 	hide: {
@@ -15,5 +17,7 @@ export const showMoreTexts = {
 		ru: 'Показать меньше',
 		far: 'نمایش کمتر',
 		ar: 'أظهر أقل',
+		ku: 'Metenın paşdeyn vekişîne.',
+		zaza: 'Berdewam negirin',
 	}
 }

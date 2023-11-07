@@ -5,4 +5,6 @@ export const title = {
 	ru: 'Биография',
 	far: 'زندگینامه',
 	ar: 'سيرة ذاتية',
+	ku: 'Jiyanname',
+	zaza: 'Çîrokname',
 }
