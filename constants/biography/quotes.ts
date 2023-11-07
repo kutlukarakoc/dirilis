@@ -19,6 +19,7 @@ export const quotes = {
 		'far': `سوره ی مریم آیه 33`,
 		'ar': `سورة مريم الآية 33`,
 		'ku': `Meryem Sûresi 33. Âyet-i Kerîme`,
+		'zaza': `Meryem Sûresi 33. Âyet-i Kerîme`,
 	},
   title: {
     'tr': 'DOĞUMA, ÖLÜME VE DİRİLİŞE SELAM',
@@ -28,6 +29,7 @@ export const quotes = {
 		'far': 'سلام به تولد و مرگ و رستاخیز',
 		'ar': 'تحية للميلاد والموت والبعث',
 		'ku': 'SILAV LI WELIDÎN, MIRIN Û VEJÎNÊ',
+		'zaza': 'BİYAYİŞ, MERG U GANİBİYAYİŞ RÊ SELAM BO',
   },
   body: [
     {
