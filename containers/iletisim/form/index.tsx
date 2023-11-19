@@ -47,6 +47,8 @@ const ContactForm = () => {
     return () => setMail({ status: null, sending: false })
   }, [])
 
+	const handleBlur = () => cancelZoom()
+
   return (
     <aside>
       <h2 className="section-title">İletişim Formu</h2>
@@ -61,7 +63,7 @@ const ContactForm = () => {
           className="my-1.5 min-h-[150px]"
           name="message"
 					required
-					onBlur={cancelZoom}
+					onBlur={handleBlur}
         />
         <p className="text-paragraph-mobile text-primary-400 md:text-paragraph-tablet xl:text-paragraph">
           Mesajınız bize iletilecektir.
