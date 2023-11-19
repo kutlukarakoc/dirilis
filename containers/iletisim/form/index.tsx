@@ -1,18 +1,14 @@
 'use client'
 
 import { useState, useRef, FormEvent, useEffect } from 'react'
-import { useWindowWidth } from '@/hooks/useWindowWidth'
 import Modal from './modal'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Submit } from './submit'
 import emailjs from '@emailjs/browser'
 import { MailModal } from '@/types/mailModal'
-import { addMaximumScaleToMetaViewport } from '@/lib/utils'
 
 const ContactForm = () => {
-	const windowWidth = useWindowWidth()
-
   const formRef = useRef<HTMLFormElement | null>(null)
   const modalTrigger = useRef<HTMLButtonElement | null>(null)
 
@@ -50,12 +46,6 @@ const ContactForm = () => {
     return () => setMail({ status: null, sending: false })
   }, [])
 
-	const handleBlur = () => {
-		if(windowWidth && windowWidth < 768) {
-			addMaximumScaleToMetaViewport()
-		} 
-	}
-
   return (
     <aside>
       <h2 className="section-title">İletişim Formu</h2>
@@ -70,7 +60,6 @@ const ContactForm = () => {
           className="my-1.5 min-h-[150px]"
           name="message"
 					required
-					onBlur={handleBlur}
         />
         <p className="text-paragraph-mobile text-primary-400 md:text-paragraph-tablet xl:text-paragraph">
           Mesajınız bize iletilecektir.
