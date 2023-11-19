@@ -47,7 +47,7 @@ const ContactForm = () => {
   }, [])
 
   return (
-    <section>
+    <aside>
       <h2 className="section-title">İletişim Formu</h2>
       <form
         ref={formRef}
@@ -70,7 +70,7 @@ const ContactForm = () => {
         mail={mail}
         modalTrigger={modalTrigger}
       />
-    </section>
+    </aside>
   )
 }
 
