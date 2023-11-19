@@ -45,13 +45,10 @@ const ContactForm = () => {
   useEffect(() => {
     return () => setMail({ status: null, sending: false })
   }, [])
-
-	const handleFocus = () => {
-		document.documentElement.style.touchAction = 'manipulation'
-	}
 	
-	const handleBlur = () => {
-		document.documentElement.style.touchAction = 'auto'
+	const cancelZoom = () => {
+		// @ts-ignore 
+		document.body.style.zoom = null
 	}
 	
 
@@ -69,8 +66,7 @@ const ContactForm = () => {
           className="my-1.5 min-h-[150px]"
           name="message"
 					required
-					onFocus={handleFocus}
-					onBlur={handleBlur}
+					onBlur={cancelZoom}
         />
         <p className="text-paragraph-mobile text-primary-400 md:text-paragraph-tablet xl:text-paragraph">
           Mesajınız bize iletilecektir.
