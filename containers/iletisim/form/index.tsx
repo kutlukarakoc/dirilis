@@ -46,6 +46,8 @@ const ContactForm = () => {
     return () => setMail({ status: null, sending: false })
   }, [])
 
+	const handleZoom = () => window.document.body.style.zoom = 1;
+
   return (
     <aside>
       <h2 className="section-title">İletişim Formu</h2>
@@ -60,6 +62,7 @@ const ContactForm = () => {
           className="my-1.5 min-h-[150px]"
           name="message"
 					required
+					onBlur={handleZoom}
         />
         <p className="text-paragraph-mobile text-primary-400 md:text-paragraph-tablet xl:text-paragraph">
           Mesajınız bize iletilecektir.
