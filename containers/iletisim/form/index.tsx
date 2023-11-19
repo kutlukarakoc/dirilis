@@ -48,7 +48,7 @@ const ContactForm = () => {
 	
 	const cancelZoom = () => {
 		// @ts-ignore 
-		document.body.style.zoom = null
+		document.body.style.zoom = 1
 	}
 	
 
