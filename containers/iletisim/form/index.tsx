@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Submit } from './submit'
 import emailjs from '@emailjs/browser'
 import { MailModal } from '@/types/mailModal'
+import { cancelZoom } from '@/lib/utils'
 
 const ContactForm = () => {
   const formRef = useRef<HTMLFormElement | null>(null)
@@ -45,12 +46,6 @@ const ContactForm = () => {
   useEffect(() => {
     return () => setMail({ status: null, sending: false })
   }, [])
-	
-	const cancelZoom = () => {
-		// @ts-ignore 
-		document.body.style.zoom = 1
-	}
-	
 
   return (
     <aside>
