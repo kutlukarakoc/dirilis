@@ -13,15 +13,15 @@ export default function Contact() {
 		<>
 			<section>
 				<h1 className="page-title">İletişim</h1>
-				<div className="flex flex-col items-center justify-center space-y-10 lg:h-[590px] lg:flex-row lg:justify-between lg:space-y-0">
+				<Details />
+			</section>
+			<section>
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-y-32 md:gap-y-8 md:gap-x-24">
 					<Suspense fallback={<MapLoading />}>
 						<Map />
 					</Suspense>
-					<Details />
+					<ContactForm />
 				</div>
-			</section>
-			<section>
-				<ContactForm />
 			</section>
 		</>
 	)
