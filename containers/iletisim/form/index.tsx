@@ -47,14 +47,13 @@ const ContactForm = () => {
   }, [])
 
 	const handleFocus = () => {
-		// Sayfa zoom ayarlarını düzenle
-		document.body.style.transform = 'scale(1)'
-	};
+		document.documentElement.style.touchAction = 'manipulation'
+	}
 	
 	const handleBlur = () => {
-		// Sayfa zoom ayarlarını eski haline getir
-		document.body.style.transform = ''
-	};
+		document.documentElement.style.touchAction = 'auto'
+	}
+	
 
   return (
     <aside>
