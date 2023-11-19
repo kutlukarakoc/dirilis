@@ -96,9 +96,3 @@
 .videos-swiper {
 	@apply h-[550px] sm:h-[600px] !important
 }
-
-@supports (-webkit-overflow-scrolling: touch) {
-	textarea {
-		font-size: 16px;
-	}
-}

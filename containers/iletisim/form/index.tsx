@@ -46,6 +46,16 @@ const ContactForm = () => {
     return () => setMail({ status: null, sending: false })
   }, [])
 
+	const handleFocus = () => {
+		// Sayfa zoom ayarlarını düzenle
+		document.body.style.transform = 'scale(1)'
+	};
+	
+	const handleBlur = () => {
+		// Sayfa zoom ayarlarını eski haline getir
+		document.body.style.transform = ''
+	};
+
   return (
     <aside>
       <h2 className="section-title">İletişim Formu</h2>
@@ -60,6 +70,8 @@ const ContactForm = () => {
           className="my-1.5 min-h-[150px]"
           name="message"
 					required
+					onFocus={handleFocus}
+					onBlur={handleBlur}
         />
         <p className="text-paragraph-mobile text-primary-400 md:text-paragraph-tablet xl:text-paragraph">
           Mesajınız bize iletilecektir.
