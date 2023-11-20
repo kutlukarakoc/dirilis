@@ -16,7 +16,7 @@ export default function Contact() {
 				<Details />
 			</section>
 			<section>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-y-32 md:gap-y-8 md:gap-x-24">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-y-32 lg:gap-y-8 lg:gap-x-24">
 					<Suspense fallback={<MapLoading />}>
 						<Map />
 					</Suspense>
