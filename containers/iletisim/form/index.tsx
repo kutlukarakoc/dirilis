@@ -81,12 +81,12 @@ const ContactForm = () => {
 							name="name"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>İsim</FormLabel>
+									<FormLabel>Ad</FormLabel>
 									<FormControl>
-										<Input placeholder="İsminiz" {...field} />
+										<Input placeholder="Adınız" {...field} />
 									</FormControl>
 									<FormDescription>
-										İsminizi giriniz.
+										Adınızı giriniz.
 									</FormDescription>
 									<FormMessage />
 								</FormItem>
@@ -97,12 +97,12 @@ const ContactForm = () => {
 							name="surname"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Soyisim</FormLabel>
+									<FormLabel>Soyad</FormLabel>
 									<FormControl>
-										<Input placeholder="Soyisminiz" {...field} />
+										<Input placeholder="Soyadınız" {...field} />
 									</FormControl>
 									<FormDescription>
-										Soyisminizi giriniz.
+										Soyadınızı giriniz.
 									</FormDescription>
 									<FormMessage />
 								</FormItem>
