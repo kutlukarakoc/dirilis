@@ -1,4 +1,3 @@
-import { Book } from '@/types/books'
 import { Metadata } from 'next'
 import BooksSchema from '@/lib/models/books.model'
 import { connectToDB } from '@/lib/mongoose'
@@ -30,7 +29,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function Book({
+export default async function Page({
   params: { slug },
 }: {
   params: { slug: string }

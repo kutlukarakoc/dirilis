@@ -41,7 +41,7 @@ async function getBooks({ searchParams }: { searchParams: { [key: string]: strin
 	return {books, count}
 }
 
-export default async function Books({ searchParams }: { searchParams: { [key: string]: string } }) {
+export default async function Page({ searchParams }: { searchParams: { [key: string]: string } }) {
 	const {books, count} = await getBooks({ searchParams })
 
 	const { category, search, page } = searchParams

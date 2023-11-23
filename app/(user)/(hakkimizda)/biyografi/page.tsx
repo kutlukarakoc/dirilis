@@ -7,7 +7,7 @@ export const metadata = {
   title: 'Diriliş Yayınları | Biyografi',
 }
 
-export default function Biography() {
+export default function Page() {
   return (
 		<section>
 			<div className="flex items-start justify-between">

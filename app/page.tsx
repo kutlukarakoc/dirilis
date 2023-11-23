@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 import Favicon from '@/public/favicon.png'
 import VideosLoading from '@/containers/anasayfa/video-slider/loading'
 import Quotes from '@/containers/anasayfa/book-slider'
@@ -30,25 +32,31 @@ export const metadata: Metadata = {
   icons: [{ rel: 'icon', url: Favicon.src }],
 }
 
-export default function Home() {
+export default function Page() {
   return (
-    <>
-			<Suspense fallback={<SliderLoading />}>
-				<Quotes 
-					quotesData={heroQuotes}
-					wrapperClass="hero-quotes-swiper"
-				/>
-      </Suspense>
-			<Suspense fallback={<VideosLoading />}>
-				<Videos />
-      </Suspense>
-			<Suspense fallback={<SliderLoading />}>
-				<SecondaryQuotes
-					quotesData={secondaryQuotes}
-					wrapperClass="secondary-quotes-swiper"
-				/>
-      </Suspense>
-      <Poem />
-    </>
+		<>
+			<Navbar />
+			<main className="container my-20 md:my-32 flex-1 relative">
+				<Suspense fallback={<SliderLoading />}>
+					<Quotes 
+						quotesData={heroQuotes}
+						wrapperClass="hero-quotes-swiper"
+					/>
+				</Suspense>
+				<Suspense fallback={<VideosLoading />}>
+					<Videos />
+					</Suspense>
+				<Suspense fallback={<SliderLoading />}>
+					<SecondaryQuotes
+						quotesData={secondaryQuotes}
+						wrapperClass="secondary-quotes-swiper"
+					/>
+				</Suspense>
+				<Suspense fallback={<PoemLoading />}>
+					<Poem />
+				</Suspense>
+			</main>
+			<Footer />
+		</>
   )
 }

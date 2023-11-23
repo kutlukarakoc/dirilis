@@ -8,7 +8,7 @@ export const metadata = {
   title: 'Diriliş Yayınları | İletişim',
 }
 
-export default function Contact() {
+export default function Page() {
   return (
 		<>
 			<section>

@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Diriliş Yayınları | Tarihçe',
 }
 
-export default function History() {
+export default function Page() {
   return (
 		<section>
 			<h1 className="page-title">Tarihçemiz</h1>
