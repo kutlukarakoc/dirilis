@@ -3,15 +3,13 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 type Pagination = [number, number, () => void, () => void, (index: number) => void]
 
-const LIMIT = 12
-
-const usePagination = (count: number): Pagination  => {
+const usePagination = (count: number, limit: number): Pagination  => {
   const { replace } = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   const page = Number(searchParams.get('page') || '1')
-  const totalPages = Math.ceil((count / LIMIT))
+  const totalPages = Math.ceil((count / limit))
 
   const createQueryString = useCallback((name: string, value: string) => {
     const params = new URLSearchParams(searchParams)
