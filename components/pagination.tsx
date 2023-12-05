@@ -2,8 +2,8 @@
 
 import usePagination from "@/hooks/usePagination"
 
-const Pagination = ({ count }: {count: number}) => {
-	const [page, totalPages, prevPage, nextPage, clickedPage ] = usePagination(count);
+const Pagination = ({ count, limit }: {count: number, limit: number}) => {
+	const [page, totalPages, prevPage, nextPage, clickedPage ] = usePagination(count, limit);
 
   return (
     <nav aria-label="listing-pagination" className="flex justify-center items-center mt-20">
