@@ -1,3 +1,5 @@
+import { getServerSession } from "next-auth"
+import SessionProvider from "@/components/SessionProvider"
 import { Roboto } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -11,12 +13,16 @@ export const alata = localFont({
   src: './fonts/alata/alata.ttf',
 })
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+	const session = await getServerSession()
+
   return (
-    <html lang="tr">
-      <body className={roboto.className}>
-				{children}
-      </body>
-    </html>
+		<html lang="tr">
+			<body className={roboto.className}>
+				<SessionProvider session={session}>
+					{children}
+				</SessionProvider>
+			</body>
+		</html>
   )
 }
