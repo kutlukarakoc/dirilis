@@ -20,9 +20,8 @@ const SelectLanguage = () => {
 
   let prefferedLanguage = 'tr'
   if (typeof window !== 'undefined') {
-    prefferedLanguage = getPrefferedLanguage();
+    prefferedLanguage = getPrefferedLanguage()
   }
-
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -38,11 +37,11 @@ const SelectLanguage = () => {
     router.push(pathname + '?' + createQueryString('lang', value))
   }
 
-	useEffect(() => {
-		if(language === null || language.length < 1) {
-			router.push(pathname + '?' + createQueryString('lang', prefferedLanguage))
-		}
-	}, [])
+  useEffect(() => {
+    if (language === null || language.length < 1) {
+      router.push(pathname + '?' + createQueryString('lang', prefferedLanguage))
+    }
+  }, [])
 
   return (
     <div className="mt-0 2xl:mt-2">

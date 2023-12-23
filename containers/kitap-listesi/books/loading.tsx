@@ -1,9 +1,9 @@
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from '@/components/ui/skeleton'
 
 const BooksLoading = () => {
   return (
     <div
-      className="mt-32 md:mt-40 grid gap-x-8 gap-y-10 md:gap-y-20"
+      className="mt-32 grid gap-x-8 gap-y-10 md:mt-40 md:gap-y-20"
       style={{
         gridTemplateColumns: 'repeat(auto-fill, minmax(275px, 1fr))',
       }}

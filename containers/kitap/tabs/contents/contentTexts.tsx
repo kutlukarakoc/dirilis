@@ -4,7 +4,9 @@ const ContentTexts = ({ content }: { content: Content }) => {
   return (
     <div>
       {content.heading && (
-        <div className="mb-1 ml-8 font-semibold text-primary-700">{content.heading}</div>
+        <div className="mb-1 ml-8 font-semibold text-primary-700">
+          {content.heading}
+        </div>
       )}
       {'subtitle' in content && content.subtitle && (
         <div className="mb-1 flex text-paragraph-mobile md:text-paragraph-tablet xl:text-paragraph">
@@ -17,7 +19,9 @@ const ContentTexts = ({ content }: { content: Content }) => {
         </div>
       )}
       {content.title && (
-        <div className="mb-1 ml-8 font-semibold text-primary-700">{content.title}</div>
+        <div className="mb-1 ml-8 font-semibold text-primary-700">
+          {content.title}
+        </div>
       )}
     </div>
   )

@@ -18,11 +18,9 @@ const ShowMore = ({
 }) => {
   return (
     <Dialog>
-      <DialogTrigger className='w-max mt-2'>
-        <div className={windowWidth > 500 ? 'pl-8 flex' : ''}>
-          <div
-            className="transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-primary-700 hover:text-primary-900 underline-offset-4 underline text-paragraph-mobile md:text-paragraph-tablet xl:text-paragraph"
-          >
+      <DialogTrigger className="mt-2 w-max">
+        <div className={windowWidth > 500 ? 'flex pl-8' : ''}>
+          <div className="text-paragraph-mobile text-primary-700 underline underline-offset-4 transition-colors hover:text-primary-900 disabled:cursor-not-allowed disabled:opacity-50 md:text-paragraph-tablet xl:text-paragraph">
             Tümünü Gör
           </div>
         </div>
@@ -30,14 +28,14 @@ const ShowMore = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>İçindekiler</DialogTitle>
-            <DialogDescription>
-              {contents.map((content, index) => (
-                <ContentTexts
-                  key={index}
-                  content={content}
-                />
-              ))}
-            </DialogDescription>
+          <DialogDescription>
+            {contents.map((content, index) => (
+              <ContentTexts
+                key={index}
+                content={content}
+              />
+            ))}
+          </DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>

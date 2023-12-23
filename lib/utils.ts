@@ -41,7 +41,11 @@ export const formatPrice = (price: number): string => {
 }
 
 export const formatHref = (path: string, title: string, id: string): string => {
-  const formattedTitle = title.toLowerCase().replaceAll('/', ' ').split(' ').join('-')
+  const formattedTitle = title
+    .toLowerCase()
+    .replaceAll('/', ' ')
+    .split(' ')
+    .join('-')
   const finalUrl = `/${path}/${formattedTitle}-${id}`
   return finalUrl
 }
@@ -69,12 +73,13 @@ export const toBase64 = (str: string) =>
     : window.btoa(str)
 
 export const getPrefferedLanguage = (): Language => {
-	const languages: Language[] = ['tr', 'en', 'de', 'ru', 'far', 'ar']
+  const languages: Language[] = ['tr', 'en', 'de', 'ru', 'far', 'ar']
 
-	const language = navigator.language
-	const languagePrimaryStandard = language.substring(0, 2)
+  const language = navigator.language
+  const languagePrimaryStandard = language.substring(0, 2)
 
-	const prefferedLanguage = languages.find((lang) => lang === languagePrimaryStandard) || 'tr'
+  const prefferedLanguage =
+    languages.find((lang) => lang === languagePrimaryStandard) || 'tr'
 
-	return prefferedLanguage
+  return prefferedLanguage
 }

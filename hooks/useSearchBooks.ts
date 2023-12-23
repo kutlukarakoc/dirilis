@@ -14,13 +14,16 @@ const useSearchBooks = (): SearchBooksHook => {
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams)
     params.delete('category')
-		params.set('page', '1')
+    params.set('page', '1')
     term ? params.set('search', term) : params.delete('search')
     replace(`${pathname}?${params}`)
   }, 300)
 
   useEffect(() => {
-    if (searchParams.get('search') === null || searchParams.get('search') === undefined) {
+    if (
+      searchParams.get('search') === null ||
+      searchParams.get('search') === undefined
+    ) {
       setSearchTerm('')
     }
   }, [searchParams])

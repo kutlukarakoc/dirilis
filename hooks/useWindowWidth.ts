@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react'
 
 export const useWindowWidth = (): number | null => {
-  const [width, setWidth] = useState<number |null>(null)
+  const [width, setWidth] = useState<number | null>(null)
 
   useEffect(() => {
-		setWidth(window.innerWidth)
-		
+    setWidth(window.innerWidth)
+
     const handleResize = (): void => setWidth(window.innerWidth)
     handleResize()
 

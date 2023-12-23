@@ -38,7 +38,10 @@ const Contents = ({ contents }: { contents: Content[] }) => {
       {contents.length > maxContent && (
         <div className={windowWidth > 500 ? 'grid grid-cols-2' : ''}>
           <div></div>
-          <ShowMore windowWidth={windowWidth} contents={contents} />
+          <ShowMore
+            windowWidth={windowWidth}
+            contents={contents}
+          />
         </div>
       )}
     </>

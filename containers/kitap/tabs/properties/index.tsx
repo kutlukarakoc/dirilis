@@ -1,4 +1,4 @@
-import Column from "./column"
+import Column from './column'
 
 interface PropertiesProps {
   isbn: string
@@ -9,8 +9,8 @@ interface PropertiesProps {
   }
   thickness: string
   dimension: string
-	pages: number
-	category: string
+  pages: number
+  category: string
 }
 
 const Properties = ({
@@ -18,10 +18,10 @@ const Properties = ({
   publish,
   thickness,
   dimension,
-	pages,
-	category,
+  pages,
+  category,
 }: PropertiesProps) => {
-  const properties= [
+  const properties = [
     {
       key: 'ISBN: ',
       value: isbn,
@@ -50,19 +50,27 @@ const Properties = ({
       key: 'Ebat(cm): ',
       value: dimension,
     },
-		{
-			key: 'Kategori: ',
-			value: category,
-		}
+    {
+      key: 'Kategori: ',
+      value: category,
+    },
   ]
 
   return (
-		<div className="max-w-xs sm:max-w-full">
-		<div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-20 xl:space-x-32 space-y-4 sm:space-y-0">
-			<Column properties={properties} startIndex={0} endIndex={4} />
-			<Column properties={properties} startIndex={4} endIndex={properties.length} />
-		</div>
-	</div>
+    <div className="max-w-xs sm:max-w-full">
+      <div className="flex flex-col space-y-4 sm:flex-row sm:justify-between sm:space-x-20 sm:space-y-0 xl:space-x-32">
+        <Column
+          properties={properties}
+          startIndex={0}
+          endIndex={4}
+        />
+        <Column
+          properties={properties}
+          startIndex={4}
+          endIndex={properties.length}
+        />
+      </div>
+    </div>
   )
 }
 

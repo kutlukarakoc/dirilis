@@ -16,8 +16,8 @@ const BookCard = ({ book }: { book: SimplifiedBooks }) => {
           height={250}
           priority={false}
           sizes="(max-width: 650px) 140px, 175px"
-					placeholder={`data:image/svg+xml;base64,${toBase64(shimmer())}`}
-					className='max-w-[140px] sm:max-w-[175px]'
+          placeholder={`data:image/svg+xml;base64,${toBase64(shimmer())}`}
+          className="max-w-[140px] sm:max-w-[175px]"
         />
       </Link>
 
@@ -25,7 +25,7 @@ const BookCard = ({ book }: { book: SimplifiedBooks }) => {
         href={url}
         className="mb-1.5 mt-4 inline-block"
       >
-        <h6 className="max-w-[225px] overflow-hidden text-ellipsis whitespace-nowrap text-paragraph-tablet md:text-paragraph text-primary-700">
+        <h6 className="max-w-[225px] overflow-hidden text-ellipsis whitespace-nowrap text-paragraph-tablet text-primary-700 md:text-paragraph">
           {book.title}
         </h6>
       </Link>

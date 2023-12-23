@@ -24,7 +24,7 @@ const BookTabs = ({ book }: { book: Book }) => {
   ]
 
   return (
-    <div className="md:w-11/12 min-h-[368px]">
+    <div className="min-h-[368px] md:w-11/12">
       <Tabs
         defaultValue="summary"
         className="w-full"
@@ -55,8 +55,8 @@ const BookTabs = ({ book }: { book: Book }) => {
             publish={book.publish}
             thickness={book.thickness}
             dimension={book.dimension}
-						pages={book.pages}
-						category={book.category.name}
+            pages={book.pages}
+            category={book.category.name}
           />
         </TabsContent>
       </Tabs>

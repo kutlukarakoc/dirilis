@@ -15,8 +15,10 @@ export default function Error({
   }, [error])
 
   return (
-    <div className='flex justify-center items-center flex-col space-y-8 text-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2'>
-      <h2 className='text-header-3 sm:text-header-2 text-primary-800'>Beklenmedik bir hata oluştu!</h2>
+    <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center space-y-8 text-center">
+      <h2 className="text-header-3 text-primary-800 sm:text-header-2">
+        Beklenmedik bir hata oluştu!
+      </h2>
       <Button onClick={() => reset()}>Tekrar Deneyin</Button>
     </div>
   )

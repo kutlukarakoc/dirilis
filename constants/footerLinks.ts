@@ -13,14 +13,14 @@ export const footerLinks = [
         title: 'İletişim',
         url: '/iletisim',
       },
-			{
-				title: 'Tarihçe',
-				url: '/tarihce'
-			},
-			{
-				title: 'Biyografi',
-				url: '/biyografi'
-			}
+      {
+        title: 'Tarihçe',
+        url: '/tarihce',
+      },
+      {
+        title: 'Biyografi',
+        url: '/biyografi',
+      },
     ],
   },
   {

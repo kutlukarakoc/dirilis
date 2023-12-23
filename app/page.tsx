@@ -13,9 +13,12 @@ import { Suspense } from 'react'
 const Videos = dynamic(() => import('../containers/anasayfa/video-slider'), {
   loading: () => <VideosLoading />,
 })
-const SecondaryQuotes = dynamic(() => import('../containers/anasayfa/book-slider'), {
-  loading: () => <SliderLoading />,
-})
+const SecondaryQuotes = dynamic(
+  () => import('../containers/anasayfa/book-slider'),
+  {
+    loading: () => <SliderLoading />,
+  },
+)
 const Poem = dynamic(() => import('../containers/anasayfa/poem'), {
   loading: () => <PoemLoading />,
 })
@@ -34,29 +37,29 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-		<>
-			<Navbar />
-			<main className="container my-20 md:my-32 flex-1 relative">
-				<Suspense fallback={<SliderLoading />}>
-					<Quotes 
-						quotesData={heroQuotes}
-						wrapperClass="hero-quotes-swiper"
-					/>
-				</Suspense>
-				<Suspense fallback={<VideosLoading />}>
-					<Videos />
-					</Suspense>
-				<Suspense fallback={<SliderLoading />}>
-					<SecondaryQuotes
-						quotesData={secondaryQuotes}
-						wrapperClass="secondary-quotes-swiper"
-					/>
-				</Suspense>
-				<Suspense fallback={<PoemLoading />}>
-					<Poem />
-				</Suspense>
-			</main>
-			<Footer />
-		</>
+    <>
+      <Navbar />
+      <main className="container relative my-20 flex-1 md:my-32">
+        <Suspense fallback={<SliderLoading />}>
+          <Quotes
+            quotesData={heroQuotes}
+            wrapperClass="hero-quotes-swiper"
+          />
+        </Suspense>
+        <Suspense fallback={<VideosLoading />}>
+          <Videos />
+        </Suspense>
+        <Suspense fallback={<SliderLoading />}>
+          <SecondaryQuotes
+            quotesData={secondaryQuotes}
+            wrapperClass="secondary-quotes-swiper"
+          />
+        </Suspense>
+        <Suspense fallback={<PoemLoading />}>
+          <Poem />
+        </Suspense>
+      </main>
+      <Footer />
+    </>
   )
 }

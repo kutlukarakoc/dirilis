@@ -9,13 +9,13 @@ export const metadata = {
 
 export default function Page() {
   return (
-		<section>
-			<div className="flex items-start justify-between">
-				<Title />
-				<SelectLanguage />
-			</div>
-			<BiographySlider />
-			<Quote />
-		</section>
-	)
+    <section>
+      <div className="flex items-start justify-between">
+        <Title />
+        <SelectLanguage />
+      </div>
+      <BiographySlider />
+      <Quote />
+    </section>
+  )
 }

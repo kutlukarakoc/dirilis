@@ -28,7 +28,10 @@ const Mobile = () => {
           size="icon"
           className="bg-transparent hover:bg-transparent"
         >
-          <AlignJustify size={26} aria-label='Hamburger menu icon' />
+          <AlignJustify
+            size={26}
+            aria-label="Hamburger menu icon"
+          />
         </Button>
       </SheetTrigger>
       <SheetContent>

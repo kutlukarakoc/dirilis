@@ -10,14 +10,12 @@ const BookList = ({ books }: { books: SimplifiedBooks[] }) => {
           gridTemplateColumns: 'repeat(auto-fill, minmax(275px, 1fr))',
         }}
       >
-        {
-          books.map((book: SimplifiedBooks) => (
-            <BookCard
-              key={book.id}
-              book={book}
-            />
-          ))
-        }
+        {books.map((book: SimplifiedBooks) => (
+          <BookCard
+            key={book.id}
+            book={book}
+          />
+        ))}
       </div>
     </section>
   )

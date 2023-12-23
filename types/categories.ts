@@ -5,5 +5,5 @@ export interface Categories {
 }
 
 export interface CategoryWithKey extends Category {
-	key: string
+  key: string
 }

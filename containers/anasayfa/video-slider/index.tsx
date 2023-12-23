@@ -13,7 +13,9 @@ const Videos = () => {
   const slideChange = () => {
     if (swiperRef.current) {
       const swiperInstance = swiperRef.current
-      const activeVideos = swiperInstance.querySelectorAll('.swiper-slide .active-video')
+      const activeVideos = swiperInstance.querySelectorAll(
+        '.swiper-slide .active-video',
+      )
 
       activeVideos.forEach((video: HTMLVideoElement) => {
         video.pause()
@@ -32,36 +34,46 @@ const Videos = () => {
         onSlideChange={slideChange}
       >
         <SwiperSlide className="h-auto">
-					{({ isActive }) => (
-						<video
-							className={`h-[96%] w-full ${isActive ? "active-video" : "not-active"}`}
-							controls
-							poster="https://i.ibb.co/60R7RBG/son-konusma-thumbnail.webp"
-						>
-							<source
-								src="/son_konusma.mp4"
-								type="video/mp4"
-							/>
-							<track kind="captions" label="turkish_captions" />
-							Tarayıcınız video elementini desteklememektedir.
-						</video>
-					)}
+          {({ isActive }) => (
+            <video
+              className={`h-[96%] w-full ${
+                isActive ? 'active-video' : 'not-active'
+              }`}
+              controls
+              poster="https://i.ibb.co/60R7RBG/son-konusma-thumbnail.webp"
+            >
+              <source
+                src="/son_konusma.mp4"
+                type="video/mp4"
+              />
+              <track
+                kind="captions"
+                label="turkish_captions"
+              />
+              Tarayıcınız video elementini desteklememektedir.
+            </video>
+          )}
         </SwiperSlide>
         <SwiperSlide className="h-auto">
-				{({ isActive }) => (
-						<video
-							className={`h-[96%] w-full ${isActive ? "active-video" : "not-active"}`}
-							controls
-							poster="https://i.ibb.co/cgNRW6P/yuce-dirilis-thumbnail.webp"
-						>
-							<source
-								src="/yuce_dirilis.mp4"
-								type="video/mp4"
-							/>
-							<track kind="captions" label="turkish_captions" />
-							Tarayıcınız video elementini desteklememektedir.
-						</video>
-					)}
+          {({ isActive }) => (
+            <video
+              className={`h-[96%] w-full ${
+                isActive ? 'active-video' : 'not-active'
+              }`}
+              controls
+              poster="https://i.ibb.co/cgNRW6P/yuce-dirilis-thumbnail.webp"
+            >
+              <source
+                src="/yuce_dirilis.mp4"
+                type="video/mp4"
+              />
+              <track
+                kind="captions"
+                label="turkish_captions"
+              />
+              Tarayıcınız video elementini desteklememektedir.
+            </video>
+          )}
         </SwiperSlide>
       </Swiper>
     </section>

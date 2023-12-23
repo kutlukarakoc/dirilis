@@ -12,13 +12,16 @@ const Quote = () => {
       id="bio-quote"
     >
       <div className="mx-auto sm:max-w-2xl sm:px-4">
-        <p 
-					className="rounded-t-md border-x border-t border-primary-400 px-1 py-4 text-paragraph-mobile lg:text-paragraph-tablet"
-					style={{ direction: direction }}
-				>
+        <p
+          className="rounded-t-md border-x border-t border-primary-400 px-1 py-4 text-paragraph-mobile lg:text-paragraph-tablet"
+          style={{ direction: direction }}
+        >
           {quotes.verseText[language]} <br />
-          <span className="font-medium text-primary-700" style={{ direction: direction }}>
-						{quotes.verse[language]}
+          <span
+            className="font-medium text-primary-700"
+            style={{ direction: direction }}
+          >
+            {quotes.verse[language]}
           </span>
         </p>
 

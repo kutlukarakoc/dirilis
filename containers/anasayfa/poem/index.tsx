@@ -3,7 +3,7 @@ import { homePoem } from '@/constants/home/homePoem'
 const Poem = () => {
   return (
     <section className="rounded-[10px] border-2 border-primary-200 p-1">
-      <div className='px-4 py-8 border-2 rounded-md border-primary-200'>
+      <div className="rounded-md border-2 border-primary-200 px-4 py-8">
         <h2 className="mb-8 bg-white-50 text-center text-header-3 text-primary-700 md:mb-28 xl:text-header-2">
           Diriliş Çağrısı
         </h2>

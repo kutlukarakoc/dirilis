@@ -23,7 +23,7 @@ const Modal = ({
       >
         trigger
       </DialogTrigger>
-      <DialogContent className='!h-[400px]'>
+      <DialogContent className="!h-[400px]">
         <div className="flex h-full w-full flex-col items-center justify-center">
           <div className="mb-7 flex h-20 w-20 items-center justify-center rounded-full bg-primary-900">
             {mail.status && mail.status === 'success' ? (

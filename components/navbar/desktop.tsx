@@ -16,7 +16,7 @@ import { usePathname } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 
 const Desktop = () => {
-	const { status, data } = useSession()
+  const { status, data } = useSession()
   const pathname = usePathname()
 
   const [value, setValue] = useState('')
@@ -28,7 +28,7 @@ const Desktop = () => {
       onValueChange={setValue}
     >
       <Link
-				role='link'
+        role="link"
         href="/"
         className={`nav-link ${pathname === '/' ? 'text-white-50' : ''}`}
       >
@@ -47,7 +47,7 @@ const Desktop = () => {
         <MenubarContent align="center">
           <MenubarItem onClick={() => setValue('')}>
             <Link
-							role='link'
+              role="link"
               href="/tarihce"
               className="h-full w-full px-2 py-1.5"
             >
@@ -57,7 +57,7 @@ const Desktop = () => {
           <MenubarSeparator />
           <MenubarItem onClick={() => setValue('')}>
             <Link
-							role='link'
+              role="link"
               href="/biyografi"
               className="h-full w-full px-2 py-1.5"
             >
@@ -67,7 +67,7 @@ const Desktop = () => {
         </MenubarContent>
       </MenubarMenu>
       <Link
-				role='link'
+        role="link"
         href="/kitap-listesi?page=1"
         className={`nav-link ${
           pathname.includes('/kitap-listesi') ? 'text-white-50' : ''
@@ -84,7 +84,7 @@ const Desktop = () => {
             <Fragment key={item.title}>
               <MenubarItem>
                 <a
-									role='link'
+                  role="link"
                   href={item.url}
                   target="_blank"
                   className="h-full w-full px-2 py-1.5"
@@ -98,7 +98,7 @@ const Desktop = () => {
         </MenubarContent>
       </MenubarMenu>
       <Link
-				role='link'
+        role="link"
         href="/iletisim"
         className={`nav-link ${
           pathname === '/iletisim' ? 'text-white-50' : ''
@@ -106,28 +106,39 @@ const Desktop = () => {
       >
         İletişim
       </Link>
-			{
-				status === 'authenticated' && (
-				<MenubarMenu>
-					<MenubarTrigger className='bg-primary-100 w-7 h-7 rounded-full flex justify-center items-center'>
-						<User size={20} className='text-black-700' />
-					</MenubarTrigger>
-					<MenubarContent align="center">
-						<MenubarItem>
-							<p className='h-full w-full px-2 py-1.5'>{data.user?.email}</p>
-						</MenubarItem>
-						<MenubarSeparator />
-						<MenubarItem>
-							<Link href='/yonetim-tablosu' className='h-full w-full px-2 py-1.5'>Yönetim Tablosu</Link>
-						</MenubarItem>
-						<MenubarSeparator />	
-						<MenubarItem>
-							<p className='h-full w-full px-2 py-1.5 cursor-pointer' onClick={() => signOut()}>Çıkış Yap</p>
-						</MenubarItem>
-					</MenubarContent>
-				</MenubarMenu>
-				)
-			}
+      {status === 'authenticated' && (
+        <MenubarMenu>
+          <MenubarTrigger className="flex h-7 w-7 items-center justify-center rounded-full bg-primary-100">
+            <User
+              size={20}
+              className="text-black-700"
+            />
+          </MenubarTrigger>
+          <MenubarContent align="center">
+            <MenubarItem>
+              <p className="h-full w-full px-2 py-1.5">{data.user?.email}</p>
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem>
+              <Link
+                href="/yonetim-tablosu"
+                className="h-full w-full px-2 py-1.5"
+              >
+                Yönetim Tablosu
+              </Link>
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem>
+              <p
+                className="h-full w-full cursor-pointer px-2 py-1.5"
+                onClick={() => signOut()}
+              >
+                Çıkış Yap
+              </p>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+      )}
     </Menubar>
   )
 }

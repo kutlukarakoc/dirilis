@@ -11,49 +11,100 @@ export const metadata = {
 }
 
 const necessaryProperties = {
-	title: 1, price: 1, category: 1, imageUrl: 1, _id: 1
+  title: 1,
+  price: 1,
+  category: 1,
+  imageUrl: 1,
+  _id: 1,
 }
 const LIMIT = 12
 
-async function getBooks({ searchParams }: { searchParams: { [key: string]: string } }) {
-	await connectToDB()
+async function getBooks({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string }
+}) {
+  await connectToDB()
 
-	const { category, search, page } = searchParams
-	
-	if(category !== null && category !== undefined) {
-		const categoryId = category.split('-').at(-1)
-		const books = await Book.find({'category.id': categoryId}, necessaryProperties).limit(LIMIT).skip((+page - 1) * LIMIT).maxTimeMS(5000)
-		const count = await Book.find({'category.id': categoryId}, necessaryProperties).count()
-		
-		return {books, count}
-	}
+  const { category, search, page } = searchParams
 
-	if(search !== null && search !== undefined) {
-		const upperCasedSearchTerm = search.toLocaleUpperCase('TR')
-		const books = await Book.find({"title": new RegExp(upperCasedSearchTerm) }, necessaryProperties).limit(LIMIT).skip((+page - 1) * LIMIT).maxTimeMS(5000)
-		const count = await Book.find({"title": new RegExp(upperCasedSearchTerm) }, necessaryProperties).count()
-		return {books, count}
-	}
+  if (category !== null && category !== undefined) {
+    const categoryId = category.split('-').at(-1)
+    const books = await Book.find(
+      { 'category.id': categoryId },
+      necessaryProperties,
+    )
+      .limit(LIMIT)
+      .skip((+page - 1) * LIMIT)
+      .maxTimeMS(5000)
+    const count = await Book.find(
+      { 'category.id': categoryId },
+      necessaryProperties,
+    ).count()
 
-	const books = await Book.find({}, {title: 1, price: 1, category: 1, imageUrl: 1, _id: 1}).limit(LIMIT).skip((+page - 1) * LIMIT).maxTimeMS(5000)
-	const count = await Book.find({}, {title: 1, price: 1, category: 1, imageUrl: 1, _id: 1}).count()
-	
-	return {books, count}
+    return { books, count }
+  }
+
+  if (search !== null && search !== undefined) {
+    const upperCasedSearchTerm = search.toLocaleUpperCase('TR')
+    const books = await Book.find(
+      { title: new RegExp(upperCasedSearchTerm) },
+      necessaryProperties,
+    )
+      .limit(LIMIT)
+      .skip((+page - 1) * LIMIT)
+      .maxTimeMS(5000)
+    const count = await Book.find(
+      { title: new RegExp(upperCasedSearchTerm) },
+      necessaryProperties,
+    ).count()
+    return { books, count }
+  }
+
+  const books = await Book.find(
+    {},
+    { title: 1, price: 1, category: 1, imageUrl: 1, _id: 1 },
+  )
+    .limit(LIMIT)
+    .skip((+page - 1) * LIMIT)
+    .maxTimeMS(5000)
+  const count = await Book.find(
+    {},
+    { title: 1, price: 1, category: 1, imageUrl: 1, _id: 1 },
+  ).count()
+
+  return { books, count }
 }
 
-export default async function Page({ searchParams }: { searchParams: { [key: string]: string } }) {
-	const {books, count} = await getBooks({ searchParams })
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string }
+}) {
+  const { books, count } = await getBooks({ searchParams })
 
-	const { category, search, page } = searchParams
-	const suspenseKey = category ? category + page : search ? search + page : 'page' + page
-	
-	return (
-		<>
-			<Filter />
-			<Suspense key={suspenseKey} fallback={<BooksLoading />}>
-				<BookList books={books} />
-			</Suspense>
-			{count > LIMIT && <Pagination count={count} limit={LIMIT} />}
-		</>
-	)
+  const { category, search, page } = searchParams
+  const suspenseKey = category
+    ? category + page
+    : search
+      ? search + page
+      : 'page' + page
+
+  return (
+    <>
+      <Filter />
+      <Suspense
+        key={suspenseKey}
+        fallback={<BooksLoading />}
+      >
+        <BookList books={books} />
+      </Suspense>
+      {count > LIMIT && (
+        <Pagination
+          count={count}
+          limit={LIMIT}
+        />
+      )}
+    </>
+  )
 }

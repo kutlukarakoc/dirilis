@@ -13,18 +13,26 @@ import { CategoryWithKey } from '@/types/categories'
 import { useSelectCategory } from '@/hooks/useSelectCategory'
 
 const MobileCategories = () => {
-	const [selectedCategory, selectCategory] = useSelectCategory()
-	
+  const [selectedCategory, selectCategory] = useSelectCategory()
+
   return (
     <div className="mt-8 xl:hidden">
-      <Select value={selectedCategory} onValueChange={(value) => selectCategory(value)}>
+      <Select
+        value={selectedCategory}
+        onValueChange={(value) => selectCategory(value)}
+      >
         <SelectTrigger>
           <SelectValue placeholder="Kategoriler" />
         </SelectTrigger>
         <SelectContent className="bg-white-50">
           <SelectGroup>
             {categories.map((category: CategoryWithKey) => (
-              <SelectItem key={category.id} value={category.key + '-' + category.id}>{category.name}</SelectItem>
+              <SelectItem
+                key={category.id}
+                value={category.key + '-' + category.id}
+              >
+                {category.name}
+              </SelectItem>
             ))}
           </SelectGroup>
         </SelectContent>

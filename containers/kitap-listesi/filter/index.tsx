@@ -7,11 +7,11 @@ const Filter = () => {
   return (
     <section>
       <div className="flex w-full items-center space-x-2">
-				<SearchBooks />
+        <SearchBooks />
         <Clear />
       </div>
-			<Categories />
-			<MobileCategories />
+      <Categories />
+      <MobileCategories />
     </section>
   )
 }

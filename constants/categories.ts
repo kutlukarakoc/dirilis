@@ -2,52 +2,52 @@ export const categories = [
   {
     id: '4',
     name: 'Düşünce',
-		key: 'dusunce',
+    key: 'dusunce',
   },
   {
     id: '6',
     name: 'Günlük Yazılar',
-		key: 'gunluk-yazilar',
+    key: 'gunluk-yazilar',
   },
-	{
+  {
     id: '5',
     name: 'Söyleyişler',
-		key: 'soylesiler',
+    key: 'soylesiler',
   },
   {
     id: '10',
     name: 'Hâtırat',
-		key: 'hatirat',
+    key: 'hatirat',
   },
   {
     id: '8',
     name: 'İnceleme',
-		key: 'inceleme',
+    key: 'inceleme',
   },
   {
     id: '7',
     name: 'Hikâye',
-		key: 'hikaye',
+    key: 'hikaye',
   },
   {
     id: '2',
     name: 'Piyes',
-		key: 'piyes',
+    key: 'piyes',
   },
   {
     id: '9',
     name: 'Deneme',
-		key: 'deneme'
+    key: 'deneme',
   },
   {
     id: '3',
     name: 'Çeviri',
-		key: 'ceviri',
+    key: 'ceviri',
   },
   {
     id: '1',
     name: 'Şiir',
-		key: 'siir',
+    key: 'siir',
   },
   // {
   //   id: '11',

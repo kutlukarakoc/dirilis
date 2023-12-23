@@ -27,7 +27,7 @@ const Logo = forwardRef<HTMLAnchorElement, LogoProps>(
         href="/"
         className={cn(logoVariants({ size, className }))}
         ref={ref}
-				role='link'
+        role="link"
         {...props}
       >
         Diriliş Yayınları
