@@ -24,7 +24,7 @@ const Login = () => {
   const router = useRouter()
 
   const [error, setError] = useState<null | string>(null)
-  const [loading, setLoading] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -35,14 +35,14 @@ const Login = () => {
   })
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
-    setLoading(true)
+    setIsSubmitting(true)
     const res = await signIn('credentials', {
       email: values.email,
       password: values.password,
       redirect: false,
     })
 
-    setLoading(false)
+    setIsSubmitting(false)
     if (res?.error) return setError(res.error)
 
     router.replace('/yonetim-tablosu')
@@ -96,11 +96,11 @@ const Login = () => {
               />
               <Button
                 type="submit"
-                disabled={loading}
-                aria-disabled={loading}
+                disabled={isSubmitting}
+                aria-disabled={isSubmitting}
               >
-                {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Giriş Yap
+                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {isSubmitting ? 'Giriş Yapılıyor' : 'Giriş Yap'}
               </Button>
             </form>
           </Form>
