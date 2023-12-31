@@ -1,13 +1,13 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
 import ContentTexts from './contentTexts'
 import { Content } from '@/types/books'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 const ShowMore = ({
   windowWidth,
@@ -28,15 +28,15 @@ const ShowMore = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>İçindekiler</DialogTitle>
-          <DialogDescription>
-            {contents.map((content, index) => (
-              <ContentTexts
-                key={index}
-                content={content}
-              />
-            ))}
-          </DialogDescription>
         </DialogHeader>
+        <ScrollArea className="h-full w-full px-6">
+          {contents.map((content, index) => (
+            <ContentTexts
+              key={index}
+              content={content}
+            />
+          ))}
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   )
