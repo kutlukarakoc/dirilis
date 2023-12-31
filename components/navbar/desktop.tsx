@@ -23,7 +23,7 @@ const Desktop = () => {
 
   return (
     <Menubar
-      className="hidden space-x-8 lg:flex 2xl:space-x-10"
+      className="hidden space-x-8 xl:flex 2xl:space-x-10"
       value={value}
       onValueChange={setValue}
     >
@@ -74,6 +74,15 @@ const Desktop = () => {
         }`}
       >
         Kitap Listesi
+      </Link>
+      <Link
+        role="link"
+        href="/fiyat-listesi?page=1"
+        className={`nav-link ${
+          pathname.includes('/fiyat-listesi') ? 'text-white-50' : ''
+        }`}
+      >
+        Fiyat Listesi
       </Link>
       <MenubarMenu>
         <MenubarTrigger>

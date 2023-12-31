@@ -22,7 +22,7 @@ const Mobile = () => {
     <Sheet>
       <SheetTrigger
         asChild
-        className="lg:hidden"
+        className="xl:hidden"
       >
         <Button
           size="icon"

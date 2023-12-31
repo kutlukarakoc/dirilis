@@ -5,7 +5,7 @@ import Logo from '../logo'
 const Navbar = () => {
   return (
     <nav className="flex h-16 items-center bg-primary-900 xl:h-28">
-      <div className="container flex items-center justify-between">
+      <div className="flex w-full items-center justify-between px-2 sm:px-8">
         <Logo size="lg" />
         <Desktop />
         <Mobile />
