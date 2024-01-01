@@ -71,6 +71,7 @@ export default async function Page({
 
   return (
     <main className="container">
+      <h1 className="page-title">Fiyat Listesi</h1>
       <section>
         <div className="relative mb-16 w-full max-w-xl">
           <SearchBooks />
