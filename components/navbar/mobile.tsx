@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import Logo from '../logo'
@@ -16,8 +18,11 @@ import {
 } from '@/components/ui/accordion'
 import { AlignJustify } from 'lucide-react'
 import { externalNavLinks } from '@/constants/externalLinks'
+import { signOut, useSession } from 'next-auth/react'
 
 const Mobile = () => {
+  const { status } = useSession()
+
   return (
     <Sheet>
       <SheetTrigger
@@ -98,6 +103,17 @@ const Mobile = () => {
               Kitap Listesi
             </Link>
           </SheetClose>
+          <SheetClose
+            asChild
+            className="border-b border-primary-50 pb-2"
+          >
+            <Link
+              href="/fiyat-listesi?page=1"
+              className="text-header-6 text-primary-700"
+            >
+              Fiyat Listesi
+            </Link>
+          </SheetClose>
           <Accordion
             type="single"
             collapsible
@@ -141,6 +157,27 @@ const Mobile = () => {
               İletişim
             </Link>
           </SheetClose>
+          {status === 'authenticated' && (
+            <>
+              <SheetClose
+                asChild
+                className="border-b border-primary-50 pb-2"
+              >
+                <Link
+                  href="/yonetim-tablosu"
+                  className="text-header-6 text-primary-700"
+                >
+                  Yönetim Tablosu
+                </Link>
+              </SheetClose>
+              <p
+                className="text-header-6 text-primary-700 cursor-pointer"
+                onClick={() => signOut()}
+              >
+                Çıkış Yap
+              </p>
+            </>
+          )}
         </div>
       </SheetContent>
     </Sheet>
