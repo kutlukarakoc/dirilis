@@ -30,15 +30,15 @@ const Desktop = () => {
       <Link
         role="link"
         href="/"
-        className={`nav-link ${pathname === '/' ? 'text-white-50' : ''}`}
+        className={`nav-link ${pathname === '/' ? '!text-white-50' : ''}`}
       >
         Anasayfa
       </Link>
       <MenubarMenu>
         <MenubarTrigger
           className={`nav-link ${
-            pathname === '/tarihce' || pathname.includes('/biyografi')
-              ? 'text-white-50'
+            pathname.includes('/tarihce') || pathname.includes('/biyografi')
+              ? '!text-white-50'
               : ''
           }`}
         >
@@ -70,7 +70,7 @@ const Desktop = () => {
         role="link"
         href="/kitap-listesi?page=1"
         className={`nav-link ${
-          pathname.includes('/kitap-listesi') ? 'text-white-50' : ''
+          pathname.includes('/kitap-listesi') ? '!text-white-50' : ''
         }`}
       >
         Kitap Listesi
@@ -79,7 +79,7 @@ const Desktop = () => {
         role="link"
         href="/fiyat-listesi?page=1"
         className={`nav-link ${
-          pathname.includes('/fiyat-listesi') ? 'text-white-50' : ''
+          pathname.includes('/fiyat-listesi') ? '!text-white-50' : ''
         }`}
       >
         Fiyat Listesi
@@ -110,7 +110,7 @@ const Desktop = () => {
         role="link"
         href="/iletisim"
         className={`nav-link ${
-          pathname === '/iletisim' ? 'text-white-50' : ''
+          pathname.includes('/iletisim') ? '!text-white-50' : ''
         }`}
       >
         İletişim
