@@ -85,7 +85,7 @@ export default async function Page({
             <TableHeader>
               <TableRow>
                 <TableHead>Kitap İsmi</TableHead>
-                <TableHead className="w-56">Fiyat</TableHead>
+                <TableHead>Fiyat</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
