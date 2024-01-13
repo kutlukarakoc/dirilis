@@ -1,7 +1,7 @@
 import Filter from '@/containers/kitap-listesi/filter'
 import BookList from '@/containers/kitap-listesi/books'
 import BooksLoading from '@/containers/kitap-listesi/books/loading'
-import Pagination from '@/components/pagination'
+import PaginationWrapper from '@/components/paginationWrapper'
 import Book from '@/lib/models/books.model'
 import { connectToDB } from '@/lib/mongoose'
 import { Suspense } from 'react'
@@ -100,7 +100,7 @@ export default async function Page({
         <BookList books={books} />
       </Suspense>
       {count > LIMIT && (
-        <Pagination
+        <PaginationWrapper
           count={count}
           limit={LIMIT}
         />

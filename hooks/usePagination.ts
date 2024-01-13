@@ -4,9 +4,9 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 type Pagination = [
   number,
   number,
-  () => void,
-  () => void,
-  (index: number) => void,
+  () => string,
+  () => string,
+  (index: number) => string,
 ]
 
 const usePagination = (count: number, limit: number): Pagination => {
@@ -27,11 +27,13 @@ const usePagination = (count: number, limit: number): Pagination => {
   )
 
   const prevPage = () =>
-    replace(pathname + '?' + createQueryString('page', (page - 1).toString()))
+    pathname + '?' + createQueryString('page', (page - 1).toString())
+
   const nextPage = () =>
-    replace(pathname + '?' + createQueryString('page', (page + 1).toString()))
+    pathname + '?' + createQueryString('page', (page + 1).toString())
+
   const clickedPage = (index: number) =>
-    replace(pathname + '?' + createQueryString('page', (index + 1).toString()))
+    pathname + '?' + createQueryString('page', (index + 1).toString())
 
   useEffect(() => {
     if (page > totalPages)

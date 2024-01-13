@@ -1,3 +1,4 @@
+import { Skeleton } from '@/components/ui/skeleton'
 import {
   Table,
   TableBody,
@@ -6,12 +7,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import Edit from './edit'
-import Delete from './delete'
-import { formatPrice } from '@/lib/utils'
-import { BookManagement } from '@/types/bookManagament'
 
-const ManagementTable = ({ books }: { books: BookManagement[] }) => {
+export default function TableLoading() {
   return (
     <Table>
       <TableHeader>
@@ -23,18 +20,19 @@ const ManagementTable = ({ books }: { books: BookManagement[] }) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {books.map((book: BookManagement) => (
-          <TableRow key={book._id}>
-            <TableCell>{book.title}</TableCell>
-            <TableCell>{formatPrice(book.price)}</TableCell>
+        {Array.from({ length: 10 }).map((_, index) => (
+          <TableRow key={index}>
             <TableCell>
-              <Edit book={book} />
+              <Skeleton className="h-4 w-96" />
+            </TableCell>
+            <TableCell>
+              <Skeleton className="h-4 w-16" />
+            </TableCell>
+            <TableCell>
+						<Skeleton className="w-6 h-6" />
             </TableCell>
             <TableCell className="text-right">
-              <Delete
-                id={book._id}
-                title={book.title}
-              />
+              <Skeleton className='w-6 h-6' />
             </TableCell>
           </TableRow>
         ))}
@@ -42,5 +40,3 @@ const ManagementTable = ({ books }: { books: BookManagement[] }) => {
     </Table>
   )
 }
-
-export default ManagementTable

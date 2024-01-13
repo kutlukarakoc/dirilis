@@ -3,7 +3,7 @@ import { connectToDB } from '@/lib/mongoose'
 import Book from '@/lib/models/books.model'
 import SearchBooks from '@/containers/yonetim-tablosu/search'
 import ClearSearch from '@/containers/yonetim-tablosu/clear'
-import Pagination from '@/components/pagination'
+import PaginationWrapper from '@/components/paginationWrapper'
 import {
   Table,
   TableBody,
@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/table'
 import { formatPrice } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
+import { setBooks } from '@/constants/setBooks'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Fiyat Listesi',
@@ -69,6 +70,9 @@ export default async function Page({
   const { search, page } = searchParams
   const suspenseKey = search ? search + page : 'page' + page
 
+  const booksWithSets =
+    page === (count / LIMIT).toFixed(0) ? [...books, ...setBooks] : books
+
   return (
     <main className="container">
       <h1 className="page-title">Fiyat Listesi</h1>
@@ -89,7 +93,7 @@ export default async function Page({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {books.map((book, index) => (
+              {booksWithSets.map((book, index) => (
                 <TableRow key={index}>
                   <TableCell>{book.title}</TableCell>
                   <TableCell>{formatPrice(book.price)}</TableCell>
@@ -99,7 +103,7 @@ export default async function Page({
           </Table>
         </Suspense>
         {count > LIMIT && (
-          <Pagination
+          <PaginationWrapper
             count={count}
             limit={LIMIT}
           />
