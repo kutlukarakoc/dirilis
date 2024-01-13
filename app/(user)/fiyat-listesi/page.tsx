@@ -20,10 +20,11 @@ export const metadata = {
   title: 'Diriliş Yayınları | Fiyat Listesi',
 }
 
-const necessaryProperties = {
+const NECESSARY_PROPERTIES = {
   title: 1,
   price: 1,
 }
+
 const LIMIT = 12
 
 async function getBooks({
@@ -36,26 +37,37 @@ async function getBooks({
   const { search, page } = searchParams
 
   if (search !== null && search !== undefined) {
+    if (search.includes('takım') || search.includes('takim')) {
+      return { books: setBooks, count: 3 }
+    }
+
     const upperCasedSearchTerm = search.toLocaleUpperCase('TR')
+
     const books = await Book.find(
       { title: new RegExp(upperCasedSearchTerm) },
-      necessaryProperties,
+      NECESSARY_PROPERTIES,
     )
       .limit(LIMIT)
       .skip((+page - 1) * LIMIT)
       .maxTimeMS(5000)
+
     const count = await Book.find(
       { title: new RegExp(upperCasedSearchTerm) },
-      necessaryProperties,
+      NECESSARY_PROPERTIES,
     ).count()
+
     return { books, count }
   }
 
-  const books = await Book.find({}, necessaryProperties)
+  let books = await Book.find({}, NECESSARY_PROPERTIES)
     .limit(LIMIT)
     .skip((+page - 1) * LIMIT)
     .maxTimeMS(5000)
-  const count = await Book.find({}, necessaryProperties).count()
+
+  const count = await Book.find({}, NECESSARY_PROPERTIES).count()
+
+	books =
+      page === (count / LIMIT).toFixed(0) ? [...books, ...setBooks] : books
 
   return { books, count }
 }
@@ -69,9 +81,6 @@ export default async function Page({
 
   const { search, page } = searchParams
   const suspenseKey = search ? search + page : 'page' + page
-
-  const booksWithSets =
-    page === (count / LIMIT).toFixed(0) ? [...books, ...setBooks] : books
 
   return (
     <main className="container">
@@ -93,7 +102,7 @@ export default async function Page({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {booksWithSets.map((book, index) => (
+              {books.map((book, index) => (
                 <TableRow key={index}>
                   <TableCell>{book.title}</TableCell>
                   <TableCell>{formatPrice(book.price)}</TableCell>
