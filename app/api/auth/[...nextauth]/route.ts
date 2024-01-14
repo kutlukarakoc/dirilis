@@ -33,6 +33,7 @@ const authOptions: NextAuthOptions = {
             id: user._id,
           }
         } catch (error: any) {
+					console.log('CredentialsProvider', error);
           throw Error(error)
         }
       },
