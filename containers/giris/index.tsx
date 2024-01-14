@@ -15,10 +15,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { loginSchema } from '@/lib/schemas/loginSchema'
 import { Button } from '@/components/ui/button'
-import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
+import { handleSignin } from '@/app/actions'
 
 const Login = () => {
   const router = useRouter()
@@ -36,11 +36,7 @@ const Login = () => {
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     setIsSubmitting(true)
-    const res = await signIn('credentials', {
-      email: values.email,
-      password: values.password,
-      redirect: false,
-    })
+    const res = await handleSignin(values)
 
     setIsSubmitting(false)
     if (res?.error) return setError(res.error)
