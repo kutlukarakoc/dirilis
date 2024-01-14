@@ -10,13 +10,14 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from '@/components/ui/menubar'
-import { ChevronDown, User } from 'lucide-react'
+// import { ChevronDown, User } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { externalNavLinks } from '@/constants/externalLinks'
 import { usePathname } from 'next/navigation'
-import { signOut, useSession } from 'next-auth/react'
+// import { signOut, useSession } from 'next-auth/react'
 
 const Desktop = () => {
-  const { status, data } = useSession()
+  // const { status, data } = useSession()
   const pathname = usePathname()
 
   const [value, setValue] = useState('')
@@ -115,7 +116,7 @@ const Desktop = () => {
       >
         İletişim
       </Link>
-      {status === 'authenticated' && (
+      {/* {status === 'authenticated' && (
         <MenubarMenu>
           <MenubarTrigger className="flex h-7 w-7 items-center justify-center rounded-full bg-primary-100">
             <User
@@ -147,7 +148,7 @@ const Desktop = () => {
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
-      )}
+      )} */}
     </Menubar>
   )
 }

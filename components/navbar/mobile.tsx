@@ -18,10 +18,10 @@ import {
 } from '@/components/ui/accordion'
 import { AlignJustify } from 'lucide-react'
 import { externalNavLinks } from '@/constants/externalLinks'
-import { signOut, useSession } from 'next-auth/react'
+// import { signOut, useSession } from 'next-auth/react'
 
 const Mobile = () => {
-  const { status } = useSession()
+  // const { status } = useSession()
 
   return (
     <Sheet>
@@ -157,7 +157,7 @@ const Mobile = () => {
               İletişim
             </Link>
           </SheetClose>
-          {status === 'authenticated' && (
+          {/* {status === 'authenticated' && (
             <>
               <SheetClose
                 asChild
@@ -177,7 +177,7 @@ const Mobile = () => {
                 Çıkış Yap
               </p>
             </>
-          )}
+          )} */}
         </div>
       </SheetContent>
     </Sheet>
