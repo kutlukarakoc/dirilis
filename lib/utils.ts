@@ -1,6 +1,9 @@
 import { type ClassValue, clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
 import { Language } from '@/types/languages'
+import { signIn } from 'next-auth/react'
+import * as z from 'zod'
+import { loginSchema } from '@/lib/schemas/loginSchema'
 
 const customTwMerge = extendTailwindMerge({
   classGroups: {
@@ -82,4 +85,14 @@ export const getPrefferedLanguage = (): Language => {
     languages.find((lang) => lang === languagePrimaryStandard) || 'tr'
 
   return prefferedLanguage
+}
+
+export async function handleSignin(values: z.infer<typeof loginSchema>) {
+	const response = await signIn('credentials', {
+		email: values.email,
+		password: values.password,
+		redirect: false,
+	})
+
+	return response
 }

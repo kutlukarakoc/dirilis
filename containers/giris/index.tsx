@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
-import { handleSignin } from '@/app/actions'
+import { handleSignin } from '@/lib/utils'
 
 const Login = () => {
   const router = useRouter()
