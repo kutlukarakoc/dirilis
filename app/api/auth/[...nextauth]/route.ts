@@ -57,7 +57,6 @@ const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/giris',
   },
-	secret: process.env.NEXTAUTH_SECRET,
 }
 
 const authHandler = NextAuth(authOptions)
