@@ -33,7 +33,6 @@ const authOptions: NextAuthOptions = {
             id: user._id,
           }
         } catch (error: any) {
-					console.log('CredentialsProvider', error);
           throw Error(error)
         }
       },
@@ -58,6 +57,7 @@ const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/giris',
   },
+	secret: process.env.NEXTAUTH_SECRET,
 }
 
 const authHandler = NextAuth(authOptions)
