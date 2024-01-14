@@ -12,9 +12,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { formatPrice } from '@/lib/utils'
+import { formatHref, formatPrice } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
 import { setBooks } from '@/constants/setBooks'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Fiyat Listesi',
@@ -66,8 +68,7 @@ async function getBooks({
 
   const count = await Book.find({}, NECESSARY_PROPERTIES).count()
 
-	books =
-      page === (count / LIMIT).toFixed(0) ? [...books, ...setBooks] : books
+  books = page === (count / LIMIT).toFixed(0) ? [...books, ...setBooks] : books
 
   return { books, count }
 }
@@ -104,7 +105,23 @@ export default async function Page({
             <TableBody>
               {books.map((book, index) => (
                 <TableRow key={index}>
-                  <TableCell>{book.title}</TableCell>
+                  <TableCell>
+                    {book.id.includes('takim') ? (
+                      book.title
+                    ) : (
+                      <Button
+                        asChild
+                        variant="link"
+                      >
+                        <Link
+                          href={formatHref('kitap', book.title, book.id)}
+                          prefetch={false}
+                        >
+                          {book.title}
+                        </Link>
+                      </Button>
+                    )}
+                  </TableCell>
                   <TableCell>{formatPrice(book.price)}</TableCell>
                 </TableRow>
               ))}

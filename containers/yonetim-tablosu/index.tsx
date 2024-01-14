@@ -8,8 +8,10 @@ import {
 } from '@/components/ui/table'
 import Edit from './edit'
 import Delete from './delete'
-import { formatPrice } from '@/lib/utils'
+import { formatHref, formatPrice } from '@/lib/utils'
 import { BookManagement } from '@/types/bookManagament'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 const ManagementTable = ({ books }: { books: BookManagement[] }) => {
   return (
@@ -25,7 +27,19 @@ const ManagementTable = ({ books }: { books: BookManagement[] }) => {
       <TableBody>
         {books.map((book: BookManagement) => (
           <TableRow key={book._id}>
-            <TableCell>{book.title}</TableCell>
+            <TableCell>
+              <Button
+                asChild
+                variant="link"
+              >
+                <Link
+                  href={formatHref('kitap', book.title, book._id)}
+                  prefetch={false}
+                >
+                  {book.title}
+                </Link>
+              </Button>
+            </TableCell>
             <TableCell>{formatPrice(book.price)}</TableCell>
             <TableCell>
               <Edit book={book} />
