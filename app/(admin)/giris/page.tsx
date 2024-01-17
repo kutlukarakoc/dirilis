@@ -9,5 +9,5 @@ export const metadata = {
 export default async function Page() {
   const session = await getServerSession()
 
-  return session ? <AlreadyLoggedIn /> : <Login />
+  return session?.user ? <AlreadyLoggedIn /> : <Login />
 }
