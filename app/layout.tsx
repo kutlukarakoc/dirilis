@@ -1,4 +1,3 @@
-import SessionContext from '@/components/SessionProvider'
 import { Roboto } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -19,9 +18,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className={roboto.className}>
-        <SessionContext>{children}</SessionContext>
-      </body>
+      <body className={roboto.className}>{children}</body>
     </html>
   )
 }
