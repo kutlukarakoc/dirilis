@@ -60,7 +60,7 @@ async function getBooks({
   return { books, count }
 }
 
-export default async function Page({
+export default async function ManagementPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string }
