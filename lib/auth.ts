@@ -47,14 +47,14 @@ export const authOptions: NextAuthOptions = {
         token.email = user.email
         token.id = user.id
       }
-      return token
+      return Promise.resolve(token)
     },
     async session({ session, token }) {
       if (session.user) {
         (session.user as { id: string }).id = token.id as string
         (session.user as { email: string }).email = token.email as string
       }
-      return session
+      return Promise.resolve(session)
     },
   },
   pages: {
