@@ -1,8 +1,6 @@
 import NextAuth from 'next-auth'
 import { authOptions } from '@/lib/auth'
-import { NextApiHandler } from 'next'
 
-const authHandler: NextApiHandler = (req, res) =>
-  NextAuth(req, res, authOptions)
+const authHandler = NextAuth(authOptions)
 
 export { authHandler as GET, authHandler as POST }

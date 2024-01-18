@@ -18,11 +18,10 @@ import {
 } from '@/components/ui/accordion'
 import { AlignJustify } from 'lucide-react'
 import { externalNavLinks } from '@/constants/externalLinks'
-// import { signOut, useSession } from 'next-auth/react'
+import { UserMail } from '@/types/userMail'
+import { signOut } from 'next-auth/react'
 
-const Mobile = () => {
-  // const { status } = useSession()
-
+const Mobile = ({ email }: UserMail) => {
   return (
     <Sheet>
       <SheetTrigger
@@ -157,7 +156,7 @@ const Mobile = () => {
               İletişim
             </Link>
           </SheetClose>
-          {/* {status === 'authenticated' && (
+          {email && (
             <>
               <SheetClose
                 asChild
@@ -171,13 +170,13 @@ const Mobile = () => {
                 </Link>
               </SheetClose>
               <p
-                className="text-header-6 text-primary-700 cursor-pointer"
+                className="cursor-pointer text-header-6 text-primary-700"
                 onClick={() => signOut()}
               >
                 Çıkış Yap
               </p>
             </>
-          )} */}
+          )}
         </div>
       </SheetContent>
     </Sheet>

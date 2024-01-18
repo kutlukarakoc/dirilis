@@ -10,14 +10,13 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from '@/components/ui/menubar'
-// import { ChevronDown, User } from 'lucide-react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, User } from 'lucide-react'
 import { externalNavLinks } from '@/constants/externalLinks'
 import { usePathname } from 'next/navigation'
-// import { signOut, useSession } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
+import { UserMail } from '@/types/userMail'
 
-const Desktop = () => {
-  // const { status, data } = useSession()
+const Desktop = ({ email }: UserMail) => {
   const pathname = usePathname()
 
   const [value, setValue] = useState('')
@@ -116,7 +115,7 @@ const Desktop = () => {
       >
         İletişim
       </Link>
-      {/* {status === 'authenticated' && (
+      {email && (
         <MenubarMenu>
           <MenubarTrigger className="flex h-7 w-7 items-center justify-center rounded-full bg-primary-100">
             <User
@@ -126,7 +125,7 @@ const Desktop = () => {
           </MenubarTrigger>
           <MenubarContent align="center">
             <MenubarItem>
-              <p className="h-full w-full px-2 py-1.5">{data.user?.email}</p>
+              <p className="h-full w-full px-2 py-1.5">{email}</p>
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem>
@@ -148,7 +147,7 @@ const Desktop = () => {
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
-      )} */}
+      )}
     </Menubar>
   )
 }
