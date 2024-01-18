@@ -91,7 +91,6 @@ export async function handleSignin(values: z.infer<typeof loginSchema>) {
 	const response = await signIn('credentials', {
 		email: values.email,
 		password: values.password,
-		redirect: false,
 	})
 
 	return response
