@@ -45,7 +45,7 @@ export async function deleteBook(id: string) {
 
     await Book.findByIdAndDelete(id)
 
-		revalidatePath('/yonetim-tablosu')
+    revalidatePath('/yonetim-tablosu')
 
     return {
       status: 'success',
@@ -65,7 +65,7 @@ export async function addBook({ book }: { book: any }) {
     await connectToDB()
     const newBook = await Book.create({ book })
 
-		revalidatePath('/yonetim-tablosu')
+    revalidatePath('/yonetim-tablosu')
 
     return {
       status: 'success',
@@ -79,11 +79,15 @@ export async function addBook({ book }: { book: any }) {
 }
 
 export async function signin(values: z.infer<typeof loginSchema>) {
-	const response = await signIn('credentials', {
-		email: values.email,
-		password: values.password,
-		redirect: false,
-	})
+  try {
+    const response = await signIn('credentials', {
+      email: values.email,
+      password: values.password,
+      redirect: false,
+    })
 
-	return response
+    return response
+  } catch (error) {
+    console.log('Login error:', error)
+  }
 }
