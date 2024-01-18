@@ -25,12 +25,14 @@ export const authOptions: NextAuthOptions = {
           const user = await Admin.findOne({ email })
           if (!user) throw Error('Geçersiz email.')
 
-          const passwordMatch = await bcrypt.compare(password, user?.password)
+          const passwordMatch = await bcrypt.compare(password, user.password)
           if (!passwordMatch) throw Error('Geçersiz şifre.')
 
+					delete user.password
+
           return {
-            email: user?.email,
-            id: user?._id,
+            email: user.email,
+            id: user._id,
           }
         } catch (error: any) {
           throw Error(error)
@@ -38,19 +40,19 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-	secret: process.env.NEXTAUTH_SECRET as string,
+  secret: process.env.NEXTAUTH_SECRET as string,
   callbacks: {
     async jwt({ token, user }) {
-      if (user?.email) {
-        token.email = user?.email
-        token.id = user?.id
+      if (user.email) {
+        token.email = user.email
+        token.id = user.id
       }
       return token
     },
     async session({ session, token }) {
-      if (session?.user) {
-        (session?.user as { id: string }).id = token?.id as string
-        (session?.user as { email: string }).email = token?.email as string
+      if (session.user) {
+        (session.user as { id: string }).id = token.id as string
+        (session.user as { email: string }).email = token.email as string
       }
       return session
     },
