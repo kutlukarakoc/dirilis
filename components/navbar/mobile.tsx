@@ -18,10 +18,11 @@ import {
 } from '@/components/ui/accordion'
 import { AlignJustify } from 'lucide-react'
 import { externalNavLinks } from '@/constants/externalLinks'
-import { UserMail } from '@/types/userMail'
-import { signOut } from 'next-auth/react'
+// import { UserMail } from '@/types/userMail'
+// import { signOut } from 'next-auth/react'
 
-const Mobile = ({ email }: UserMail) => {
+const Mobile = () => {
+// const Mobile = ({ email }: UserMail) => {
   return (
     <Sheet>
       <SheetTrigger
@@ -156,7 +157,7 @@ const Mobile = ({ email }: UserMail) => {
               İletişim
             </Link>
           </SheetClose>
-          {email && (
+          {/* {email && (
             <>
               <SheetClose
                 asChild
@@ -176,7 +177,7 @@ const Mobile = ({ email }: UserMail) => {
                 Çıkış Yap
               </p>
             </>
-          )}
+          )} */}
         </div>
       </SheetContent>
     </Sheet>
