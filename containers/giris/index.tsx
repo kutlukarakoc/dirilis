@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
-import { signin } from '@/app/actions'
+import { handleSignin } from '@/lib/utils'
 
 const Login = () => {
   const router = useRouter()
@@ -36,7 +36,7 @@ const Login = () => {
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     setIsSubmitting(true)
-    const res = await signin(values)
+    const res = await handleSignin(values)
 
     setIsSubmitting(false)
     if (res?.error) return setError(res.error)

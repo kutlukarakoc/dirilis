@@ -22,6 +22,9 @@ export const authOptions: NextAuthOptions = {
             password: string
           }
 
+					console.log('login email', email)
+					console.log('login password', password)
+
           const user = await Admin.findOne({ email })
           if (!user) throw Error('Geçersiz email.')
 
