@@ -1,9 +1,16 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
+
+import { connectToDB } from '../lib/mongoose'
+
+import * as z from 'zod'
+
 import Book from '../lib/models/books.model'
 import { UpdateBook } from '@/types/updateBook'
-import { connectToDB } from '../lib/mongoose'
-import { revalidatePath } from 'next/cache'
+
+import { loginSchema } from '@/lib/schemas/loginSchema'
+import { signIn } from 'next-auth/react'
 
 export async function updateBook({
   id,
@@ -69,4 +76,14 @@ export async function addBook({ book }: { book: any }) {
     console.log('add error: ', error)
     return 'Bir hata oluştu. Daha sonra tekrar deneyin.'
   }
+}
+
+export async function signin(values: z.infer<typeof loginSchema>) {
+	const response = await signIn('credentials', {
+		email: values.email,
+		password: values.password,
+		redirect: false,
+	})
+
+	return response
 }
