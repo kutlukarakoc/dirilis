@@ -38,7 +38,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-	secret: process.env.NEXTAUTH_SECRET,
+	secret: process.env.NEXTAUTH_SECRET as string,
   callbacks: {
     async jwt({ token, user }) {
       if (user?.email) {
