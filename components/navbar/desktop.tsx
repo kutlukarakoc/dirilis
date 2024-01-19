@@ -10,15 +10,13 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from '@/components/ui/menubar'
-// import { ChevronDown, User } from 'lucide-react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, User } from 'lucide-react'
 import { externalNavLinks } from '@/constants/externalLinks'
 import { usePathname } from 'next/navigation'
-// import { signOut } from 'next-auth/react'
-// import { UserMail } from '@/types/userMail'
+import { signOut } from 'next-auth/react'
+import { UserMail } from '@/types/userMail'
 
-// const Desktop = ({ email }: UserMail) => {
-const Desktop = () => {
+const Desktop = ({ email }: UserMail) => {
   const pathname = usePathname()
 
   const [value, setValue] = useState('')
@@ -117,7 +115,7 @@ const Desktop = () => {
       >
         İletişim
       </Link>
-      {/* {email && (
+      {email && (
         <MenubarMenu>
           <MenubarTrigger className="flex h-7 w-7 items-center justify-center rounded-full bg-primary-100">
             <User
@@ -149,7 +147,7 @@ const Desktop = () => {
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
-      )} */}
+      )}
     </Menubar>
   )
 }
