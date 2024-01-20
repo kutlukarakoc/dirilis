@@ -49,6 +49,7 @@ async function getBooks({
       { title: new RegExp(upperCasedSearchTerm) },
       NECESSARY_PROPERTIES,
     )
+      .collation({ locale: 'tr' })
       .sort({ title: 1 })
       .limit(LIMIT)
       .skip((+page - 1) * LIMIT)
@@ -63,6 +64,7 @@ async function getBooks({
   }
 
   let books = await Book.find({}, NECESSARY_PROPERTIES)
+    .collation({ locale: 'tr' })
     .sort({ title: 1 })
     .limit(LIMIT)
     .skip((+page - 1) * LIMIT)
