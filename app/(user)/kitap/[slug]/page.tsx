@@ -5,6 +5,8 @@ import BookImage from '@/containers/kitap/image'
 import Title from '@/containers/kitap/title'
 import Price from '@/containers/kitap/price'
 import BookTabs from '@/containers/kitap/tabs'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 async function getBookById(id: string) {
   await connectToDB()
@@ -21,7 +23,7 @@ export async function generateMetadata({
   const bookId = slug.split('-').at(-1) as string
 
   const book = await getBookById(bookId)
-  const bookTitle = book.title
+  const bookTitle = book?.title
   const prefix = 'Diriliş Yayınları'
 
   return {
@@ -36,6 +38,22 @@ export default async function Page({
 }) {
   const bookId = slug.split('-').at(-1) as string
   const book = await getBookById(bookId)
+
+  if (!book) {
+    return (
+      <div className="absolute left-1/2 top-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center space-y-8 text-center">
+        <h2 className="text-header-3 text-primary-800 sm:text-header-2">
+          Kitap bulunamadı.
+        </h2>
+        <Button
+          asChild
+					size='lg'
+        >
+          <Link href="/kitap-listesi" className='text-header-5'>Kitap Listesini Görüntüle</Link>
+        </Button>
+      </div>
+    )
+  }
 
   return (
     <section>
