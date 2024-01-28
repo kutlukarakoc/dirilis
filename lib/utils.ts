@@ -87,7 +87,7 @@ export const getPrefferedLanguage = (): Language => {
   return prefferedLanguage
 }
 
-export async function handleSignin(values: z.infer<typeof loginSchema>) {
+export const handleSignin = async (values: z.infer<typeof loginSchema>) => {
   try {
     const response = await signIn('credentials', {
       email: values.email,
@@ -98,4 +98,18 @@ export async function handleSignin(values: z.infer<typeof loginSchema>) {
   } catch (err) {
     console.log('login error:', err)
   }
+}
+
+export const convertFileToBase64 = async (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      const base64String = reader.result as string
+      resolve(base64String)
+    }
+    reader.onerror = (error) => {
+      reject(error)
+    }
+  })
 }

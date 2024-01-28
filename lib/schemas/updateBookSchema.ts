@@ -1,7 +1,5 @@
 import * as z from 'zod'
 
-const imageUrlRegex = /^https:\/\/i\.ibb\.co\/.*\.webp$/
-
 export const updateBookSchema = z.object({
   price: z.coerce.number({
     invalid_type_error: 'Sadece rakam girilebilir.',
@@ -33,9 +31,9 @@ export const updateBookSchema = z.object({
 
   imageUrl: z
     .string({
-      required_error: 'Görsel linki alanı boş bırakılamaz',
+      required_error: 'Görsel alanı boş bırakılamaz.',
     })
-    .regex(imageUrlRegex, {
-      message: 'Link https://i.ibb.co/ ile başlamalı ve .webp ile bitmelidir.',
+    .regex(/^.*\.webp$/, {
+      message: 'Görsel webp tipinde olmalıdır.',
     }),
 })

@@ -15,11 +15,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { updateBookSchema } from '@/lib/schemas/updateBookSchema'
 import Image from 'next/image'
-import { updateBook } from '@/app/actions'
+import { updateBook, uploadImage } from '@/app/actions'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useToast } from '@/components/ui/use-toast'
 import { BookManagement } from '@/types/bookManagament'
 import EditFormFooter from './editFormFooter'
+import { convertFileToBase64 } from '@/lib/utils'
 
 interface EditForm {
   book: BookManagement
@@ -28,8 +29,6 @@ interface EditForm {
 
 const EditForm = ({ book, setOpen }: EditForm) => {
   const { toast } = useToast()
-
-  const [isUpdating, setIsUpdating] = useState(false)
 
   const form = useForm<z.infer<typeof updateBookSchema>>({
     resolver: zodResolver(updateBookSchema),
@@ -43,6 +42,11 @@ const EditForm = ({ book, setOpen }: EditForm) => {
       imageUrl: book.imageUrl,
     },
   })
+
+  const [isUpdating, setIsUpdating] = useState(false)
+  const [currentImageUrl, setCurrentImageUrl] = useState<string>(
+    form.getValues('imageUrl'),
+  )
 
   async function onSubmit(values: z.infer<typeof updateBookSchema>) {
     setIsUpdating(true)
@@ -60,25 +64,31 @@ const EditForm = ({ book, setOpen }: EditForm) => {
       },
     }
 
-    const confirmText = 'Bu işlemi gerçekleştirmek istediğinizden emin misiniz?'
-    if (confirm(confirmText) === true) {
-      const res = await updateBook({ id, data })
+    if (!currentImageUrl.startsWith('http')) {
+      const file = currentImageUrl.split('base64,')[1]
+      const uploadImageResponse = await uploadImage({ file })
 
-      setIsUpdating(false)
-      setOpen(false)
-
-      if (res.status === 'success') {
-        toast({
-          variant: 'success',
-          title: res.message,
-          description: 'Güncellenen Kitap: ' + book.title,
-        })
-      } else {
-        toast({
-          variant: 'destructive',
-          title: res.message,
-        })
+      if (uploadImageResponse.success) {
+        data.imageUrl = uploadImageResponse.data.url
       }
+    }
+
+    const res = await updateBook({ id, data })
+
+    setIsUpdating(false)
+    setOpen(false)
+
+    if (res.status === 'success') {
+      toast({
+        variant: 'success',
+        title: res.message,
+        description: 'Güncellenen Kitap: ' + book.title,
+      })
+    } else {
+      toast({
+        variant: 'destructive',
+        title: res.message,
+      })
     }
   }
 
@@ -202,36 +212,43 @@ const EditForm = ({ book, setOpen }: EditForm) => {
             )}
           />
         </div>
-        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="flex flex-col items-center justify-center">
           <FormField
             control={form.control}
             name="imageUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Görsel Linki</FormLabel>
+                <FormLabel className='flex flex-col justify-center items-center'>
+                  <p className="mb-2">Kitap Görseli</p>
+                  <Image
+                    src={currentImageUrl}
+                    alt={book.title}
+                    width="100"
+                    height="200"
+                  />
+									<div className='mt-4 rounded-md border border-primary-100 bg-white-50 px-3 py-2 cursor-pointer'>Yeni Görsel Seç</div>
+                </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="https://i.ibb.co/DM0HHvg/cikis-yolu-2.webp"
-                    {...field}
+                    className="hidden"
+                    type="file"
+                    onChange={async (e) => {
+                      const file = e.target.files?.[0]
+                      if (file) {
+                        const base64String = await convertFileToBase64(file)
+                        setCurrentImageUrl(base64String)
+                      }
+                      field.onChange(e)
+                    }}
                   />
                 </FormControl>
                 <FormDescription>
-                  Görsel linki webp formatında olmalıdır ve i.ibb.co sitesi
-                  üzerinden yüklenmelidir.
+                  Görsel webp formatında olmalıdır.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className="flex flex-col items-center justify-center gap-2">
-            <Image
-              src={form.getValues('imageUrl')}
-              alt={book.title}
-              width="100"
-              height="200"
-            />
-            <p className="text-sm text-slate-500">Görsel önizlemesi</p>
-          </div>
         </div>
         <EditFormFooter isUpdating={isUpdating} />
       </form>

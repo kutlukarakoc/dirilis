@@ -2,6 +2,7 @@
 
 import Book from '../lib/models/books.model'
 import { UpdateBook } from '@/types/updateBook'
+import { FileResponse } from '@/types/fileResponse'
 import { connectToDB } from '../lib/mongoose'
 import { revalidatePath } from 'next/cache'
 
@@ -38,7 +39,7 @@ export async function deleteBook(id: string) {
 
     await Book.findByIdAndDelete(id)
 
-		revalidatePath('/yonetim-tablosu')
+    revalidatePath('/yonetim-tablosu')
 
     return {
       status: 'success',
@@ -58,7 +59,7 @@ export async function addBook({ book }: { book: any }) {
     await connectToDB()
     const newBook = await Book.create({ book })
 
-		revalidatePath('/yonetim-tablosu')
+    revalidatePath('/yonetim-tablosu')
 
     return {
       status: 'success',
@@ -68,5 +69,30 @@ export async function addBook({ book }: { book: any }) {
   } catch (error) {
     console.log('add error: ', error)
     return 'Bir hata oluştu. Daha sonra tekrar deneyin.'
+  }
+}
+
+export async function uploadImage({
+  file,
+}: {
+  file: string
+}): Promise<FileResponse> {
+  try {
+    const formData = new FormData()
+    formData.append('image', file)
+
+    const response = await fetch(
+      `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`,
+      {
+        method: 'POST',
+        body: formData,
+      },
+    )
+
+    const result = await response.json()
+    return result as FileResponse
+  } catch (error) {
+    console.log('image upload error: ', error)
+    throw new Error('Bir hata oluştu. Daha sonra tekrar deneyin.')
   }
 }
