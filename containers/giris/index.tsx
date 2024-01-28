@@ -64,6 +64,8 @@ const Login = () => {
                     <FormControl>
                       <Input
                         placeholder="Email adresiniz"
+												type='email'
+                        autoComplete="on"
                         {...field}
                       />
                     </FormControl>
@@ -95,7 +97,9 @@ const Login = () => {
                 disabled={isSubmitting}
                 aria-disabled={isSubmitting}
               >
-                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {isSubmitting && (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                )}
                 {isSubmitting ? 'Giriş Yapılıyor' : 'Giriş Yap'}
               </Button>
             </form>

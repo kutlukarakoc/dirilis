@@ -123,6 +123,7 @@ const ContactForm = () => {
                   <FormControl>
                     <Input
                       placeholder="Email adresiniz"
+											type='email'
                       {...field}
                     />
                   </FormControl>
@@ -140,6 +141,7 @@ const ContactForm = () => {
                   <FormControl>
                     <Input
                       placeholder="Telefon numaranız"
+											type='tel'
                       {...field}
                     />
                   </FormControl>
