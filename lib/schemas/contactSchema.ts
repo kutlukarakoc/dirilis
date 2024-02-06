@@ -6,7 +6,6 @@ const phoneRegex =
 export const contactSchema = z.object({
   name: z
     .string({
-      required_error: 'İsim alanı boş bırakılamaz.',
       invalid_type_error: 'İsim sadece alfabetik karakterler içerebilir.',
     })
     .min(1, {
@@ -15,7 +14,6 @@ export const contactSchema = z.object({
 
   surname: z
     .string({
-      required_error: 'Soyisim alanı boş bırakılamaz.',
       invalid_type_error: 'Soyisim sadece alfabetik karakterler içerebilir.',
     })
     .min(1, {
@@ -23,16 +21,18 @@ export const contactSchema = z.object({
     }),
 
   email: z
-    .string({
-      required_error: 'Email alanı boş bırakılamaz.',
+    .string()
+    .min(1, {
+      message: 'Email alanı boş bırakılamaz.',
     })
     .email({
       message: 'Geçerli bir email giriniz.',
     }),
 
   phone: z
-    .string({
-      required_error: 'Telefon numarası alanı boş bırakılamaz.',
+    .string()
+    .min(1, {
+      message: 'Telefon numarası alanı boş bırakılamaz.',
     })
     .regex(phoneRegex, {
       message: 'Geçerli bir telefon numarası giriniz.',
@@ -41,11 +41,7 @@ export const contactSchema = z.object({
       message: 'Geçerli bir telefon numarası giriniz.',
     }),
 
-  message: z
-    .string({
-      required_error: 'Mesaj alanı boş bırakılamaz',
-    })
-    .min(1, {
-      message: 'Mesaj alanı boş bırakılamaz.',
-    }),
+  message: z.string().min(1, {
+    message: 'Mesaj alanı boş bırakılamaz.',
+  }),
 })
