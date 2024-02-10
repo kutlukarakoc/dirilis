@@ -25,7 +25,6 @@ export interface Category {
 }
 
 export interface Content {
-  subtitle?: string
-  title?: string
-  heading?: string
+  type: 'title' | 'subtitle'
+  text: string
 }
