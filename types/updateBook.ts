@@ -1,9 +1,6 @@
-import { Publish } from "./books"
+import { Book } from './books'
 
-export interface UpdateBook {
-	price: number
-	isbn: string
-	pages: number
-	imageUrl: string
-	publish: Publish
-}
+export type UpdateBook = Pick<
+  Book,
+  'price' | 'isbn' | 'pages' | 'imageUrl' | 'publish'
+>

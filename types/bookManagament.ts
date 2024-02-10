@@ -1,11 +1,10 @@
-import { Publish } from './books'
+import { Book } from './books'
 
-export interface BookManagement {
-  title: string
-  pages: number
-  price: number
-  publish: Publish
-  isbn: string
-  imageUrl: string
+type CommonBookTypes = Pick<
+  Book,
+  'title' | 'pages' | 'price' | 'publish' | 'isbn' | 'imageUrl'
+>
+
+export interface BookManagement extends CommonBookTypes {
   _id: string
 }
