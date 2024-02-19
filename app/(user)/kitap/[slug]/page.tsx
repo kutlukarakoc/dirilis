@@ -63,7 +63,7 @@ export default async function Page({
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="mb-14 flex items-center justify-center rounded-xl bg-primary-50 py-5 lg:mb-0 lg:max-w-[80%] lg:py-0">
+        <div className="mb-14 flex items-center justify-center rounded-md bg-primary-50 py-5 lg:mb-0 lg:max-w-[80%] lg:py-0">
           <BookImage
             source={book.imageUrl}
             title={book.title}
