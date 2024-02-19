@@ -3,17 +3,17 @@ import Image from 'next/image'
 
 const BookImage = ({ source, title }: { source: string; title: string }) => {
   return (
-    <picture className="mb-14 w-40 max-w-[362px] md:mb-0 md:w-4/12">
+    <picture className="rounded-md">
       <Image
         src={source}
         alt={title}
-        width={362}
-        height={543}
+        width={326}
+        height={459}
         quality={100}
-        className="h-auto w-full"
+        className="h-auto max-h-[459px] w-full max-w-[362px]"
         priority
         placeholder={`data:image/svg+xml;base64,${toBase64(shimmer())}`}
-        sizes="(max-width: 768px) 160px, (max-width: 1150px) 280px, 362px"
+        sizes="(max-width: 768px) 160px, (max-width: 1150px) 280px, 326px"
       />
     </picture>
   )
