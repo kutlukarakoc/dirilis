@@ -10,10 +10,10 @@ const ContentTexts = ({ content }: { content: Content }) => {
       ) : (
         <div className="mb-1 flex text-paragraph-mobile md:text-paragraph-tablet xl:text-paragraph">
           <span className="inline-block w-8 min-w-[32px] text-primary-700">
-            {content.text.split(' ').slice(0, 1)}
+            {content.text?.split(' ')?.slice(0, 1)}
           </span>
           <span className="text-black-500">
-            {content.text.split(' ').slice(1).join(' ')}
+            {content.text?.split(' ')?.slice(1)?.join(' ')}
           </span>
         </div>
       )}
