@@ -69,7 +69,7 @@ export default async function Page({
             title={book.title}
           />
         </div>
-        <article className="">
+        <article>
           <Title title={book.title} />
           <Price price={book.price} />
           <BookTabs book={book} />
