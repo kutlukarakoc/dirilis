@@ -7,9 +7,7 @@ import TableLoading from '@/containers/yonetim-tablosu/tableLoading'
 import SearchBooks from '@/containers/yonetim-tablosu/search'
 import ClearSearch from '@/containers/yonetim-tablosu/clear'
 import PaginationWrapper from '@/components/paginationWrapper'
-import { Button } from '@/components/ui/button'
-import { Plus } from 'lucide-react'
-
+import Create from '@/containers/yonetim-tablosu/create'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Yönetim Tablosu',
@@ -93,13 +91,7 @@ export default async function ManagementPage({
               <SearchBooks />
               <ClearSearch />
             </div>
-            <Button
-              className="h-11 gap-2"
-              size="lg"
-            >
-              <Plus className="cursor-pointer text-white-50" />
-              Kitap Ekle
-            </Button>
+            <Create />
           </div>
           <Suspense
             key={suspenseKey}
