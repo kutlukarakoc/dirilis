@@ -54,21 +54,24 @@ export async function deleteBook(id: string) {
   }
 }
 
-export async function addBook({ book }: { book: any }) {
+export async function createBook({ book }: { book: any }) {
   try {
     await connectToDB()
-    const newBook = await Book.create({ book })
+		
+    await Book.create(book)
 
     revalidatePath('/yonetim-tablosu')
 
     return {
       status: 'success',
-      message: 'Ekleme işlemi başarı ile tamamlanmıştır.',
-      newBook: JSON.parse(JSON.stringify(newBook)),
+      message: 'Kitap ekleme işlemi başarı ile tamamlanmıştır.',
     }
   } catch (error) {
     console.log('add error: ', error)
-    return 'Bir hata oluştu. Daha sonra tekrar deneyin.'
+		return {
+      status: 'error',
+      message: 'Kitap oluştururken bir hata oluştu. Daha sonra tekrar deneyin.',
+    }
   }
 }
 
