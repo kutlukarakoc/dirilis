@@ -47,13 +47,13 @@ const Login = () => {
   return (
     <section style={{ height: '100vh' }}>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <Logo className="mx-auto mb-10 text-primary-600" />
+        <Logo className="mx-auto text-primary-600" />
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-8"
+              className="space-y-8 flex flex-col"
             >
               <FormField
                 control={form.control}
@@ -96,6 +96,7 @@ const Login = () => {
                 type="submit"
                 disabled={isSubmitting}
                 aria-disabled={isSubmitting}
+								className='ml-auto'
               >
                 {isSubmitting && (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
