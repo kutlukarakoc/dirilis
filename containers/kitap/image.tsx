@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const BookImage = ({ source, title }: { source: string; title: string }) => {
   return (
-    <picture className="rounded-md">
+    <picture>
       <Image
         src={source}
         alt={title}
