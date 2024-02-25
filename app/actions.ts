@@ -1,10 +1,17 @@
 'use server'
 
-import Book from '../lib/models/books.model'
+import Book from '@/lib/models/books.model'
+import { connectToDB } from '@/lib/mongoose'
 import { UpdateBook } from '@/types/updateBook'
 import { FileResponse } from '@/types/fileResponse'
-import { connectToDB } from '../lib/mongoose'
 import { revalidatePath } from 'next/cache'
+
+export async function getBookById(id: string) {
+  await connectToDB()
+  const book = await Book.findOne({ _id: id }).maxTimeMS(5000)
+  const formattedBook = await JSON.parse(JSON.stringify(book))
+  return formattedBook
+}
 
 export async function updateBook({
   id,
