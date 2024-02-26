@@ -13,6 +13,61 @@ export async function getBookById(id: string) {
   return formattedBook
 }
 
+export async function getBooks({
+  searchParams,
+  necessaryProperties,
+  includeSetBooksFilter = false,
+  setBooks,
+  limit = 12,
+  sort = false,
+  maxTimeMS = 5000,
+}: {
+  searchParams: { [key: string]: string }
+  necessaryProperties?: any
+  includeSetBooksFilter?: boolean
+  setBooks?: any
+  limit?: number
+  sort?: boolean
+  maxTimeMS?: number
+}) {
+  await connectToDB()
+
+  const { category, search, page } = searchParams
+
+  const categoryId = category?.split('-').at(-1)
+  const upperCasedSearchTerm = search?.toLocaleUpperCase('TR')
+
+  if (
+    includeSetBooksFilter &&
+    (upperCasedSearchTerm?.includes('TAKIM') || upperCasedSearchTerm?.includes('TAKİM'))
+  ) {
+    return { books: setBooks, count: 3 }
+  }
+
+  const queryObject: { title?: RegExp; 'category.id'?: string } = {}
+
+  if (upperCasedSearchTerm) queryObject.title = new RegExp(upperCasedSearchTerm)
+  if (categoryId) queryObject['category.id'] = categoryId
+
+  const query = Book.find(queryObject, necessaryProperties)
+    .limit(limit)
+    .skip((+page - 1) * limit)
+    .maxTimeMS(maxTimeMS)
+
+  if (sort) query.collation({ locale: 'tr' }).sort({ title: 1 })
+
+  let books = await query
+
+  const count = await Book.find(queryObject, necessaryProperties).count()
+
+  if (includeSetBooksFilter) {
+    books =
+      page === (count / limit).toFixed(0) ? [...books, ...setBooks] : books
+  }
+
+  return { books, count }
+}
+
 export async function updateBook({
   id,
   data,
@@ -64,7 +119,7 @@ export async function deleteBook(id: string) {
 export async function createBook({ book }: { book: any }) {
   try {
     await connectToDB()
-		
+
     await Book.create(book)
 
     revalidatePath('/yonetim-tablosu')
@@ -75,7 +130,7 @@ export async function createBook({ book }: { book: any }) {
     }
   } catch (error) {
     console.log('add error: ', error)
-		return {
+    return {
       status: 'error',
       message: 'Kitap oluştururken bir hata oluştu. Daha sonra tekrar deneyin.',
     }
