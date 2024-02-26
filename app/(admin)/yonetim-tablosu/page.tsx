@@ -1,6 +1,4 @@
 import { Suspense } from 'react'
-import { connectToDB } from '@/lib/mongoose'
-import Book from '@/lib/models/books.model'
 import AdminNavbar from '@/containers/yonetim-tablosu/navbar'
 import ManagementTable from '@/containers/yonetim-tablosu'
 import TableLoading from '@/containers/yonetim-tablosu/tableLoading'
@@ -8,6 +6,7 @@ import SearchBooks from '@/containers/yonetim-tablosu/search'
 import ClearSearch from '@/containers/yonetim-tablosu/clear'
 import PaginationWrapper from '@/components/paginationWrapper'
 import Create from '@/containers/yonetim-tablosu/create'
+import { getBooks } from '@/app/actions'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Yönetim Tablosu',
@@ -24,47 +23,14 @@ const necessaryProperties = {
 }
 const LIMIT = 12
 
-async function getBooks({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string }
-}) {
-  await connectToDB()
-
-  const { search, page } = searchParams
-
-  if (search !== null && search !== undefined) {
-    const upperCasedSearchTerm = search.toLocaleUpperCase('TR')
-    const books = await Book.find(
-      { title: new RegExp(upperCasedSearchTerm) },
-      necessaryProperties,
-    )
-      .limit(LIMIT)
-      .skip((+page - 1) * LIMIT)
-      .maxTimeMS(5000)
-    const count = await Book.find(
-      { title: new RegExp(upperCasedSearchTerm) },
-      necessaryProperties,
-    ).count()
-    return { books, count }
-  }
-
-  const books = await Book.find({}, necessaryProperties)
-    .limit(LIMIT)
-    .skip((+page - 1) * LIMIT)
-    .maxTimeMS(5000)
-  const count = await Book.find({}, necessaryProperties).count()
-
-  return { books, count }
-}
-
 export default async function ManagementPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string }
 }) {
-  const { books, count } = await getBooks({ searchParams })
-  const convertedBooks = books.map((book) => ({
+  const { books, count } = await getBooks({ searchParams, necessaryProperties })
+  
+	const convertedBooks = books.map((book: any) => ({
     title: book.title,
     pages: book.pages,
     price: book.price,

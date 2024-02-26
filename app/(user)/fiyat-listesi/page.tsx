@@ -1,6 +1,4 @@
 import { Suspense } from 'react'
-import { connectToDB } from '@/lib/mongoose'
-import Book from '@/lib/models/books.model'
 import SearchBooks from '@/containers/yonetim-tablosu/search'
 import ClearSearch from '@/containers/yonetim-tablosu/clear'
 import PaginationWrapper from '@/components/paginationWrapper'
@@ -17,72 +15,31 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { setBooks } from '@/constants/setBooks'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { getBooks } from '@/app/actions'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Fiyat Listesi',
 }
 
-const NECESSARY_PROPERTIES = {
+const necessaryProperties = {
   title: 1,
   price: 1,
 }
 
 const LIMIT = 12
 
-async function getBooks({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string }
-}) {
-  await connectToDB()
-
-  const { search, page } = searchParams
-
-  if (search !== null && search !== undefined) {
-    if (search.includes('takım') || search.includes('takim')) {
-      return { books: setBooks, count: 3 }
-    }
-
-    const upperCasedSearchTerm = search.toLocaleUpperCase('TR')
-
-    const books = await Book.find(
-      { title: new RegExp(upperCasedSearchTerm) },
-      NECESSARY_PROPERTIES,
-    )
-      .collation({ locale: 'tr' })
-      .sort({ title: 1 })
-      .limit(LIMIT)
-      .skip((+page - 1) * LIMIT)
-      .maxTimeMS(5000)
-
-    const count = await Book.find(
-      { title: new RegExp(upperCasedSearchTerm) },
-      NECESSARY_PROPERTIES,
-    ).count()
-
-    return { books, count }
-  }
-
-  let books = await Book.find({}, NECESSARY_PROPERTIES)
-    .collation({ locale: 'tr' })
-    .sort({ title: 1 })
-    .limit(LIMIT)
-    .skip((+page - 1) * LIMIT)
-    .maxTimeMS(5000)
-
-  const count = await Book.find({}, NECESSARY_PROPERTIES).count()
-
-  books = page === (count / LIMIT).toFixed(0) ? [...books, ...setBooks] : books
-
-  return { books, count }
-}
-
 export default async function Page({
   searchParams,
 }: {
   searchParams: { [key: string]: string }
 }) {
-  const { books, count } = await getBooks({ searchParams })
+  const { books, count } = await getBooks({
+    searchParams,
+    necessaryProperties,
+    setBooks,
+    sort: true,
+    includeSetBooksFilter: true,
+  })
 
   const { search, page } = searchParams
   const suspenseKey = search ? search + page : 'page' + page
@@ -107,8 +64,8 @@ export default async function Page({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {books.map((book, index) => (
-                <TableRow key={index}>
+              {books.map((book: any) => (
+                <TableRow key={book.id}>
                   <TableCell>
                     {book.id.includes('takim') ? (
                       book.title
