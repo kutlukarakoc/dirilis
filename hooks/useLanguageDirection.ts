@@ -1,9 +1,8 @@
 'use client'
 
 import { Language } from '@/types/languages'
+import { Direction } from '@/types/direction'
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
-
-type Direction = 'rtl' | 'ltr'
 
 export const useLanguageDirection = (): [Language, Direction] => {
   const searchParams: ReadonlyURLSearchParams = useSearchParams()
