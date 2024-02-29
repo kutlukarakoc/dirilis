@@ -18,21 +18,21 @@ const usePagination = (count: number, limit: number): Pagination => {
   const totalPages = Math.ceil(count / limit)
 
   const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams)
+    (name: string, value: string): string => {
+      const params: URLSearchParams = new URLSearchParams(searchParams)
       params.set(name, value)
       return params.toString()
     },
     [searchParams],
   )
 
-  const prevPage = () =>
+  const prevPage = (): string =>
     pathname + '?' + createQueryString('page', (page - 1).toString())
 
-  const nextPage = () =>
+  const nextPage = (): string =>
     pathname + '?' + createQueryString('page', (page + 1).toString())
 
-  const clickedPage = (index: number) =>
+  const clickedPage = (index: number): string =>
     pathname + '?' + createQueryString('page', (index + 1).toString())
 
   useEffect(() => {
