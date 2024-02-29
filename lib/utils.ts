@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
 import { Language } from '@/types/languages'
-import { signIn } from 'next-auth/react'
+import { SignInResponse, signIn } from 'next-auth/react'
 import * as z from 'zod'
 import { loginSchema } from '@/lib/schemas/loginSchema'
 
@@ -70,7 +70,7 @@ export const shimmer = () => `
   <rect width="100%" height="100%" rx="8" fill="#E2E8F0" class="animate-pulse bg-primary-100" />
 </svg>`
 
-export const toBase64 = (str: string) =>
+export const toBase64 = (str: string): string =>
   typeof window === 'undefined'
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
@@ -87,7 +87,7 @@ export const getPrefferedLanguage = (): Language => {
   return prefferedLanguage
 }
 
-export const handleSignin = async (values: z.infer<typeof loginSchema>) => {
+export const handleSignin = async (values: z.infer<typeof loginSchema>): Promise<SignInResponse | undefined> => {
   try {
     const response = await signIn('credentials', {
       email: values.email,
