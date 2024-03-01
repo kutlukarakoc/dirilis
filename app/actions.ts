@@ -4,6 +4,7 @@ import Book from '@/lib/models/books.model'
 import { connectToDB } from '@/lib/mongoose'
 import { UpdateBook } from '@/types/updateBook'
 import { FileResponse } from '@/types/fileResponse'
+import { BookKeys } from '@/types/bookKeys'
 import { revalidatePath } from 'next/cache'
 
 export async function getBookById(id: string) {
@@ -23,7 +24,7 @@ export async function getBooks({
   maxTimeMS = 5000,
 }: {
   searchParams: { [key: string]: string }
-  necessaryProperties?: any
+  necessaryProperties: { [key in BookKeys]?: number }
   includeSetBooksFilter?: boolean
   setBooks?: any
   limit?: number
