@@ -17,16 +17,16 @@ export async function getBookById(id: string) {
 export async function getBooks({
   searchParams,
   necessaryProperties,
-  includeSetBooksFilter = false,
-  setBooks,
+  includeBooksSetFilter = false,
+  booksSet,
   limit = 12,
   sort = false,
   maxTimeMS = 5000,
 }: {
   searchParams: { [key: string]: string }
   necessaryProperties: { [key in BookKeys]?: number }
-  includeSetBooksFilter?: boolean
-  setBooks?: any
+  includeBooksSetFilter?: boolean
+  booksSet?: any
   limit?: number
   sort?: boolean
   maxTimeMS?: number
@@ -39,11 +39,11 @@ export async function getBooks({
   const upperCasedSearchTerm = search?.toLocaleUpperCase('TR')
 
   if (
-    includeSetBooksFilter &&
+    includeBooksSetFilter &&
     (upperCasedSearchTerm?.includes('TAKIM') ||
       upperCasedSearchTerm?.includes('TAKİM'))
   ) {
-    return { books: setBooks, count: 3 }
+    return { books: booksSet, count: 3 }
   }
 
   const queryObject: { title?: RegExp; 'category.id'?: string } = {}
@@ -62,9 +62,9 @@ export async function getBooks({
 
   const count = await Book.find(queryObject, necessaryProperties).count()
 
-  if (includeSetBooksFilter) {
+  if (includeBooksSetFilter) {
     books =
-      page === (count / limit).toFixed(0) ? [...books, ...setBooks] : books
+      page === (count / limit).toFixed(0) ? [...books, ...booksSet] : books
   }
 
   return { books, count }

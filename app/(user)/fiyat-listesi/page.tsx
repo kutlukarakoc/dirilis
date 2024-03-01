@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/table'
 import { formatHref, formatPrice } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
-import { setBooks } from '@/constants/setBooks'
+import { booksSet } from '@/constants/booksSet'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { getBooks } from '@/app/actions'
@@ -21,12 +21,11 @@ export const metadata = {
   title: 'Diriliş Yayınları | Fiyat Listesi',
 }
 
+const LIMIT = 12
 const necessaryProperties = {
   title: 1,
   price: 1,
 }
-
-const LIMIT = 12
 
 export default async function Page({
   searchParams,
@@ -36,9 +35,9 @@ export default async function Page({
   const { books, count } = await getBooks({
     searchParams,
     necessaryProperties,
-    setBooks,
+    booksSet,
     sort: true,
-    includeSetBooksFilter: true,
+    includeBooksSetFilter: true,
   })
 
   const { search, page } = searchParams
