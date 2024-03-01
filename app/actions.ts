@@ -40,7 +40,8 @@ export async function getBooks({
 
   if (
     includeSetBooksFilter &&
-    (upperCasedSearchTerm?.includes('TAKIM') || upperCasedSearchTerm?.includes('TAKİM'))
+    (upperCasedSearchTerm?.includes('TAKIM') ||
+      upperCasedSearchTerm?.includes('TAKİM'))
   ) {
     return { books: setBooks, count: 3 }
   }
