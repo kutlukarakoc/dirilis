@@ -1,0 +1,13 @@
+export type BookKeys =
+  | 'title'
+  | 'id'
+  | 'price'
+  | 'pages'
+  | 'thickness'
+  | 'dimension'
+  | 'publish'
+  | 'isbn'
+  | 'category'
+  | 'imageUrl'
+  | 'contents'
+  | 'summary'
