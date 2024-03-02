@@ -8,7 +8,7 @@ export const useSelectCategory = (): [string, SelectCategory] => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const [selectedCategory, setSelectedCategory] = useState(
+  const [selectedCategory, setSelectedCategory] = useState<string>(
     searchParams.get('category') || '',
   )
 
@@ -18,10 +18,7 @@ export const useSelectCategory = (): [string, SelectCategory] => {
   }
 
   useEffect(() => {
-    if (
-      searchParams.get('category') === null ||
-      searchParams.get('category') === undefined
-    ) {
+    if (!searchParams.get('category')) {
       setSelectedCategory('')
     }
   }, [searchParams])

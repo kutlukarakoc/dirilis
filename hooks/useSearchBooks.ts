@@ -12,7 +12,7 @@ const useSearchBooks = (): SearchBooksHook => {
   const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '')
 
   const handleSearch = useDebouncedCallback((term: string) => {
-    const params = new URLSearchParams(searchParams)
+    const params: URLSearchParams = new URLSearchParams(searchParams)
     params.delete('category')
     params.set('page', '1')
     term ? params.set('search', term) : params.delete('search')
@@ -20,10 +20,7 @@ const useSearchBooks = (): SearchBooksHook => {
   }, 300)
 
   useEffect(() => {
-    if (
-      searchParams.get('search') === null ||
-      searchParams.get('search') === undefined
-    ) {
+    if (!searchParams.get('search')) {
       setSearchTerm('')
     }
   }, [searchParams])
