@@ -1,4 +1,10 @@
-export const booksSet = [
+type BooksSet = {
+  id: string
+  title: string
+  price: number
+}
+
+export const booksSet: BooksSet[] = [
   {
     id: '6547b0ac59301c5b2c1e0d52takim1',
     title:
