@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/table'
 import { formatHref, formatPrice } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
-import { booksSet } from '@/constants/booksSet'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { getBooks } from '@/app/actions'
@@ -30,14 +29,13 @@ const necessaryProperties = {
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { [key: string]: string }
+  searchParams: Record<string, string>
 }) {
   const { books, count } = await getBooks({
     searchParams,
     necessaryProperties,
-    booksSet,
     sort: true,
-    includeBooksSetFilter: true,
+    includeBooksSet: true,
   })
 
   const { search, page } = searchParams
