@@ -9,6 +9,7 @@ export const metadata = {
   title: 'Diriliş Yayınları | Kitap Listesi',
 }
 
+const LIMIT = 12
 const necessaryProperties = {
   title: 1,
   price: 1,
@@ -16,12 +17,11 @@ const necessaryProperties = {
   imageUrl: 1,
   _id: 1,
 }
-const LIMIT = 12
 
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { [key: string]: string }
+  searchParams: Record<string, string>
 }) {
   const { books, count } = await getBooks({ searchParams, necessaryProperties })
 
