@@ -1,7 +1,7 @@
 import BookCard from './card'
-import { SimplifiedBooks } from '@/types/simplifiedBooks'
+import { BookListNecessaryProperties } from '@/types/bookListNecessaryProperties'
 
-const BookList = ({ books }: { books: SimplifiedBooks[] }) => {
+const BookList = ({ books }: { books: BookListNecessaryProperties[] }) => {
   return (
     <section>
       <div
@@ -10,7 +10,7 @@ const BookList = ({ books }: { books: SimplifiedBooks[] }) => {
           gridTemplateColumns: 'repeat(auto-fill, minmax(275px, 1fr))',
         }}
       >
-        {books.map((book: SimplifiedBooks) => (
+        {books.map((book: BookListNecessaryProperties) => (
           <BookCard
             key={book.id}
             book={book}

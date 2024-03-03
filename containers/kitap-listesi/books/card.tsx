@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { formatHref, formatPrice, shimmer, toBase64 } from '@/lib/utils'
-import { SimplifiedBooks } from '@/types/simplifiedBooks'
+import { BookListNecessaryProperties } from '@/types/bookListNecessaryProperties'
 
-const BookCard = ({ book }: { book: SimplifiedBooks }) => {
+const BookCard = ({ book }: { book: BookListNecessaryProperties }) => {
   const url = formatHref('kitap', book.title, book.id)
 
   return (
