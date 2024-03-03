@@ -4,6 +4,7 @@ import Book from '@/lib/models/books.model'
 import { connectToDB } from '@/lib/mongoose'
 import { UpdateBook } from '@/types/updateBook'
 import { FileResponse } from '@/types/fileResponse'
+import { booksSet } from '@/constants/booksSet'
 import { BookKeys } from '@/types/bookKeys'
 import { revalidatePath } from 'next/cache'
 
@@ -17,16 +18,14 @@ export async function getBookById(id: string) {
 export async function getBooks({
   searchParams,
   necessaryProperties,
-  includeBooksSetFilter = false,
-  booksSet,
+  includeBooksSet = false,
   limit = 12,
   sort = false,
   maxTimeMS = 5000,
 }: {
   searchParams: { [key: string]: string }
   necessaryProperties: { [key in BookKeys]?: number }
-  includeBooksSetFilter?: boolean
-  booksSet?: any
+  includeBooksSet?: boolean
   limit?: number
   sort?: boolean
   maxTimeMS?: number
@@ -39,7 +38,7 @@ export async function getBooks({
   const upperCasedSearchTerm = search?.toLocaleUpperCase('TR')
 
   if (
-    includeBooksSetFilter &&
+    includeBooksSet &&
     (upperCasedSearchTerm?.includes('TAKIM') ||
       upperCasedSearchTerm?.includes('TAKİM'))
   ) {
@@ -62,7 +61,7 @@ export async function getBooks({
 
   const count = await Book.find(queryObject, necessaryProperties).count()
 
-  if (includeBooksSetFilter) {
+  if (includeBooksSet) {
     books =
       page === (count / limit).toFixed(0) ? [...books, ...booksSet] : books
   }
