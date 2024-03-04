@@ -1,10 +1,6 @@
 import { Books } from './books'
 
-type CommonBookTypes = Pick<
+export type BookManagement = Omit<
   Books,
-  'title' | 'pages' | 'price' | 'publish' | 'isbn' | 'imageUrl'
+  'thickness' | 'dimension' | 'category' | 'contents' | 'summary'
 >
-
-export interface BookManagement extends CommonBookTypes {
-  _id: string
-}
