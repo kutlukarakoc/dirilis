@@ -1,6 +1,7 @@
 'use server'
 
 import Book from '@/lib/models/books.model'
+import { Books } from '@/types/books'
 import { connectToDB } from '@/lib/mongoose'
 import { UpdateBook } from '@/types/updateBook'
 import { FileResponse } from '@/types/fileResponse'
@@ -117,7 +118,7 @@ export async function deleteBook(id: string) {
   }
 }
 
-export async function createBook({ book }: { book: any }) {
+export async function createBook({ book }: { book: Omit<Books, 'id'> }) {
   try {
     await connectToDB()
 
