@@ -111,8 +111,8 @@ export const createBookSchema = z.object({
 
   contents: z.array(
     z.object({
-      type: z.enum(['title', 'subtitle', '']).refine((val) => val !== '', {
-        message: 'Boş bırakılamaz.',
+      type: z.enum(['title', 'subtitle'], {
+        errorMap: () => ({ message: 'Boş bırakılamaz.' }),
       }),
       text: z.string().min(1, {
         message: 'Boş bırakılamaz.',
