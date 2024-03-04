@@ -51,7 +51,7 @@ const EditForm = ({ book, setOpen }: EditForm) => {
   async function onSubmit(values: z.infer<typeof updateBookSchema>) {
     setIsUpdating(true)
 
-    const id = book._id
+    const id = book.id
     const data = {
       price: values.price,
       isbn: values.isbn,

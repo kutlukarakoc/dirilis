@@ -26,14 +26,14 @@ const ManagementTable = ({ books }: { books: BookManagement[] }) => {
       </TableHeader>
       <TableBody>
         {books.map((book: BookManagement) => (
-          <TableRow key={book._id}>
+          <TableRow key={book.id}>
             <TableCell>
               <Button
                 asChild
                 variant="link"
               >
                 <Link
-                  href={formatHref('kitap', book.title, book._id)}
+                  href={formatHref('kitap', book.title, book.id)}
                   prefetch={false}
                 >
                   {book.title}
@@ -46,7 +46,7 @@ const ManagementTable = ({ books }: { books: BookManagement[] }) => {
             </TableCell>
             <TableCell className="text-right">
               <Delete
-                id={book._id}
+                id={book.id}
                 title={book.title}
               />
             </TableCell>
