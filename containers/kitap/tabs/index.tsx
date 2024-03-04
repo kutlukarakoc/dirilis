@@ -1,10 +1,10 @@
 import { Tabs, TabsContent, TabsList } from '@/components/ui/tabs'
 import Properties from './properties'
 import Contents from './contents'
-import { Book } from '@/types/books'
+import { Books } from '@/types/books'
 import Trigger from './trigger'
 
-const BookTabs = ({ book }: { book: Book }) => {
+const BookTabs = ({ book }: { book: Books }) => {
   const triggers = [
     {
       value: 'summary',
