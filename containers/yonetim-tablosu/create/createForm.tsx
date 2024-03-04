@@ -52,7 +52,7 @@ const CreateForm = ({
       imageUrl: '',
       contents: [
         {
-          type: '',
+          type: undefined,
           text: '',
         },
       ],
