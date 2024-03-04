@@ -1,5 +1,5 @@
 import CategoryButton from '../desktop/category'
-import { CategoryWithKey } from '@/types/categories'
+import { CategoryWithKey } from '@/types/categoryWithKey'
 import { categories } from '@/constants/categories'
 
 const Categories = () => {

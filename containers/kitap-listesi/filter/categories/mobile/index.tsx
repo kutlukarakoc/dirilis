@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { categories } from '@/constants/categories'
-import { CategoryWithKey } from '@/types/categories'
+import { CategoryWithKey } from '@/types/categoryWithKey'
 import { useSelectCategory } from '@/hooks/useSelectCategory'
 
 const MobileCategories = () => {

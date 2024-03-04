@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { CategoryWithKey } from '@/types/categories'
+import { CategoryWithKey } from '@/types/categoryWithKey'
 import { useSelectCategory } from '@/hooks/useSelectCategory'
 import { useSearchParams } from 'next/navigation'
 
