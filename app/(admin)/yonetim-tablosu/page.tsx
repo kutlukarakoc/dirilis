@@ -7,6 +7,7 @@ import ClearSearch from '@/containers/yonetim-tablosu/clear'
 import PaginationWrapper from '@/components/paginationWrapper'
 import Create from '@/containers/yonetim-tablosu/create'
 import { getBooks } from '@/app/actions'
+import { BookManagement } from '@/types/bookManagament'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Yönetim Tablosu',
@@ -29,20 +30,22 @@ export default async function ManagementPage({
   searchParams: Record<string, string>
 }) {
   const { books, count } = await getBooks({ searchParams, necessaryProperties })
-  
-	const convertedBooks = books.map((book: any) => ({
-    title: book.title,
-    pages: book.pages,
-    price: book.price,
-    publish: {
-      lastNo: book.publish.lastNo,
-      firstDate: book.publish.firstDate,
-      lastDate: book.publish.lastDate,
-    },
-    imageUrl: book.imageUrl,
-    isbn: book.isbn,
-    _id: book._id.toString(),
-  }))
+
+  const convertedBooks = books.map(
+    (book: BookManagement) => ({
+      title: book.title,
+      pages: book.pages,
+      price: book.price,
+      publish: {
+        lastNo: book.publish.lastNo,
+        firstDate: book.publish.firstDate,
+        lastDate: book.publish.lastDate,
+      },
+      imageUrl: book.imageUrl,
+      isbn: book.isbn,
+      id: book.id.toString(),
+    }),
+  )
 
   const { search, page } = searchParams
   const suspenseKey = search ? search + page : 'page' + page
