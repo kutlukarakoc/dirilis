@@ -1,6 +1,6 @@
-import { Book } from './books'
+import { Books } from './books'
 
 export type UpdateBook = Pick<
-  Book,
+  Books,
   'price' | 'isbn' | 'pages' | 'imageUrl' | 'publish'
 >

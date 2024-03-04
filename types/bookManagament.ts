@@ -1,7 +1,7 @@
-import { Book } from './books'
+import { Books } from './books'
 
 type CommonBookTypes = Pick<
-  Book,
+  Books,
   'title' | 'pages' | 'price' | 'publish' | 'isbn' | 'imageUrl'
 >
 

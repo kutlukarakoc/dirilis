@@ -1,6 +1,6 @@
-import { Book } from './books'
+import { Books } from './books'
 
 export type BookListNecessaryProperties = Pick<
-  Book,
+  Books,
   'title' | 'id' | 'price' | 'category' | 'imageUrl'
 >
