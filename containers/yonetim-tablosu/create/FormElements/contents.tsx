@@ -80,7 +80,7 @@ const BookContents = () => {
                           className="h-6 w-6 rounded-full border-2 border-green-600 hover:!bg-transparent"
                           disabled={
                             getValues('contents')[index]['text'] === '' ||
-                            getValues('contents')[index]['type'] === ''
+                            getValues('contents')[index]['type'] === undefined
                           }
                           onClick={() =>
                             append({
