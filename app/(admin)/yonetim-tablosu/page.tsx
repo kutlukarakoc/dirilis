@@ -19,7 +19,6 @@ const necessaryProperties = {
   price: 1,
   publish: 1,
   isbn: 1,
-  _id: 1,
   pages: 1,
   imageUrl: 1,
 }
@@ -31,21 +30,19 @@ export default async function ManagementPage({
 }) {
   const { books, count } = await getBooks({ searchParams, necessaryProperties })
 
-  const convertedBooks = books.map(
-    (book: BookManagement) => ({
-      title: book.title,
-      pages: book.pages,
-      price: book.price,
-      publish: {
-        lastNo: book.publish.lastNo,
-        firstDate: book.publish.firstDate,
-        lastDate: book.publish.lastDate,
-      },
-      imageUrl: book.imageUrl,
-      isbn: book.isbn,
-      id: book.id.toString(),
-    }),
-  )
+  const convertedBooks = books.map((book: BookManagement) => ({
+    title: book.title,
+    pages: book.pages,
+    price: book.price,
+    publish: {
+      lastNo: book.publish.lastNo,
+      firstDate: book.publish.firstDate,
+      lastDate: book.publish.lastDate,
+    },
+    imageUrl: book.imageUrl,
+    isbn: book.isbn,
+    id: book.id.toString(),
+  }))
 
   const { search, page } = searchParams
   const suspenseKey = search ? search + page : 'page' + page

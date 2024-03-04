@@ -15,7 +15,6 @@ const necessaryProperties = {
   price: 1,
   category: 1,
   imageUrl: 1,
-  _id: 1,
 }
 
 export default async function Page({
