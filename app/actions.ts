@@ -3,7 +3,6 @@
 import Book from '@/lib/models/books.model'
 import { Books } from '@/types/books'
 import { connectToDB } from '@/lib/mongoose'
-import { UpdateBook } from '@/types/updateBook'
 import { FileResponse } from '@/types/fileResponse'
 import { booksSet } from '@/constants/booksSet'
 import { BookKeys } from '@/types/bookKeys'
@@ -75,7 +74,7 @@ export async function updateBook({
   data,
 }: {
   id: string
-  data: UpdateBook
+  data: Pick<Books, 'price' | 'isbn' | 'pages' | 'imageUrl' | 'publish'>
 }) {
   try {
     await connectToDB()
