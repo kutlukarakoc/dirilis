@@ -61,7 +61,7 @@ export default async function Page({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {books.map((book: any) => (
+              {books.map((book) => (
                 <TableRow key={book.id}>
                   <TableCell>
                     {book.id.includes('takim') ? (
