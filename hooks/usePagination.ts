@@ -1,15 +1,7 @@
 import { useCallback, useEffect } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-type Pagination = [
-  number,
-  number,
-  () => string,
-  () => string,
-  (index: number) => string,
-]
-
-const usePagination = (count: number, limit: number): Pagination => {
+const usePagination = (count: number, limit: number) => {
   const { replace } = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -40,7 +32,7 @@ const usePagination = (count: number, limit: number): Pagination => {
       replace(pathname + '?' + createQueryString('page', '1'))
   }, [searchParams])
 
-  return [page, totalPages, prevPage, nextPage, clickedPage]
+  return [page, totalPages, prevPage, nextPage, clickedPage] as const
 }
 
 export default usePagination

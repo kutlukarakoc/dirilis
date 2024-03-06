@@ -4,7 +4,7 @@ import { Language } from '@/types/languages'
 import { Direction } from '@/types/direction'
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 
-export const useLanguageDirection = (): [Language, Direction] => {
+export const useLanguageDirection = () => {
   const searchParams: ReadonlyURLSearchParams = useSearchParams()
   const params: URLSearchParams = new URLSearchParams(searchParams.toString())
   const language: Language = (params.get('lang') as Language) || 'tr'
@@ -12,5 +12,5 @@ export const useLanguageDirection = (): [Language, Direction] => {
   const direction: Direction =
     language === 'ar' || language === 'far' ? 'rtl' : 'ltr'
 
-  return [language, direction]
+  return [language, direction] as const
 }

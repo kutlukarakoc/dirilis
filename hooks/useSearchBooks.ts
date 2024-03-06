@@ -2,9 +2,7 @@ import { useState, useEffect, ChangeEvent } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 
-type SearchBooksHook = [string, (e: ChangeEvent<HTMLInputElement>) => void]
-
-const useSearchBooks = (): SearchBooksHook => {
+const useSearchBooks = () => {
   const { replace } = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -30,7 +28,7 @@ const useSearchBooks = (): SearchBooksHook => {
     handleSearch(e.target.value)
   }
 
-  return [searchTerm, handleInputChange]
+  return [searchTerm, handleInputChange] as const
 }
 
 export default useSearchBooks

@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-type SelectCategory = (value: string) => void
-
-export const useSelectCategory = (): [string, SelectCategory] => {
+export const useSelectCategory = () => {
   const { replace } = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -23,5 +21,5 @@ export const useSelectCategory = (): [string, SelectCategory] => {
     }
   }, [searchParams])
 
-  return [selectedCategory, selectCategory]
+  return [selectedCategory, selectCategory] as const
 }
