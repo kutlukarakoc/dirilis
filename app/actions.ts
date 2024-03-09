@@ -6,6 +6,8 @@ import { connectToDB } from '@/lib/mongoose'
 import { FileResponse } from '@/types/fileResponse'
 import { booksSet } from '@/constants/booksSet'
 import { revalidatePath } from 'next/cache'
+import { BookListNecessaryProperties } from '@/types/bookListNecessaryProperties'
+import { BookManagement } from '@/types/bookManagament'
 
 export async function getBookById(id: string) {
   await connectToDB()
@@ -28,7 +30,10 @@ export async function getBooks({
   limit?: number
   sort?: boolean
   maxTimeMS?: number
-}) {
+}): Promise<{
+  books: BookListNecessaryProperties[] | BookManagement[] | { id: string; title: string; price: number; }[]
+  count: number
+}> {
   await connectToDB()
 
   const { category, search, page } = searchParams
@@ -49,7 +54,7 @@ export async function getBooks({
   if (upperCasedSearchTerm) queryObject.title = new RegExp(upperCasedSearchTerm)
   if (categoryId) queryObject['category.id'] = categoryId
 
-  const query = Book.find(queryObject, necessaryProperties)
+  const query = Book.find(queryObject, {...necessaryProperties, _id: 1})
     .limit(limit)
     .skip((+page - 1) * limit)
     .maxTimeMS(maxTimeMS)
