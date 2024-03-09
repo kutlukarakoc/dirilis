@@ -6,9 +6,8 @@ import { connectToDB } from '@/lib/mongoose'
 import { FileResponse } from '@/types/fileResponse'
 import { booksSet } from '@/constants/booksSet'
 import { revalidatePath } from 'next/cache'
-import { BookListNecessaryProperties } from '@/types/bookListNecessaryProperties'
-import { BookManagement } from '@/types/bookManagament'
 import { ActionStatus } from '@/types/actionStatus'
+import { GetBooksResponse } from '@/types/getBooksResponse'
 
 export async function getBookById(id: string): Promise<Books> {
   await connectToDB()
@@ -17,7 +16,7 @@ export async function getBookById(id: string): Promise<Books> {
   return formattedBook
 }
 
-export async function getBooks({
+export async function getBooks<T>({
   searchParams,
   necessaryProperties,
   includeBooksSet = false,
@@ -31,23 +30,13 @@ export async function getBooks({
   limit?: number
   sort?: boolean
   maxTimeMS?: number
-}): Promise<{
-  books:
-    | BookListNecessaryProperties[]
-    | BookManagement[]
-    | { id: string; title: string; price: number }[]
-  count: number
-}> {
+}): Promise<GetBooksResponse<T>> {
   await connectToDB()
 
   const { category, search, page } = searchParams
 
   const categoryId = category?.split('-').at(-1)
-
-  if (includeBooksSet && search?.toLocaleUpperCase('TR')?.includes('TAKIM')) {
-    return { books: booksSet, count: 3 }
-  }
-
+	
   const queryObject: { title?: RegExp; 'category.id'?: string } = {}
 
   if (search) queryObject.title = new RegExp(search.replace(/ı/g, 'I'), 'i')
