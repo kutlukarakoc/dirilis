@@ -8,11 +8,12 @@ import { booksSet } from '@/constants/booksSet'
 import { revalidatePath } from 'next/cache'
 import { BookListNecessaryProperties } from '@/types/bookListNecessaryProperties'
 import { BookManagement } from '@/types/bookManagament'
+import { ActionStatus } from '@/types/actionStatus'
 
-export async function getBookById(id: string) {
+export async function getBookById(id: string): Promise<Books> {
   await connectToDB()
   const book = await Book.findOne({ _id: id }).maxTimeMS(5000)
-  const formattedBook = await JSON.parse(JSON.stringify(book))
+  const formattedBook: Books = await JSON.parse(JSON.stringify(book))
   return formattedBook
 }
 
@@ -31,7 +32,10 @@ export async function getBooks({
   sort?: boolean
   maxTimeMS?: number
 }): Promise<{
-  books: BookListNecessaryProperties[] | BookManagement[] | { id: string; title: string; price: number; }[]
+  books:
+    | BookListNecessaryProperties[]
+    | BookManagement[]
+    | { id: string; title: string; price: number }[]
   count: number
 }> {
   await connectToDB()
@@ -54,7 +58,7 @@ export async function getBooks({
   if (upperCasedSearchTerm) queryObject.title = new RegExp(upperCasedSearchTerm)
   if (categoryId) queryObject['category.id'] = categoryId
 
-  const query = Book.find(queryObject, {...necessaryProperties, _id: 1})
+  const query = Book.find(queryObject, { ...necessaryProperties, _id: 1 })
     .limit(limit)
     .skip((+page - 1) * limit)
     .maxTimeMS(maxTimeMS)
@@ -79,7 +83,7 @@ export async function updateBook({
 }: {
   id: string
   data: Pick<Books, 'price' | 'isbn' | 'pages' | 'imageUrl' | 'publish'>
-}) {
+}): Promise<ActionStatus> {
   try {
     await connectToDB()
 
@@ -100,7 +104,7 @@ export async function updateBook({
   }
 }
 
-export async function deleteBook(id: string) {
+export async function deleteBook(id: string): Promise<ActionStatus> {
   try {
     await connectToDB()
 
@@ -121,7 +125,7 @@ export async function deleteBook(id: string) {
   }
 }
 
-export async function createBook({ book }: { book: Omit<Books, 'id'> }) {
+export async function createBook({ book }: { book: Omit<Books, 'id'> }): Promise<ActionStatus> {
   try {
     await connectToDB()
 
