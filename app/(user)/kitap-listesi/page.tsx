@@ -21,7 +21,10 @@ const necessaryProperties = {
 async function BookListWrapper({
   promise,
 }: {
-  promise: () => Promise<{ books: BookListNecessaryProperties[], count: number }>
+  promise: () => Promise<{
+    books: BookListNecessaryProperties[]
+    count: number
+  }>
 }) {
   const { books, count } = await promise()
   return (
