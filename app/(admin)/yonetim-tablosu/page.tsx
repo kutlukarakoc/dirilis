@@ -8,6 +8,7 @@ import PaginationWrapper from '@/components/paginationWrapper'
 import Create from '@/containers/yonetim-tablosu/create'
 import { getBooks } from '@/app/actions'
 import { BookManagement } from '@/types/bookManagament'
+import { GetBooksResponse } from '@/types/getBooksResponse'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Yönetim Tablosu',
@@ -26,10 +27,7 @@ const necessaryProperties = {
 async function ManagementTableWrapper({
   promise,
 }: {
-  promise: () => Promise<{
-    books: BookManagement[]
-    count: number
-  }>
+  promise: () => Promise<GetBooksResponse<BookManagement>>
 }) {
   const { books, count } = await promise()
   return (
@@ -50,7 +48,7 @@ export default async function ManagementPage({
 }: {
   searchParams: Record<string, string>
 }) {
-  const booksPromise = () => getBooks({ searchParams, necessaryProperties })
+  const booksPromise = () => getBooks<BookManagement>({ searchParams, necessaryProperties })
 
   const { search, page } = searchParams
   const suspenseKey = search + page

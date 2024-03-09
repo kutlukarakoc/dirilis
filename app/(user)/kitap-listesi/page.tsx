@@ -5,6 +5,7 @@ import PaginationWrapper from '@/components/paginationWrapper'
 import { Suspense } from 'react'
 import { getBooks } from '@/app/actions'
 import { BookListNecessaryProperties } from '@/types/bookListNecessaryProperties'
+import { GetBooksResponse } from '@/types/getBooksResponse'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Kitap Listesi',
@@ -21,10 +22,7 @@ const necessaryProperties = {
 async function BookListWrapper({
   promise,
 }: {
-  promise: () => Promise<{
-    books: BookListNecessaryProperties[]
-    count: number
-  }>
+  promise: () => Promise<GetBooksResponse<BookListNecessaryProperties>>
 }) {
   const { books, count } = await promise()
   return (
@@ -45,7 +43,7 @@ export default async function Page({
 }: {
   searchParams: Record<string, string>
 }) {
-  const booksPromise = () => getBooks({ searchParams, necessaryProperties })
+  const booksPromise = () => getBooks<BookListNecessaryProperties>({ searchParams, necessaryProperties })
 
   const { category, search, page } = searchParams
 
