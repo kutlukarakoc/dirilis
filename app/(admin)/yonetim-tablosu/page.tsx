@@ -23,29 +23,37 @@ const necessaryProperties = {
   imageUrl: 1,
 }
 
+async function ManagementTableWrapper({
+  promise,
+}: {
+  promise: () => Promise<{
+    books: BookManagement[]
+    count: number
+  }>
+}) {
+  const { books, count } = await promise()
+  return (
+    <>
+      <ManagementTable books={books} />
+      {count > LIMIT && (
+        <PaginationWrapper
+          count={count}
+          limit={LIMIT}
+        />
+      )}
+    </>
+  )
+}
+
 export default async function ManagementPage({
   searchParams,
 }: {
   searchParams: Record<string, string>
 }) {
-  const { books, count } = await getBooks({ searchParams, necessaryProperties })
-
-  const convertedBooks = books.map((book: BookManagement) => ({
-    title: book.title,
-    pages: book.pages,
-    price: book.price,
-    publish: {
-      lastNo: book.publish.lastNo,
-      firstDate: book.publish.firstDate,
-      lastDate: book.publish.lastDate,
-    },
-    imageUrl: book.imageUrl,
-    isbn: book.isbn,
-    id: book.id.toString(),
-  }))
+  const booksPromise = () => getBooks({ searchParams, necessaryProperties })
 
   const { search, page } = searchParams
-  const suspenseKey = search ? search + page : 'page' + page
+  const suspenseKey = search + page
 
   return (
     <>
@@ -63,14 +71,8 @@ export default async function ManagementPage({
             key={suspenseKey}
             fallback={<TableLoading />}
           >
-            <ManagementTable books={convertedBooks} />
+            <ManagementTableWrapper promise={booksPromise} />
           </Suspense>
-          {count > LIMIT && (
-            <PaginationWrapper
-              count={count}
-              limit={LIMIT}
-            />
-          )}
         </section>
       </main>
     </>
