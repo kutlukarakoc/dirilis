@@ -4,6 +4,7 @@ import BooksLoading from '@/containers/kitap-listesi/books/loading'
 import PaginationWrapper from '@/components/paginationWrapper'
 import { Suspense } from 'react'
 import { getBooks } from '@/app/actions'
+import { BookListNecessaryProperties } from '@/types/bookListNecessaryProperties'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Kitap Listesi',
@@ -17,12 +18,31 @@ const necessaryProperties = {
   imageUrl: 1,
 }
 
+async function BookListWrapper({
+  promise,
+}: {
+  promise: () => Promise<{ books: BookListNecessaryProperties[], count: number }>
+}) {
+  const { books, count } = await promise()
+  return (
+    <>
+      <BookList books={books} />
+      {count > LIMIT && (
+        <PaginationWrapper
+          count={count}
+          limit={LIMIT}
+        />
+      )}
+    </>
+  )
+}
+
 export default async function Page({
   searchParams,
 }: {
   searchParams: Record<string, string>
 }) {
-  const { books, count } = await getBooks({ searchParams, necessaryProperties })
+  const booksPromise = () => getBooks({ searchParams, necessaryProperties })
 
   const { category, search, page } = searchParams
 
@@ -39,14 +59,8 @@ export default async function Page({
         key={suspenseKey}
         fallback={<BooksLoading />}
       >
-        <BookList books={books} />
+        <BookListWrapper promise={booksPromise} />
       </Suspense>
-      {count > LIMIT && (
-        <PaginationWrapper
-          count={count}
-          limit={LIMIT}
-        />
-      )}
     </>
   )
 }
