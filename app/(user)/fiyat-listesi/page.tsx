@@ -26,20 +26,75 @@ const necessaryProperties = {
   price: 1,
 }
 
+async function PriceListWrapper({
+  promise,
+}: {
+  promise: () => Promise<{
+    books: { id: string; title: string; price: number }[]
+    count: number
+  }>
+}) {
+  const { books, count } = await promise()
+
+  return (
+    <section>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Kitap İsmi</TableHead>
+            <TableHead>Fiyat</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {books.map((book) => (
+            <TableRow key={book.id}>
+              <TableCell>
+                {book.id.includes('takim') ? (
+                  book.title
+                ) : (
+                  <Button
+                    asChild
+                    variant="link"
+                  >
+                    <Link
+                      href={formatHref('kitap', book.title, book.id)}
+                      prefetch={false}
+                    >
+                      {book.title}
+                    </Link>
+                  </Button>
+                )}
+              </TableCell>
+              <TableCell>{formatPrice(book.price)}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      {count > LIMIT && (
+        <PaginationWrapper
+          count={count}
+          limit={LIMIT}
+        />
+      )}
+    </section>
+  )
+}
+
 export default async function Page({
   searchParams,
 }: {
   searchParams: Record<string, string>
 }) {
-  const { books, count } = await getBooks({
-    searchParams,
-    necessaryProperties,
-    sort: true,
-    includeBooksSet: true,
-  })
+  const booksPromise = () =>
+    getBooks({
+      searchParams,
+      necessaryProperties,
+      sort: true,
+      includeBooksSet: true,
+    })
 
   const { search, page } = searchParams
-  const suspenseKey = search ? search + page : 'page' + page
+  const suspenseKey = search + page
 
   return (
     <main className="container">
@@ -53,45 +108,8 @@ export default async function Page({
           key={suspenseKey}
           fallback={<TableLoading />}
         >
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Kitap İsmi</TableHead>
-                <TableHead>Fiyat</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {books.map((book) => (
-                <TableRow key={book.id}>
-                  <TableCell>
-                    {book.id.includes('takim') ? (
-                      book.title
-                    ) : (
-                      <Button
-                        asChild
-                        variant="link"
-                      >
-                        <Link
-                          href={formatHref('kitap', book.title, book.id)}
-                          prefetch={false}
-                        >
-                          {book.title}
-                        </Link>
-                      </Button>
-                    )}
-                  </TableCell>
-                  <TableCell>{formatPrice(book.price)}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <PriceListWrapper promise={booksPromise} />
         </Suspense>
-        {count > LIMIT && (
-          <PaginationWrapper
-            count={count}
-            limit={LIMIT}
-          />
-        )}
       </section>
     </main>
   )
