@@ -15,6 +15,8 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { getBooks } from '@/app/actions'
+import { GetBooksResponse } from '@/types/getBooksResponse'
+import { booksSet } from '@/constants/booksSet'
 
 export const metadata = {
   title: 'Diriliş Yayınları | Fiyat Listesi',
@@ -28,13 +30,17 @@ const necessaryProperties = {
 
 async function PriceListWrapper({
   promise,
+	search
 }: {
-  promise: () => Promise<{
-    books: { id: string; title: string; price: number }[]
-    count: number
-  }>
+  promise: () => Promise<
+    GetBooksResponse<{ id: string; title: string; price: number }>
+  >,
+	search: string
 }) {
   const { books, count } = await promise()
+
+	const conditionalBooks = search?.toLocaleUpperCase('TR')?.includes('TAKIM') ? booksSet : books
+	const conditionalCount = search?.toLocaleUpperCase('TR')?.includes('TAKIM') ? 3 : count
 
   return (
     <section>
@@ -46,7 +52,7 @@ async function PriceListWrapper({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {books.map((book) => (
+          {conditionalBooks.map((book) => (
             <TableRow key={book.id}>
               <TableCell>
                 {book.id.includes('takim') ? (
@@ -70,9 +76,9 @@ async function PriceListWrapper({
           ))}
         </TableBody>
       </Table>
-      {count > LIMIT && (
+      {conditionalCount > LIMIT && (
         <PaginationWrapper
-          count={count}
+          count={conditionalCount}
           limit={LIMIT}
         />
       )}
@@ -86,7 +92,7 @@ export default async function Page({
   searchParams: Record<string, string>
 }) {
   const booksPromise = () =>
-    getBooks({
+    getBooks<{ id: string; title: string; price: number }>({
       searchParams,
       necessaryProperties,
       sort: true,
@@ -108,7 +114,7 @@ export default async function Page({
           key={suspenseKey}
           fallback={<TableLoading />}
         >
-          <PriceListWrapper promise={booksPromise} />
+          <PriceListWrapper promise={booksPromise} search={search} />
         </Suspense>
       </section>
     </main>
