@@ -49,11 +49,7 @@ export default async function Page({
 
   const { category, search, page } = searchParams
 
-  const suspenseKey = category
-    ? category + page
-    : search
-      ? search + page
-      : 'page' + page
+  const suspenseKey = category + search + page
 
   return (
     <>
