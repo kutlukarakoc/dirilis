@@ -43,19 +43,14 @@ export async function getBooks({
   const { category, search, page } = searchParams
 
   const categoryId = category?.split('-').at(-1)
-  const upperCasedSearchTerm = search?.toLocaleUpperCase('TR')
 
-  if (
-    includeBooksSet &&
-    (upperCasedSearchTerm?.includes('TAKIM') ||
-      upperCasedSearchTerm?.includes('TAKİM'))
-  ) {
+  if (includeBooksSet && search?.toLocaleUpperCase('TR')?.includes('TAKIM')) {
     return { books: booksSet, count: 3 }
   }
 
   const queryObject: { title?: RegExp; 'category.id'?: string } = {}
 
-  if (upperCasedSearchTerm) queryObject.title = new RegExp(upperCasedSearchTerm)
+  if (search) queryObject.title = new RegExp(search.replace(/ı/g, 'I'), 'i')
   if (categoryId) queryObject['category.id'] = categoryId
 
   const query = Book.find(queryObject, { ...necessaryProperties, _id: 1 })
@@ -125,7 +120,11 @@ export async function deleteBook(id: string): Promise<ActionStatus> {
   }
 }
 
-export async function createBook({ book }: { book: Omit<Books, 'id'> }): Promise<ActionStatus> {
+export async function createBook({
+  book,
+}: {
+  book: Omit<Books, 'id'>
+}): Promise<ActionStatus> {
   try {
     await connectToDB()
 
