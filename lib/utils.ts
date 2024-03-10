@@ -87,7 +87,9 @@ export const getPrefferedLanguage = (): Language => {
   return prefferedLanguage
 }
 
-export const handleSignin = async (values: z.infer<typeof loginSchema>): Promise<SignInResponse | undefined> => {
+export const handleSignin = async (
+  values: z.infer<typeof loginSchema>,
+): Promise<SignInResponse | undefined> => {
   try {
     const response = await signIn('credentials', {
       email: values.email,
@@ -115,7 +117,7 @@ export const convertFileToBase64 = async (file: File): Promise<string> => {
 }
 
 export const convertSearchTerm = (term: string): string => {
-	let text = term.replace(/[-/^$*+?.()|[\]{}]/g, '')
+  let text = term.replace(/[-/^$*+?.()|[\]{}]/g, '')
 
   const replacements: { [key: string]: string } = {
     i: '(ı|i|İ|I|İ)',
