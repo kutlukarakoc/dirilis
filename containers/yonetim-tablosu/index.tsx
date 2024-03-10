@@ -35,6 +35,7 @@ const ManagementTable = ({ books }: { books: BookManagement[] }) => {
                 <Link
                   href={formatHref('kitap', book.title, book.id)}
                   prefetch={false}
+									className="!line-clamp-2 !p-0 !h-auto"
                 >
                   {book.title}
                 </Link>
