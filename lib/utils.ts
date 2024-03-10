@@ -113,3 +113,38 @@ export const convertFileToBase64 = async (file: File): Promise<string> => {
     }
   })
 }
+
+export const convertSearchTerm = (term: string): string => {
+	let text = term.replace(/[-/^$*+?.()|[\]{}]/g, '')
+
+  const replacements: { [key: string]: string } = {
+    i: '(ı|i|İ|I|İ)',
+    I: '(ı|i|İ|I|İ)',
+    ı: '(ı|i|İ|I|İ)',
+    İ: '(ı|i|İ|I|İ)',
+    İ: '(ı|i|İ|I|İ)',
+    g: '(ğ|g|Ğ|G)',
+    G: '(ğ|g|Ğ|G)',
+    ğ: '(ğ|g|Ğ|G)',
+    Ğ: '(ğ|g|Ğ|G)',
+    u: '(ü|u|Ü|U)',
+    U: '(ü|u|Ü|U)',
+    ü: '(ü|u|Ü|U)',
+    Ü: '(ü|u|Ü|U)',
+    s: '(ş|s|Ş|S)',
+    S: '(ş|s|Ş|S)',
+    ş: '(ş|s|Ş|S)',
+    Ş: '(ş|s|Ş|S)',
+    o: '(ö|o|Ö|O)',
+    O: '(ö|o|Ö|O)',
+    ö: '(ö|o|Ö|O)',
+    Ö: '(ö|o|Ö|O)',
+    c: '(ç|c|Ç|C)',
+    C: '(ç|c|Ç|C)',
+    ç: '(ç|c|Ç|C)',
+    Ç: '(ç|c|Ç|C)',
+  }
+
+  const newArray = text.split('').map((char) => replacements[char] || char)
+  return newArray.join('')
+}
