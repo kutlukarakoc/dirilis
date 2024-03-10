@@ -30,17 +30,21 @@ const necessaryProperties = {
 
 async function PriceListWrapper({
   promise,
-	search
+  search,
 }: {
   promise: () => Promise<
     GetBooksResponse<{ id: string; title: string; price: number }>
-  >,
-	search: string
+  >
+  search: string
 }) {
   const { books, count } = await promise()
 
-	const conditionalBooks = search?.toLocaleUpperCase('TR')?.includes('TAKIM') ? booksSet : books
-	const conditionalCount = search?.toLocaleUpperCase('TR')?.includes('TAKIM') ? 3 : count
+  const conditionalBooks = search?.toLocaleUpperCase('TR')?.includes('TAKIM')
+    ? booksSet
+    : books
+  const conditionalCount = search?.toLocaleUpperCase('TR')?.includes('TAKIM')
+    ? 3
+    : count
 
   return (
     <section>
@@ -56,7 +60,7 @@ async function PriceListWrapper({
             <TableRow key={book.id}>
               <TableCell>
                 {book.id.includes('takim') ? (
-                  book.title
+                  <p className="!line-clamp-2">{book.title}</p>
                 ) : (
                   <Button
                     asChild
@@ -65,13 +69,16 @@ async function PriceListWrapper({
                     <Link
                       href={formatHref('kitap', book.title, book.id)}
                       prefetch={false}
+                      className="!line-clamp-2 !h-auto !p-0"
                     >
                       {book.title}
                     </Link>
                   </Button>
                 )}
               </TableCell>
-              <TableCell className='whitespace-nowrap'>{formatPrice(book.price)}</TableCell>
+              <TableCell className="whitespace-nowrap">
+                {formatPrice(book.price)}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -114,7 +121,10 @@ export default async function Page({
           key={suspenseKey}
           fallback={<TableLoading />}
         >
-          <PriceListWrapper promise={booksPromise} search={search} />
+          <PriceListWrapper
+            promise={booksPromise}
+            search={search}
+          />
         </Suspense>
       </section>
     </main>
