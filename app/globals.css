@@ -107,8 +107,9 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-
-body {
-  scrollbar-gutter: stable both-edges;
-	width: 100dvw;
+@media (min-width: 640px) {
+	body {
+		scrollbar-gutter: stable both-edges;
+		width: 100dvw;
+	}
 }
