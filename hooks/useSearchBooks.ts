@@ -15,7 +15,7 @@ const useSearchBooks = () => {
     params.set('page', '1')
     term ? params.set('search', term) : params.delete('search')
     replace(`${pathname}?${params}`)
-  }, 300)
+  }, 500)
 
   useEffect(() => {
     if (!searchParams.get('search')) {
