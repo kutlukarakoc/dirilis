@@ -71,7 +71,7 @@ async function PriceListWrapper({
                   </Button>
                 )}
               </TableCell>
-              <TableCell>{formatPrice(book.price)}</TableCell>
+              <TableCell className='whitespace-nowrap'>{formatPrice(book.price)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

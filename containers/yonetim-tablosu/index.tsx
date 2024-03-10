@@ -40,7 +40,7 @@ const ManagementTable = ({ books }: { books: BookManagement[] }) => {
                 </Link>
               </Button>
             </TableCell>
-            <TableCell>{formatPrice(book.price)}</TableCell>
+            <TableCell className='whitespace-nowrap'>{formatPrice(book.price)}</TableCell>
             <TableCell>
               <Edit book={book} />
             </TableCell>
