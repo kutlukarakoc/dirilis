@@ -8,6 +8,7 @@ import { booksSet } from '@/constants/booksSet'
 import { revalidatePath } from 'next/cache'
 import { ActionStatus } from '@/types/actionStatus'
 import { GetBooksResponse } from '@/types/getBooksResponse'
+import { convertSearchTerm } from '@/lib/utils'
 
 export async function getBookById(id: string): Promise<Books> {
   await connectToDB()
@@ -39,7 +40,7 @@ export async function getBooks<T>({
 	
   const queryObject: { title?: RegExp; 'category.id'?: string } = {}
 
-  if (search) queryObject.title = new RegExp(search.replace(/ı/g, 'I'), 'i')
+  if (search) queryObject.title = new RegExp(convertSearchTerm(search), 'i')
   if (categoryId) queryObject['category.id'] = categoryId
 
   const query = Book.find(queryObject, { ...necessaryProperties, _id: 1 })
