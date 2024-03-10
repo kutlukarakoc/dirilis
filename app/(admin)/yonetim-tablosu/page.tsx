@@ -48,7 +48,8 @@ export default async function ManagementPage({
 }: {
   searchParams: Record<string, string>
 }) {
-  const booksPromise = () => getBooks<BookManagement>({ searchParams, necessaryProperties })
+  const booksPromise = () =>
+    getBooks<BookManagement>({ searchParams, necessaryProperties })
 
   const { search, page } = searchParams
   const suspenseKey = search + page
