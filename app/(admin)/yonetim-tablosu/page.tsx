@@ -73,6 +73,7 @@ export default async function ManagementPage({
     <>
       <AdminNavbar />
       <main className="container relative my-20 flex-1 md:my-32">
+        <h1 className="page-title">Yönetim Tablosu</h1>
         <section>
           <div className="mb-16 flex flex-col justify-between gap-4 sm:flex-row">
             <div className="relative w-full max-w-xl">
