@@ -5,7 +5,7 @@ import { signOut } from 'next-auth/react'
 
 const AdminNavbar = () => {
   return (
-    <div className="-mb-8 flex h-20 items-center justify-between bg-primary-900 px-2 sm:px-16">
+    <div className="flex h-16 xl:h-28 items-center justify-between bg-primary-900 px-2 sm:px-16">
       <Logo size="md" />
       <button
         className="text-white-50"
