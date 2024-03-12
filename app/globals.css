@@ -106,10 +106,3 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-
-@media (min-width: 640px) {
-	body {
-		scrollbar-gutter: stable both-edges;
-		width: 100dvw;
-	}
-}
