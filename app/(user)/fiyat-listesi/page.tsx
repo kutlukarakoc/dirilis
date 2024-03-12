@@ -110,7 +110,7 @@ export default async function Page({
   const suspenseKey = search + page
 
   return (
-    <main className="container">
+    <>
       <h1 className="page-title">Fiyat Listesi</h1>
       <section>
         <div className="relative mb-16 w-full max-w-xl">
@@ -127,7 +127,7 @@ export default async function Page({
           />
         </Suspense>
       </section>
-    </main>
+    </>
   )
 }
 
