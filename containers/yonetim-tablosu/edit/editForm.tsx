@@ -33,11 +33,11 @@ const EditForm = ({ book, setOpen }: EditForm) => {
   const form = useForm<z.infer<typeof updateBookSchema>>({
     resolver: zodResolver(updateBookSchema),
     defaultValues: {
-      price: book.price,
-      pages: book.pages,
+      price: book.price.toString(),
+      pages: book.pages.toString(),
       isbn: book.isbn,
-      lastNo: book.publish.lastNo,
-      firstDate: book.publish.firstDate,
+      lastNo: book.publish.lastNo.toString(),
+      firstDate: book.publish.firstDate.toString(),
       lastDate: book.publish.lastDate,
       imageUrl: book.imageUrl,
     },
@@ -53,14 +53,14 @@ const EditForm = ({ book, setOpen }: EditForm) => {
 
     const id = book.id
     const data = {
-      price: values.price,
+      price: +values.price,
       isbn: values.isbn,
-      pages: values.pages,
+      pages: +values.pages,
       imageUrl: values.imageUrl,
       publish: {
-        lastNo: values.lastNo,
+        lastNo: +values.lastNo,
         lastDate: values.lastDate,
-        firstDate: values.firstDate,
+        firstDate: +values.firstDate,
       },
     }
 
@@ -218,7 +218,7 @@ const EditForm = ({ book, setOpen }: EditForm) => {
             name="imageUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className='flex flex-col justify-center items-center'>
+                <FormLabel className="flex flex-col items-center justify-center">
                   <p className="mb-2">Kitap Görseli</p>
                   <Image
                     src={currentImageUrl}
@@ -226,7 +226,9 @@ const EditForm = ({ book, setOpen }: EditForm) => {
                     width="100"
                     height="200"
                   />
-									<div className='mt-4 rounded-md border border-primary-100 bg-white-50 px-3 py-2 cursor-pointer'>Yeni Görsel Seç</div>
+                  <div className="mt-4 cursor-pointer rounded-md border border-primary-100 bg-white-50 px-3 py-2">
+                    Yeni Görsel Seç
+                  </div>
                 </FormLabel>
                 <FormControl>
                   <Input
