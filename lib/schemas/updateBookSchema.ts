@@ -21,9 +21,18 @@ export const updateBookSchema = z.object({
     .regex(/^[0-9]+$/, {
       message: 'Sadece rakam girilebilir.',
     }),
-  isbn: z.string().min(1, {
-    message: 'ISBN alanı boş bırakılamaz.',
-  }),
+
+  isbn: z
+    .string()
+    .min(1, {
+      message: 'ISBN boş bırakılamaz.',
+    })
+    .refine((val) => !val.startsWith('-') && !val.endsWith('-'), {
+      message: 'Orta tire ile başlamamalı veya bitmemelidir.',
+    })
+    .refine((val) => val.match(/^\d+(-\d+)*$/), {
+      message: 'Sadece sayı ve orta tire girilebilir.',
+    }),
 
   lastNo: z
     .string()
@@ -44,12 +53,12 @@ export const updateBookSchema = z.object({
     }),
 
   lastDate: z.string().min(1, {
-    message: 'Son Baskı Tarihi alanı boş bırakılamaz.',
+    message: 'Son Baskı Tarihi boş bırakılamaz.',
   }),
 
   imageUrl: z
     .string({
-      required_error: 'Görsel alanı boş bırakılamaz.',
+      required_error: 'Görsel boş bırakılamaz.',
     })
     .regex(/^.*\.webp$/, {
       message: 'Görsel webp tipinde olmalıdır.',
