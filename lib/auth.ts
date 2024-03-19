@@ -29,15 +29,13 @@ export const authOptions: NextAuthOptions = {
           const passwordMatch = await bcrypt.compare(password, user?.password)
           if (!passwordMatch) throw Error('Geçersiz şifre.')
 
-          delete user.password
+					delete user.password
 
-          console.log('kullanıcı bulundu')
           return {
             email: user?.email,
             id: user?._id,
           }
         } catch (error: any) {
-          console.log('auth.ts authorize hatası', error)
           throw Error(error)
         }
       },
@@ -49,7 +47,6 @@ export const authOptions: NextAuthOptions = {
         token.email = user?.email
         token.id = user?.id
       }
-			console.log('callback jwt', token)
       return token
     },
     async session({ session, token }) {
@@ -57,7 +54,6 @@ export const authOptions: NextAuthOptions = {
         (session.user as { id: string }).id = token?.id as string
         (session.user as { email: string }).email = token?.email as string
       }
-			console.log('callback session', session)
       return session
     },
   },

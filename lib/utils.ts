@@ -97,8 +97,6 @@ export const handleSignin = async (
 			replace: false,
     })
 
-		console.log('handleSignin res', response)
-
     return response
   } catch (err) {
     console.log('login error:', err)
