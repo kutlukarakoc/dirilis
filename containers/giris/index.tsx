@@ -34,17 +34,17 @@ const Login = () => {
     },
   })
 
-  async function onSubmit(values: z.infer<typeof loginSchema>) {
-    setIsSubmitting(true)
-    const res = await handleSignin(values)
-		console.log('HANDLESİGNIN res', res)
+  // async function onSubmit(values: z.infer<typeof loginSchema>) {
+  //   setIsSubmitting(true)
+  //   const res = await handleSignin(values)
+	// 	console.log('HANDLESİGNIN res', res)
 
-    setIsSubmitting(false)
-		console.log('HANDLESIGNIN ERR', res?.error)
-    if (res?.error) return setError(res.error)
-		console.log('HANDLESIGIN replace')
-    router.replace('/yonetim-tablosu')
-  }
+  //   setIsSubmitting(false)
+	// 	console.log('HANDLESIGNIN ERR', res?.error)
+  //   if (res?.error) return setError(res.error)
+	// 	console.log('HANDLESIGIN replace')
+  //   router.replace('/yonetim-tablosu')
+  // }
 
   return (
     <section style={{ height: '100vh' }}>
@@ -54,7 +54,7 @@ const Login = () => {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit(onSubmit)}
+              onSubmit={form.handleSubmit(handleSignin)}
               className="space-y-8 flex flex-col"
             >
               <FormField
