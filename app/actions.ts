@@ -9,6 +9,9 @@ import { revalidatePath } from 'next/cache'
 import { ActionStatus } from '@/types/actionStatus'
 import { GetBooksResponse } from '@/types/getBooksResponse'
 import { convertSearchTerm } from '@/lib/utils'
+import { loginSchema } from '@/lib/schemas/loginSchema'
+import { SignInResponse, signIn } from 'next-auth/react'
+import * as z from 'zod'
 
 export async function getBookById(id: string): Promise<Books> {
   await connectToDB()
@@ -157,5 +160,22 @@ export async function uploadImage({
   } catch (error) {
     console.log('image upload error: ', error)
     throw new Error('Bir hata oluştu. Daha sonra tekrar deneyin.')
+  }
+}
+
+export const handleSignin = async (
+  values: z.infer<typeof loginSchema>,
+): Promise<SignInResponse | undefined> => {
+  try {
+    const response = await signIn('credentials', {
+      email: values.email,
+      password: values.password,
+			replace: false,
+    })
+		console.log('handlesignin try', response)
+
+    return response
+  } catch (err) {
+    console.log('login error:', err)
   }
 }

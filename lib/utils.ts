@@ -94,6 +94,7 @@ export const handleSignin = async (
     const response = await signIn('credentials', {
       email: values.email,
       password: values.password,
+			replace: false,
     })
 
     return response
