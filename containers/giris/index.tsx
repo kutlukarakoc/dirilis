@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
-import { handleSignin } from '@/app/actions'
+import { handleSignin } from '@/lib/utils'
 
 const Login = () => {
   const router = useRouter()
@@ -37,11 +37,12 @@ const Login = () => {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     setIsSubmitting(true)
     const res = await handleSignin(values)
-		console.log('onsubmit res', res)
+		console.log('HANDLESİGNIN res', res)
+
     setIsSubmitting(false)
-		console.log('onsubmit err', res?.error)
+		console.log('HANDLESIGNIN ERR', res?.error)
     if (res?.error) return setError(res.error)
-		console.log('onsubmit replace')
+		console.log('HANDLESIGIN replace')
     router.replace('/yonetim-tablosu')
   }
 
