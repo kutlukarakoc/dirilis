@@ -16,7 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { loginSchema } from '@/lib/schemas/loginSchema'
 import { Button } from '@/components/ui/button'
-import { useState, useTransition } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
 import { handleSignin } from '@/lib/utils'
@@ -25,7 +25,7 @@ const Login = () => {
   const router = useRouter()
 
   const [error, setError] = useState('')
-  const [isPending, startTransition] = useTransition()
+  const [isPending, setIsPending] = useState(false)
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -36,17 +36,19 @@ const Login = () => {
   })
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
+    setIsPending(true)
     setError('')
 
-    startTransition(() => {
-      handleSignin(values).then((res) => {
+    handleSignin(values).then(
+      (res: { status: 'success' | 'error'; message: string }) => {
+        setIsPending(false)
         if (res.status === 'error') {
-					setError(res.message)
-				} else {
-					router.push('/yonetim-tablosu')
-				}
-      })
-    })
+          setError(res.message)
+          return
+        }
+        router.push('/yonetim-tablosu')
+      },
+    )
   }
 
   return (
