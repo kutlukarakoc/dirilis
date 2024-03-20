@@ -20,6 +20,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
 import { handleSignin } from '@/lib/utils'
+import { LoginResponse } from '@/types/loginResponse'
 
 const Login = () => {
   const router = useRouter()
@@ -39,16 +40,16 @@ const Login = () => {
     setIsPending(true)
     setError('')
 
-    handleSignin(values).then(
-      (res: { status: 'success' | 'error'; message: string }) => {
-        setIsPending(false)
-        if (res.status === 'error') {
-          setError(res.message)
-          return
-        }
-        router.push('/yonetim-tablosu')
-      },
-    )
+    const res: LoginResponse = await handleSignin(values)
+
+    setIsPending(false)
+
+    if (res.status === 'error') {
+      setError(res.message)
+      return
+    }
+
+    router.push('/yonetim-tablosu')
   }
 
   return (
