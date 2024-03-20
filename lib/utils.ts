@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
 import { Language } from '@/types/languages'
-import { SignInResponse, signIn } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import * as z from 'zod'
 import { loginSchema } from '@/lib/schemas/loginSchema'
 
@@ -89,17 +89,40 @@ export const getPrefferedLanguage = (): Language => {
 
 export const handleSignin = async (
   values: z.infer<typeof loginSchema>,
-): Promise<SignInResponse | undefined> => {
+): Promise<{
+	status: 'success' | 'error'
+	message: string
+}> => {
+  const validatedFields = loginSchema.safeParse(values)
+
+  if (!validatedFields.success) {
+    return { status: 'error', message: 'Geçersiz email ya da şifre girdiniz' }
+  }
+
+  const { email, password } = validatedFields.data
+
   try {
     const response = await signIn('credentials', {
-      email: values.email,
-      password: values.password,
-			replace: false,
+      email: email,
+      password: password,
+      redirect: false,
     })
 
-    return response
-  } catch (err) {
-    console.log('login error:', err)
+    if (!response?.ok) {
+      switch (response?.error) {
+        case 'CredentialsSignin':
+          return { status: 'error', message: 'Geçersiz email veya şifre girdiniz' }
+
+        default:
+          console.log('unexpected login try err:', response?.error)
+          return { status: 'error', message: 'Beklenmeyen bir hata oluştu' }
+      }
+    }
+
+    return { status: 'success', message: 'Giriş işlemi başarılı' }
+  } catch (error) {
+    console.log('unexpected login cath err:', error)
+    return { status: 'error', message: 'Beklenmeyen bir hata oluştu' }
   }
 }
 
