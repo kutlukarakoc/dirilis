@@ -7,11 +7,9 @@ export const metadata = {
 }
 
 export default async function LoginPage() {
-	const user = await getCurrentUser()
+  const user = await getCurrentUser()
 
-	if(user?.email) {
-		redirect('/yonetim-tablosu?page=1')
-	}
+  if (!user?.email) return <Login />
 
-  return <Login />
+  redirect('/yonetim-tablosu?page=1')
 }
