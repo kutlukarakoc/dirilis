@@ -3,6 +3,7 @@ import Admin from '@/lib/models/admins.model'
 import { connectToDB } from '@/lib/mongoose'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcrypt'
+import { loginSchema } from './schemas/loginSchema'
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -14,30 +15,24 @@ export const authOptions: NextAuthOptions = {
       type: 'credentials',
       credentials: {},
       async authorize(credentials) {
-        await connectToDB()
+        const validatedFields = loginSchema.safeParse(credentials)
 
-        try {
-          const { email, password } = credentials as {
-            email: string
-            password: string
-          }
+        if (validatedFields.success) {
+          const { email, password } = validatedFields.data
+
+          await connectToDB()
 
           const user = await Admin.findOne({ email })
+          if (!user || !user.password) return null
 
-          if (!user) throw Error('Geçersiz email.')
+          const passwordsMatch = await bcrypt.compare(password, user.password)
 
-          const passwordMatch = await bcrypt.compare(password, user?.password)
-          if (!passwordMatch) throw Error('Geçersiz şifre.')
+          delete user.password
 
-					delete user.password
-
-          return {
-            email: user?.email,
-            id: user?._id,
-          }
-        } catch (error: any) {
-          throw Error(error)
+          if (passwordsMatch) return user
         }
+
+        return null
       },
     }),
   ],
