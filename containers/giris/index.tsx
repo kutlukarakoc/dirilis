@@ -9,13 +9,14 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { FormError } from './form-error'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { loginSchema } from '@/lib/schemas/loginSchema'
 import { Button } from '@/components/ui/button'
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react'
 import { handleSignin } from '@/lib/utils'
@@ -23,8 +24,8 @@ import { handleSignin } from '@/lib/utils'
 const Login = () => {
   const router = useRouter()
 
-  const [error, setError] = useState<null | string>(null)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
+  const [isPending, startTransition] = useTransition()
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -35,25 +36,28 @@ const Login = () => {
   })
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
-    setIsSubmitting(true)
-    const res = await handleSignin(values)
+    setError('')
 
-    setIsSubmitting(false)
-    if (res?.error) return setError(res.error)
-
-    router.replace('/yonetim-tablosu')
+    startTransition(() => {
+      handleSignin(values).then((res) => {
+        if (res.status === 'error') {
+					setError(res.message)
+				} else {
+					router.push('/yonetim-tablosu')
+				}
+      })
+    })
   }
 
   return (
     <section style={{ height: '100vh' }}>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <Logo className="mx-auto text-primary-600" />
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="flex min-h-full flex-col justify-center bg-primary-50 px-4 sm:px-0">
+        <div className="flex flex-col gap-8 rounded-md bg-white-50 p-6 sm:mx-auto sm:w-full sm:max-w-md sm:p-12">
+          <Logo className="mx-auto text-primary-600" />
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-8 flex flex-col"
+              className="flex flex-col space-y-4"
             >
               <FormField
                 control={form.control}
@@ -64,8 +68,9 @@ const Login = () => {
                     <FormControl>
                       <Input
                         placeholder="Email adresiniz"
-												type='email'
-                        autoComplete="on"
+                        type="email"
+                        disabled={isPending}
+                        aria-disabled={isPending}
                         {...field}
                       />
                     </FormControl>
@@ -84,6 +89,8 @@ const Login = () => {
                       <Input
                         type="password"
                         placeholder="Şifreniz"
+                        disabled={isPending}
+                        aria-disabled={isPending}
                         {...field}
                       />
                     </FormControl>
@@ -94,23 +101,17 @@ const Login = () => {
               />
               <Button
                 type="submit"
-                disabled={isSubmitting}
-                aria-disabled={isSubmitting}
-								className='ml-auto'
+                disabled={isPending}
+                aria-disabled={isPending}
+                className="!mt-8 w-full"
               >
-                {isSubmitting && (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                )}
-                {isSubmitting ? 'Giriş Yapılıyor' : 'Giriş Yap'}
+                {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {isPending ? 'Giriş Yapılıyor' : 'Giriş Yap'}
               </Button>
             </form>
           </Form>
 
-          {error && (
-            <p className="mt-8 text-center text-paragraph font-medium text-red-500">
-              {error}
-            </p>
-          )}
+          <FormError message={error} />
         </div>
       </div>
     </section>
