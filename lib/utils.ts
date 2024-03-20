@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
 import { Language } from '@/types/languages'
+import { LoginResponse } from '@/types/loginResponse'
 import { signIn } from 'next-auth/react'
 import * as z from 'zod'
 import { loginSchema } from '@/lib/schemas/loginSchema'
@@ -89,10 +90,7 @@ export const getPrefferedLanguage = (): Language => {
 
 export const handleSignin = async (
   values: z.infer<typeof loginSchema>,
-): Promise<{
-	status: 'success' | 'error'
-	message: string
-}> => {
+): Promise<LoginResponse> => {
   const validatedFields = loginSchema.safeParse(values)
 
   if (!validatedFields.success) {
@@ -111,7 +109,10 @@ export const handleSignin = async (
     if (!response?.ok) {
       switch (response?.error) {
         case 'CredentialsSignin':
-          return { status: 'error', message: 'Geçersiz email veya şifre girdiniz' }
+          return {
+            status: 'error',
+            message: 'Geçersiz email veya şifre girdiniz',
+          }
 
         default:
           console.log('unexpected login try err:', response?.error)
